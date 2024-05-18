@@ -1,5 +1,6 @@
 target/classes/META-INF
-!/src
+/src/main/resources/application.properties
+/target/classes/application.properties
 pom.xml
 pom.xml.tag
 pom.xml.releaseBackup
