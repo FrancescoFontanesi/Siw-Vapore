@@ -37,3 +37,6 @@ buildNumber.properties
 .project
 .classpath
 .settings/
+target/classes/application.properties
+src/main/resources/application.properties
+*.properties
