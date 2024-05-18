@@ -1,6 +1,4 @@
 target/classes/META-INF
-/src/main/resources/application.properties
-/target/classes/application.properties
 pom.xml
 pom.xml.tag
 pom.xml.releaseBackup
@@ -15,12 +13,11 @@ buildNumber.properties
 # Eclipse m2e generated files
 # Eclipse Core
 .project
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
 
 
-/.settings
-
+.project
+.settings/
+target/
 
 
 /.idea/
@@ -36,7 +33,4 @@ buildNumber.properties
 *.jar
 .project
 .classpath
-.settings/
-target/classes/application.properties
-src/main/resources/application.properties
 *.properties
