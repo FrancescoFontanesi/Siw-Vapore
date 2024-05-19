@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -20,6 +21,9 @@ public class User {
 	private String username;
 	@NotBlank
 	private String email;
+	
+	@OneToOne
+	private Cart cart;
 
    
 	public Long getId() {
