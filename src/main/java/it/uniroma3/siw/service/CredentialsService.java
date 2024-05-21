@@ -18,7 +18,8 @@ public class CredentialsService {
 
     @Autowired
     protected CredentialsRepository credentialsRepository;
-
+    
+   
     @Transactional
     public Credentials getCredentials(Long id) {
         Optional<Credentials> result = this.credentialsRepository.findById(id);
@@ -31,16 +32,12 @@ public class CredentialsService {
         return result.orElse(null);
     }
 
+
     @Transactional
-    public Credentials saveCredentialsDeveloper(Credentials credentials) {
-        credentials.setRole(Credentials.DEVELOPER_ROLE);
+    public Credentials saveCredentials(Credentials credentials) {
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
     }
-    @Transactional
-    public Credentials saveCredentialsBuyer(Credentials credentials) {
-        credentials.setRole(Credentials.USER_ROLE);
-        credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
-        return this.credentialsRepository.save(credentials);
-    }
+  
+  
 }

@@ -1,14 +1,18 @@
 package it.uniroma3.siw.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "utente")
 public class User {
 	@Id
@@ -17,14 +21,10 @@ public class User {
 	
 	@NotBlank
 	public Integer age;
-	@NotBlank
-	private String username;
+
 	@NotBlank
 	private String email;
 	
-	@OneToOne
-	private Cart cart;
-
    
 	public Long getId() {
 		return id;
@@ -42,13 +42,6 @@ public class User {
 		this.age = age;
 	}
 
-	public String getusername() {
-		return username;
-	}
-
-	public void setusername(String username) {
-		this.username = username;
-	}
 
 	public String getEmail() {
 		return email;
@@ -59,6 +52,23 @@ public class User {
 	}
 
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(age, email, id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(age, other.age) && Objects.equals(email, other.email) && Objects.equals(id, other.id);
+	}
+
 	public User() {
 		super();
 	}

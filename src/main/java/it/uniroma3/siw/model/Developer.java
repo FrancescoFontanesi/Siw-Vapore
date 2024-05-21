@@ -4,21 +4,20 @@ package it.uniroma3.siw.model;
 import java.util.List;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class Developer {
+public class Developer extends User {
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id;
-	
+
 	@NotNull
 	public String name;
+	@NotBlank
+	private String surname;
+	@NotNull
+	public String company;
 	
 	public String logo;
 	
@@ -27,14 +26,7 @@ public class Developer {
 	@OneToMany(mappedBy ="developer")
 	public List<Game> developedGames;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -49,6 +41,14 @@ public class Developer {
 
 	public void setLogo(String logo) {
 		this.logo = logo;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	public String getSite_url() {
