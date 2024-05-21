@@ -1,5 +1,5 @@
 .background{
-    background:#16161a;
+    background:#222233;
 }
 
 
@@ -48,10 +48,17 @@
     width: auto;
 }
 .carosello1{
-    background-image: url(/css/images/fotoc.jpg);
     width: 100%;
     height: 500px; /* Altezza della classe */
     color: black; /* Colore del testo */
-    text-align: start; 
-    padding-top: 100px; /* Padding per il testo */}
+    justify-content: end;
+}
+
+.gioco{
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
 
