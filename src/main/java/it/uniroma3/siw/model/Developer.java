@@ -4,12 +4,20 @@ package it.uniroma3.siw.model;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Developer extends User {
+	
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	public Long id;
 	
 
 	@NotNull
@@ -19,7 +27,7 @@ public class Developer extends User {
 	@NotNull
 	public String company;
 	
-	public String logo;
+	public String profilePic;
 	
 	public String site_url;
 	
@@ -36,11 +44,11 @@ public class Developer extends User {
 	}
 
 	public String getLogo() {
-		return logo;
+		return profilePic;
 	}
 
-	public void setLogo(String logo) {
-		this.logo = logo;
+	public void setLogo(String profilePic) {
+		this.profilePic = profilePic;
 	}
 
 	public String getSurname() {

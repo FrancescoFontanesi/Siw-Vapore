@@ -9,20 +9,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "utente")
 public class User {
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 	
 	@NotBlank
+	@Min(0)
 	public Integer age;
 
 	@NotBlank
+	@Email
 	private String email;
 	
    

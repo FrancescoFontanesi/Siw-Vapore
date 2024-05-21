@@ -126,7 +126,7 @@ public class AuthController {
 		return "formNewDeveloper";
 	}
 	
-	@PostMapping("register/developer")
+	@PostMapping("register/customer")
 	public String registerCustomer (@Valid @ModelAttribute("customer") Customer customer,
             BindingResult userBindingResult, @Valid
             @ModelAttribute("credentials") Credentials credentials,
