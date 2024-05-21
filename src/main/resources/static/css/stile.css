@@ -11,6 +11,10 @@
     border-color: aliceblue;
 }
 
+.coluno{
+    background-color: #343445;
+}
+
 .row{
     flex: auto;
     flex-direction: row;
@@ -60,5 +64,21 @@
     margin-left: 10px;
     margin-right: 10px;
 
+}
+
+.carta-testo{
+   color: white;
+}
+
+.c-item{
+    height: 480;
+}
+
+.c-img{
+  height: 100%;
+  object-fit: cover;
+}
+.c-img-game{
+    height: 200;
 }
 

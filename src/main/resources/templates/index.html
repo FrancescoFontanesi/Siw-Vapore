@@ -14,50 +14,11 @@
 <body class="background">
 
   
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-   
-   
-   
 
   
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+  <nav class="navbar navbar-expand-lg  coluno">
+    <div class="container coluno">
+      <a class="navbar-brand " href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -85,8 +46,8 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit" >Search</button>
         </form>
       </div>
     </div>
@@ -95,43 +56,50 @@
  
 
 
-  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-
-      <div class="carousel-item active carosello1 " style="background-image: url(/images/images.jpeg);">
-
-        <h1 class="display-6 " style="background: darkblue;">Nom gioco </h1>
-        <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore nostrum nihil quis.</p>
-       
-
-      </div>
-
-      <div class="carousel-item carosello1" style="background-image: url(/images/images.jpeg);">
-
-        <h1 class="display-6 " style="background: darkblue;">Nom gioco </h1>
-        <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore nostrum nihil quis.</p>
-       
-      </div>
-      <div class="carousel-item carosello1" style="background-image: url(/images/images.jpeg);">
-
-        <h1 class="display-6 " style="background: darkblue;">Nom gioco </h1>
-        <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore nostrum nihil quis.</p>
-       
-      </div>
-
-      </div>
+  <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
 
-     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <div class="carousel-inner">
+      <div class="carousel-item active c-item">
+        <img src="/images/minecraft.jpg" class="d-block w-100 c-img" alt="Slide 1">
+        <div class="carousel-caption top-0 mt-4">
+          <p class="mt-5 fs-3 text-uppercase">Discover the beauty of PLAY</p>
+          <h1 class="display-1 fw-bolder text-capitalize">The creativity</h1>
+          <button class="btn btn-primary px-4 py-2 fs-5 mt-5">minecraft</button>
+        </div>
+      </div>
+      <div class="carousel-item c-item">
+        <img src="/images/fifa.jpg" class="d-block w-100 c-img" alt="Slide 2">
+        <div class="carousel-caption top-0 mt-4">
+          <p class="text-uppercase fs-3 mt-5">Play versus the WORD</p>
+          <p class="display-1 fw-bolder text-capitalize">Available h24</p>
+          <button class="btn btn-primary px-4 py-2 fs-5 mt-5" data-bs-toggle="modal"
+            data-bs-target="#booking-modal">fifa</button>
+        </div>
+      </div>
+      <div class="carousel-item c-item">
+        <img src="/images/cod.jpg" class="d-block w-100 c-img" alt="Slide 3">
+        <div class="carousel-caption top-0 mt-4">
+          <p class="text-uppercase fs-3 mt-5">Response to your DUTY</p>
+          <p class="display-1 fw-bolder text-capitalize">don't die</p>
+          <button class="btn btn-primary px-4 py-2 fs-5 mt-5" data-bs-toggle="modal"
+            data-bs-target="#booking-modal">cod of duty</button>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
-     </button>
-     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
-     </button>
+    </button>
   </div>
-
 
 
 
@@ -140,11 +108,11 @@
 
           <div class="col-3">
            
-            <div class="card " >
-              <img src="/images/foto.jpg" class="card-img-top img-fluid" >
+            <div class="card coluno  " style="border-radius: 20px;" >
+              <img src="/images/foto.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
               <div class="card-body ">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title carta-testo">Card title</h5>
+                <p class="carta-testo ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
@@ -152,11 +120,11 @@
           </div>
           <div class="col-3 ">
             
-            <div class="card" >
-              <img src="/images/foto.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card coluno  " style="border-radius: 20px;" >
+              <img src="/images/foto.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
+              <div class="card-body ">
+                <h5 class="card-title carta-testo">Card title</h5>
+                <p class="carta-testo ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
@@ -164,11 +132,11 @@
           </div>
           <div class="col-3">
             
-            <div class="card">
-              <img src="/images/foto.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card coluno  " style="border-radius: 20px;" >
+              <img src="/images/foto.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
+              <div class="card-body ">
+                <h5 class="card-title carta-testo">Card title</h5>
+                <p class="carta-testo ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
@@ -176,11 +144,11 @@
           </div>
           <div class="col-3">
             
-            <div class="card" >
-              <img src="/images/foto.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card coluno  " style="border-radius: 20px;" >
+              <img src="/images/foto.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
+              <div class="card-body ">
+                <h5 class="card-title carta-testo">Card title</h5>
+                <p class="carta-testo ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
@@ -192,11 +160,11 @@
 
           <div class="col-3">
            
-            <div class="card " >
-              <img src="/images/foto.jpg" class="card-img-top img-fluid" >
+            <div class="card coluno  " style="border-radius: 20px;" >
+              <img src="/images/foto.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
               <div class="card-body ">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title carta-testo">Card title</h5>
+                <p class="carta-testo ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
@@ -204,11 +172,11 @@
           </div>
           <div class="col-3 ">
             
-            <div class="card" >
-              <img src="/images/foto.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card coluno  " style="border-radius: 20px;" >
+              <img src="/images/foto.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
+              <div class="card-body ">
+                <h5 class="card-title carta-testo">Card title</h5>
+                <p class="carta-testo ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
@@ -216,11 +184,11 @@
           </div>
           <div class="col-3">
             
-            <div class="card">
-              <img src="/images/foto.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card coluno  " style="border-radius: 20px;" >
+              <img src="/images/foto.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
+              <div class="card-body ">
+                <h5 class="card-title carta-testo">Card title</h5>
+                <p class="carta-testo ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
@@ -228,11 +196,11 @@
           </div>
           <div class="col-3">
             
-            <div class="card" >
-              <img src="/images/foto.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card coluno  " style="border-radius: 20px;" >
+              <img src="/images/foto.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
+              <div class="card-body ">
+                <h5 class="card-title carta-testo">Card title</h5>
+                <p class="carta-testo ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
@@ -241,6 +209,10 @@
         </div>
       </div>
  
+      
+
+      
+
 
 
 </body>
