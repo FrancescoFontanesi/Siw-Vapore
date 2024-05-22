@@ -1,12 +1,17 @@
 package it.uniroma3.siw.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.uniroma3.siw.model.Customer;
+import it.uniroma3.siw.model.Developer;
 import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.repository.CustomerRepository;
+import it.uniroma3.siw.repository.DeveloperRepository;
 import it.uniroma3.siw.repository.UserRepository;
 
 @Service
@@ -15,20 +20,33 @@ public class UserService {
 	
 	@Autowired 
 	private UserRepository userRepository;
+	@Autowired 
+	private CustomerRepository customerRepository;
+	@Autowired 
+	private DeveloperRepository developerRepository;
 	
-	@Transactional
-	public User getUser(Long id) {
-		Optional<User> u = this.userRepository.findById(id);
-		return u.orElse(null);
-	}
-	
-	@Transactional
-	public User saveUser(User u) {
-        return this.userRepository.save(u);
-	}
-	
-	public Iterable<User> getAllUser(){
+    
+	public Iterable<User> getAllSuperUser(){
 		return this.userRepository.findAll();
 	}
+	
+	@Transactional
+	public Developer saveDev(Developer d) {
+        return this.developerRepository.save(d);
+	}
+	
+	@Transactional
+	public Customer saveCustomer(Customer c) {
+        return this.customerRepository.save(c);
+	}
+	
+	public Iterable<Developer> getAllDev(){
+		return this.developerRepository.findAll();
+	}
+	
+	public Iterable<Customer> getAllCustomer(){
+		return this.customerRepository.findAll();
+	}
+	
 
 }

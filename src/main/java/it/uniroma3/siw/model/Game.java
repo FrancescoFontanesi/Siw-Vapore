@@ -20,30 +20,30 @@ public class Game {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	
-	public Long id;
+	private Long id;
 	
 	@NotBlank
-	public String name;
+	private String name;
 	
-	public String description;
+	private String description;
 	
-	public List<String> images;
+	private List<String> images;
 	
 	@NotNull
     @Min(1980)
     @Max(2024)
-	public Integer releaseDate;
+	private Integer releaseDate;
 	
-	public Double price;
+	private Double price;
 	
 	@ManyToMany
-	public List<Category> categories;
+	private List<Category> categories;
 	
 	@ManyToOne
-	public Developer developer;
+	private Developer developer;
 	
 	@OneToMany(mappedBy = "game")
-	public List<Review> reviews;
+	private List<Review> reviews;
 	
 	public Long getId() {
 		return id;
