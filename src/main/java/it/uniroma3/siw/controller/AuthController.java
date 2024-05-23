@@ -92,7 +92,7 @@ public class AuthController {
 		if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
 			
 			
-            userService.saveUser(dev);
+            userService.saveDev(dev);
             credentials.setUser(dev);
             credentialsService.saveCredentials(credentials);
             model.addAttribute("dev", dev);
@@ -134,7 +134,7 @@ public class AuthController {
             Model model) {
 		
 		if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
-            userService.saveUser(customer);
+            userService.saveCustomer(customer);
             credentials.setUser(customer);
             credentialsService.saveCredentials(credentials);
             model.addAttribute("customer", customer);

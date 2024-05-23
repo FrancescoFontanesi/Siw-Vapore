@@ -17,19 +17,21 @@ public class Developer extends User {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id;
+	private Long id;
 	
 
 	@NotNull
-	public String name;
+	private String name;
 	@NotBlank
 	private String surname;
 	@NotNull
-	public String company;
+	private String company;
 	
-	public String profilePic;
+	private String logo;
 	
-	public String site_url;
+	private String site_url;
+	
+	
 	
 	@OneToMany(mappedBy ="developer")
 	public List<Game> developedGames;
@@ -44,11 +46,11 @@ public class Developer extends User {
 	}
 
 	public String getLogo() {
-		return profilePic;
+		return logo;
 	}
 
-	public void setLogo(String profilePic) {
-		this.profilePic = profilePic;
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 	public String getSurname() {

@@ -17,7 +17,7 @@ public class Customer extends User {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id;
+	private Long id;
 	
 	
 	@NotBlank
