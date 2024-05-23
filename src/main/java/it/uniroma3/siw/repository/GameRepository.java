@@ -8,8 +8,10 @@ import it.uniroma3.siw.model.Game;
 
 public interface GameRepository extends CrudRepository<Game, Long> {
 
-	public List<Game> findByReleaseDate(int releaseDate);
+	public List<Game> findAllByReleaseDate(int releaseDate);
 
-	public boolean existsByNameAndReleaseDate(String name, int year);	
+	public boolean existsByNameAndReleaseDate(String name, int year);
+	
+	public List<Game> findAllByCategory(String category);
 
 }

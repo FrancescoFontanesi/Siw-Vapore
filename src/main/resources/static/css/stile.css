@@ -43,7 +43,7 @@
     margin-left: 0px;
 }
 
-.carousel-inner{
+.carosello2{
 
     height: 400px;
     margin-top: 10px;
@@ -82,3 +82,7 @@
     height: 200;
 }
 
+.bottone{
+   width: 20%;
+   height: 100px;
+}

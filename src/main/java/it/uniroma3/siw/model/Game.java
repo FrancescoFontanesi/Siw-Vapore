@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Max;
@@ -36,8 +35,8 @@ public class Game {
 	
 	public Double price;
 	
-	@ManyToMany
-	public List<Category> categories;
+	@NotBlank
+	public String category;
 	
 	@ManyToOne
 	public Developer developer;
@@ -93,12 +92,12 @@ public class Game {
 		this.price = price;
 	}
 
-	public Iterable<Category> getCategories() {
-		return categories;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
+	public void setCategories(String category) {
+		this.category = category;
 	}
 
 	public Developer getDeveloper() {
