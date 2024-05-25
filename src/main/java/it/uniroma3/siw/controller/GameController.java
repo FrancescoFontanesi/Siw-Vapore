@@ -5,11 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import it.uniroma3.siw.model.Game;
 import it.uniroma3.siw.repository.GameRepository;
+import it.uniroma3.siw.validator.GameValidator;
 
 @Controller
 public class GameController {
@@ -17,8 +15,14 @@ public class GameController {
 	@Autowired 
 	private GameRepository gameRepository;
 
-	//@Autowired 
-	//private GameValidator gameValidator;
+	@Autowired 
+	private GameValidator gameValidator;
+	
+	@GetMapping("/game/{id}")
+	public String getGame(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("game", this.gameRepository.findById(id));
+		return "game.html";
+	}
 	
 	
 
@@ -60,11 +64,7 @@ public class GameController {
 		}
 	}
 
-	@GetMapping("/game/{id}")
-	public String getGame(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("game", this.gameRepository.findById(id).get());
-		return "game.html";
-	}
+	
 
 	
 	@GetMapping("/formSearchGames")
