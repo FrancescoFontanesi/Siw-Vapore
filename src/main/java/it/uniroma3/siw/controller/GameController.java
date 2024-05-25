@@ -3,11 +3,17 @@ package it.uniroma3.siw.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.siw.model.Game;
 import it.uniroma3.siw.repository.GameRepository;
 import it.uniroma3.siw.validator.GameValidator;
+import jakarta.validation.Valid;
 
 @Controller
 public class GameController {
@@ -26,7 +32,6 @@ public class GameController {
 	
 	
 
-    /*
 	@GetMapping(value="/admin/formNewGame")
 	public String formNewGame(Model model) {
 		model.addAttribute("game", new Game());
@@ -39,10 +44,7 @@ public class GameController {
 		return "admin/formUpdateGame.html";
 	}
 
-	@GetMapping(value="/admin/indexgame")
-	public String indexgame() {
-		return "admin/indexGame.html";
-	}
+
 	
 	@GetMapping(value="/admin/manageGames")
 	public String manageGames(Model model) {
@@ -50,7 +52,7 @@ public class GameController {
 		return "admin/managegames.html";
 	}
 	
-    /*
+ 
 	@PostMapping("/admin/game")
 	public String newgame(@Valid @ModelAttribute("game") Game game, BindingResult bindingResult, Model model) {
 		
@@ -64,7 +66,7 @@ public class GameController {
 		}
 	}
 
-	
+
 
 	
 	@GetMapping("/formSearchGames")
@@ -78,6 +80,6 @@ public class GameController {
 		return "foundGames.html";
 	}
 	
-	*/
+	
 }
 

@@ -16,6 +16,9 @@ public interface GameRepository extends CrudRepository<Game, Long> {
 	public boolean existsByNameAndDeveloper(String name, Developer developer);
 	
 	public List<Game> findAllByCategory(String category);
+
+	public Game findByReleaseDate(int year);
+	
 	
 
 }

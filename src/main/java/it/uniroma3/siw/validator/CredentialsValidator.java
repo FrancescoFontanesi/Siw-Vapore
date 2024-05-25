@@ -18,7 +18,7 @@ public class CredentialsValidator implements Validator {
 		Credentials credentials = (Credentials)o;
 		if (credentials.getEmail()!=null 
 				&& credentialsRepository.existsByEmail(credentials.getEmail())) {
-			errors.reject("Game.duplicate");
+			errors.reject("User.duplicate");
 		}
 	}
 
