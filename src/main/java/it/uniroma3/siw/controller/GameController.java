@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import it.uniroma3.siw.model.Game;
 import it.uniroma3.siw.repository.GameRepository;
+import it.uniroma3.siw.service.GameService;
 import it.uniroma3.siw.validator.GameValidator;
 
 @Controller
@@ -18,6 +20,7 @@ public class GameController {
 	@Autowired 
 	private GameValidator gameValidator;
 	
+	
 	@GetMapping("/game/{id}")
 	public String getGame(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("game", this.gameRepository.findById(id));
@@ -25,7 +28,7 @@ public class GameController {
 	}
 	
 	
-
+	
     /*
 	@GetMapping(value="/admin/formNewGame")
 	public String formNewGame(Model model) {
