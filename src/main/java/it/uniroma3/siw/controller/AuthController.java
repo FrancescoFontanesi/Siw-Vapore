@@ -22,12 +22,16 @@ import it.uniroma3.siw.model.Customer;
 import it.uniroma3.siw.model.Developer;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.UserService;
+import it.uniroma3.siw.validator.CredentialsValidator;
 import jakarta.validation.Valid;
 
 @Controller 
 public class AuthController {
 	
 	private final String UPLOAD_DIR = "./static/images";
+	@Autowired
+	private CredentialsValidator credentialsValidator;
+	
 	@Autowired
 	private CredentialsService credentialsService;
 	
@@ -44,6 +48,7 @@ public class AuthController {
     @PostMapping("/register")
     public String showSpecificRoleRegister(Model model, @Valid @ModelAttribute("credentials") Credentials credentials, BindingResult result) {
        
+    	this.credentialsValidator.validate(credentials, result);
     	if (result.hasErrors()) {
             return "register";
         }
