@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class Credentials {
@@ -17,16 +18,26 @@ public class Credentials {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-	private String username;
+	@NotEmpty(message ="Email non valida")
+	public String email;
+	@NotEmpty(message = "La password non puo essere vuota")
 	private String password;
+	@NotEmpty(message = "Ruolo non valido")
 	private String role;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
-	public String getUsername() {
-		return username;
+	public Credentials() {
+		super();
 	}
+
+
+	public String getEmail() {
+		return email;
+	}
+	
+	
 	
 	public Long getId() {
 		return id;
@@ -44,8 +55,8 @@ public class Credentials {
 		this.user = user;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	public String getPassword() {

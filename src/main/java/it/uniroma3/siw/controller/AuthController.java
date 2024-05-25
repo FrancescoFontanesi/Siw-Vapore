@@ -35,27 +35,34 @@ public class AuthController {
 	private UserService userService;
 	
 
-	@GetMapping(value = "/register") 
-	public String showRegisterForm (Model model) {
-		model.addAttribute("credentials", new Credentials());
-		return "formRegisterUser";
-	}
-	@PostMapping(value = "/register")
-	public String showSpecificRoleRegister(Model model, @ModelAttribute("credentials") Credentials credentials) {
-		switch(credentials.getRole()) {
-		case "DEVELOPER":
-			model.addAttribute("developer", new Developer());
-			model.addAttribute("credentials", credentials);
-			return "register/developer";
-		case "CUSTOMER":
-			model.addAttribute("customer", new Customer());
-			model.addAttribute("credentials", credentials);
-			return "register/customer";
-		default:
-			model.addAttribute("Error", "This role is not allowed ");
-			return "register";
-		}
-	}
+	@GetMapping("/register")
+    public String showRegisterForm(Model model) {
+        model.addAttribute("credentials", new Credentials());
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String showSpecificRoleRegister(Model model, @Valid @ModelAttribute("credentials") Credentials credentials, BindingResult result) {
+       
+    	if (result.hasErrors()) {
+            return "register";
+        }
+    	
+    	switch(credentials.getRole()) {
+            case "Developer":
+                model.addAttribute("developer", new Developer());
+                model.addAttribute("credentials", credentials);
+                return "register/developer";
+            case "Customer":
+                model.addAttribute("customer", new Customer());
+                model.addAttribute("credentials", credentials);
+                return "register/customer";
+            default:
+                model.addAttribute("error", "This role is not allowed");
+                return "register";
+          }
+    	
+    }
 	
 	@GetMapping("/register/developer")
 	public String shwoRegisterDeveloper(Model model, @ModelAttribute("developer") Developer developer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
