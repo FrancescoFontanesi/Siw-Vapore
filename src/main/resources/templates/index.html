@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAPORE</title>
+    <title class="bi bi-house">VAPORE</title>
     <link rel="stylesheet" href="css/cssBootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/stile.css">
+    <link rel="stylesheet" href="css/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+
     <script defer src="js/bootstrap.bundle.min.js"></script>
 
 
@@ -18,37 +20,22 @@
   
   <nav class="navbar navbar-expand-lg  coluno">
     <div class="container coluno">
-      <a class="navbar-brand " href="#">VAPORE</a>
+      <a class="navbar-brand " >VAPORE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login.html">Login</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            <a class="nav-link active bi bi-house" aria-current="page" href="/index.html"></a>
           </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit" >Search</button>
         </form>
+        <a class="btn btn-primary bi bi-person-circle ms-1"  href="/login"></a>
+
       </div>
     </div>
   </nav>
@@ -102,19 +89,16 @@
   </div>
 
 
-  <div class="container text-center justify-content-center my-5">
+ <div class="container text-center justify-content-center my-5">
     
-    <a href="#adventure" class="btn btn-primary btn-lg bottone c-img align-items-center " style="background-image: url(/images/adventure.jpeg);background-size: cover;">
-      <h5 class="my-4" style="text-decoration: dotted;">ADVENTURE</h5></a>
-    <a href="#action" class="btn btn-primary btn-lg bottone c-img" style="background-image: url(/images/action.jpg);background-size: cover;">
+    <a href="#adventure" class="btn btn-primary btn-lg bottone c-img align-items-center " style="background-image: url(/images/adventure.jpeg);background-size: cover; border-style: double; border-color: white;">
+      <h5 class="my-4" >ADVENTURE</h5></a>
+    <a href="#action" class="btn btn-primary btn-lg bottone c-img" style="background-image: url(/images/action.jpg);background-size: cover;background-size: cover; border-style: double; border-color: white;">
       <h5 class="my-4">ACTION</h5></a>
-    <a href="#strategy" class="btn btn-primary btn-lg bottone" style="background-image: url(/images/strategy.jpg);background-size: cover;">
+    <a href="#strategy" class="btn btn-primary btn-lg bottone" style="background-image: url(/images/strategy.jpg);background-size: cover;background-size: cover; border-style: double; border-color: white;">
       <h5 class="my-4">STRATEGY</h5></a>
-    <a href="#fps" class="btn btn-primary btn-lg bottone" style="background-image: url(/images/fps.jpg);background-size: cover;">
+    <a href="#fps" class="btn btn-primary btn-lg bottone" style="background-image: url(/images/fps.jpg);background-size: cover;background-size: cover; border-style: double; border-color: white;">
       <h5 class="my-4">FPS</h5></a>
-
-
-
 
   </div>
 
@@ -126,7 +110,7 @@
       <h1 class="display-4" style="color: white;">
         Best of month
       </h1>
-    </section>
+   
         <div class="row align-items-center justify-content-center my-4" style="gap: 0px;">
 
           <div class="col-3">
@@ -179,21 +163,22 @@
           </div>
         </div>
   </div>
- 
+  </section>
 
      
   
   <section id="adventure">
     <div class="container">
-        <h1 class="display-4 coluno">
+      <h1 class="display-4 coluno p-2 carta-testo" style="border-radius: 20px; border-color: white ; border-style: double;">
             ADVENTURE
         </h1>
     </div>
     <div class="container text-center my-5 ">
         <div class="row justify-content-center">
-            <div  class="col-lg-2 col-md-3 " th:each="game, iterStat : ${games}" th:if="${game.category} == 'Adventure'">
+            <div  class="col-lg-2 col-md-3 mb-3" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Adventure'">
                 
                     <div class="card coluno" style="border-radius: 20px;border-color: blue; border-style: double;">
+						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
                             <p class="carta-testo" th:text="${game.description}"></p>
@@ -209,9 +194,9 @@
  </section>
 
 
- <section id="adventure">
+ <section id="action">
     <div class="container">
-        <h1 class="display-4 coluno">
+      <h1 class="display-4 coluno p-2 carta-testo" style="border-radius: 20px; border-color: white ; border-style: double;">
             ACTION
         </h1>
     </div>
@@ -234,9 +219,9 @@
     </div>
  </section>
  
-  <section id="adventure">
+  <section id="strategy">
     <div class="container">
-        <h1 class="display-4 coluno">
+      <h1 class="display-4 coluno p-2 carta-testo" style="border-radius: 20px; border-color: white ; border-style: double;">
             STRATEGY
         </h1>
     </div>
@@ -259,9 +244,9 @@
     </div>
  </section>
  
-  <section id="adventure">
+  <section id="fps">
     <div class="container">
-        <h1 class="display-4 coluno">
+      <h1 class="display-4 coluno p-2 carta-testo" style="border-radius: 20px; border-color: white ; border-style: double;">
             FPS
         </h1>
     </div>
@@ -283,6 +268,48 @@
         </div>
     </div>
  </section>
+
+  <section id="registration">
+    <div class="container my-5">
+   
+    
+      <div class="row justify-content-center ">
+          <div class="col-lg-4">
+            <h1 class="display-4 justify-content-center" style="color: white;">
+              REGISTRATION
+          </h1>
+              <form style="width: 100%;">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" style="color: white;">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text"></div>
+                  </div>
+                  <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label" style="color: white;">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+          
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1" style=" color:  white;">Customer</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2" style="color: white;">Developer</label>
+                  </div>
+                  
+  
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+          </div>
+  
+          <div class="col-5 p-2 mb-1 d-none d-md-block colquattro">
+            <img class="img-fluid img-thumbnail" src="images/login/copertina.jpeg" style="width: 600px; height: auto;">
+          </div>
+      </div>
+    </div>
+  
+  </section>
 
 
 </body>

@@ -28,6 +28,8 @@ public class Game {
 	
 	public List<String> images;
 	
+	public String copertina;
+	
 	@NotNull
     @Min(1980)
     @Max(2024)
@@ -74,6 +76,14 @@ public class Game {
 
 	public void setImages(List<String> images) {
 		this.images = images;
+	}
+
+	public String getCopertina() {
+		return copertina;
+	}
+
+	public void setCopertina(String copertina) {
+		this.copertina = copertina;
 	}
 
 	public Integer getreleaseDate() {
