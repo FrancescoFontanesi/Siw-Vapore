@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-      <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAPORE</title>
-    <link rel="stylesheet" href="css/cssBootstrap/bootstrap.min.css">
+    <title>VAPORE Registration Customer    </title>
+    
+     <link rel="stylesheet" href="css/cssBootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/stile.css">
     <link rel="stylesheet" href="css/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
 
     <script defer src="js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body class="background">
 
@@ -51,45 +53,55 @@
   </nav>
    
        
+       
   <div class="container my-5">
    
     
-    <div class="row justify-content-center">
-        <div class="col-lg-4">
-          <h1 class="display-4 justify-content-center" style="color: white;">
-            LOGIN
-        </h1>
-            <form style="width: 100%;">
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label" style="color: white;">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <div id="emailHelp" class="form-text"></div>
-                </div>
-                <div class="mb-4">
-                  <label for="exampleInputPassword1" class="form-label" style="color: white;">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
+    <div class="row justify-content-center background-blur" style="background-image: url(/images/copertina2.jpeg);">
+      
+      
+      <div class="col-lg-7 col-md-4 my-3" style="background-color: rgb(37, 150, 190,0.5); border-radius: 20px;">
+
+          <h3 class="display-4 justify-content-center" style="color: white; ">
+            Welcome New Developer
+          </h3>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          
+          <div class="input-group mb-3">
+            <span class="input-group-text">First and last name</span>
+            <input type="text" aria-label="First name" class="form-control">
+            <input type="text" aria-label="Last name" class="form-control">
+          </div>
+          
+          <div class="mb-3">
+            <label for="basic-url" class="form-label" style="color: white;">Your vanity URL</label>
+            <div class="input-group">
+              <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+              <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+            </div>
+            <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+          </div>
+          
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Company" aria-label="Company" aria-describedby="basic-addon1">
+          </div>
+          
         
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                  <label class="form-check-label" for="inlineRadio1" style=" color:  white;">Customer</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                  <label class="form-check-label" for="inlineRadio2" style="color: white;">Developer</label>
-                </div>
-                
+          
+          <div class="input-group">
+            <span class="input-group-text">Description</span>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+          </div>
+      </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-        </div>
-
-        <div class="col-5 p-2 mb-1 d-none d-md-block colquattro">
-          <img class="img-fluid img-thumbnail" src="/images/copertina.jpeg" style="width: 600px; height: auto;">
-        </div>
+       
     </div>
   </div>
 
+  
 
     
   <section id="chisiamo">
@@ -100,6 +112,4 @@
   </section>
 
 </body>
-</html>
-
 </html>
