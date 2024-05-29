@@ -38,7 +38,30 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 	
+	
+	@GetMapping("/login")
+	public String getLogin(Model model) {
+		return "login.html";
+	
+	}
+	
 
+	@GetMapping("/formRegisterDeveloper")
+	public String getFormDev(Model model) {
+		return "formRegisterDeveloper.html";
+	
+	}
+
+
+	@GetMapping("/formRegistrationCustomer")
+	public String getFormCust(Model model) {
+		return "formRegistrationCustomer";
+	
+	}
+	
+	
+	
+	
 	@GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("credentials", new Credentials());
@@ -57,17 +80,18 @@ public class AuthController {
             case "Developer":
                 model.addAttribute("developer", new Developer());
                 model.addAttribute("credentials", credentials);
-                return "register/developer";
+                return "formRegisterDeveloper";
             case "Customer":
                 model.addAttribute("customer", new Customer());
                 model.addAttribute("credentials", credentials);
-                return "register/customer";
+                return "formRegistrationCustomer";
             default:
                 model.addAttribute("error", "This role is not allowed");
                 return "register";
           }
     	
     }
+
 	
 	@GetMapping("/register/developer")
 	public String shwoRegisterDeveloper(Model model, @ModelAttribute("developer") Developer developer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
