@@ -27,14 +27,15 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active bi bi-house" aria-current="page" href="/index.html"></a>
+            <a class="nav-link active bi bi-house" aria-current="page" href="/"></a>
           </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit" >Search</button>
         </form>
-        <a class="btn btn-primary bi bi-person-circle ms-1"  href="/login"></a>
+        <a class="btn bi bi-person-circle ms-1" style="background-color: white;" href="/login"></a>
+        <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
 
       </div>
     </div>
@@ -115,7 +116,7 @@
 
           <div class="col-3">
            
-            <div class="card-xs coluno  " style="border-radius: 20px;border-color: blue; border-style: double;" >
+            <div class="card-xs coluno  " style="border-radius: 20px;border-color: white; border-style: double;" >
               <img src="/images/cod.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
               <div class="card-body ">
                 <h5 class="card-title carta-testo">Card title</h5>
@@ -127,7 +128,7 @@
           </div>
           <div class="col-3 ">
             
-            <div class="card-xs coluno  " style="border-radius: 20px;border-color: blue; border-style: double;" >
+            <div class="card-xs coluno  " style="border-radius: 20px;border-color: white; border-style: double;" >
               <img src="/images/fifa.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
               <div class="card-body ">
                 <h5 class="card-title carta-testo">Card title</h5>
@@ -139,7 +140,7 @@
           </div>
           <div class="col-3">
             
-            <div class="card-xs coluno  " style="border-radius: 20px;border-color: blue; border-style: double;" >
+            <div class="card-xs coluno  " style="border-radius: 20px;border-color: white; border-style: double;" >
               <img src="/images/cod.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
               <div class="card-body ">
                 <h5 class="card-title carta-testo">Card title</h5>
@@ -151,7 +152,7 @@
           </div>
           <div class="col-3">
             
-            <div class="card-xs coluno  " style="border-radius: 20px;border-color: blue; border-style: double;" >
+            <div class="card-xs coluno  " style="border-radius: 20px;border-color: white; border-style: double;" >
               <img src="/images/fifa.jpg" class="card-img-top p-3" style="border-radius: 40px;" >
               <div class="card-body ">
                 <h5 class="card-title carta-testo">Card title</h5>
@@ -173,15 +174,16 @@
             ADVENTURE
         </h1>
     </div>
-    <div class="container text-center my-5 ">
-        <div class="row justify-content-center">
-            <div  class="col-lg-2 col-md-3 mb-3" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Adventure'">
+    <div class="container text-center my-3 ">
+		
+		
+        <div class="row justify-content-center" style="gap: 0px;">
+            <div  class="col-lg-3 col-md-2" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Adventure'">
                 
-                    <div class="card coluno" style="border-radius: 20px;border-color: blue; border-style: double;">
+                    <div class="card coluno my-3" style="border-radius: 20px;border-color: white; border-style: double;">
 						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <p class="carta-testo" th:text="${game.description}"></p>
                             <a th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
                         </div>
                     </div>
@@ -200,20 +202,20 @@
             ACTION
         </h1>
     </div>
-    <div class="container text-center my-5 ">
-        <div class="row justify-content-center">
-            <div  class="col-lg-2 col-md-3 mb-1" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Action'">
+     <div class="container text-center my-3 ">
+        <div class="row justify-content-center" style="gap: 0px;">
+            <div  class="col-lg-3 col-md-2" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Action'">
                 
-                    <div class="card coluno" style="border-radius: 20px;border-color: blue; border-style: double;">
+                    <div class="card coluno my-3" style="border-radius: 20px;border-color: white; border-style: double;">
+						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <p class="carta-testo" th:text="${game.description}"></p>
                             <a th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
                         </div>
                     </div>
                 
                 <!-- Chiusura e apertura di una nuova riga ogni 4 elementi -->
-                <div th:if="${iterStat.index % 4 == 3}" class="w-100"></div>
+                <div th:if="${iterStat.index % 3 == 2}" class="w-100"></div>
             </div>
         </div>
     </div>
@@ -225,20 +227,20 @@
             STRATEGY
         </h1>
     </div>
-    <div class="container text-center my-5 ">
-        <div class="row justify-content-center">
-            <div  class="col-lg-2 col-md-3 mb-1" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Strategy'">
+     <div class="container text-center my-3 ">
+        <div class="row justify-content-center" style="gap: 0px;">
+            <div  class="col-lg-3 col-md-2" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Strategy'">
                 
-                    <div class="card coluno" style="border-radius: 20px;border-color: blue; border-style: double;">
+                    <div class="card coluno my-3" style="border-radius: 20px;border-color: white; border-style: double;">
+						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <p class="carta-testo" th:text="${game.description}"></p>
                             <a th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
                         </div>
                     </div>
                 
                 <!-- Chiusura e apertura di una nuova riga ogni 4 elementi -->
-                <div th:if="${iterStat.index % 4 == 3}" class="w-100"></div>
+                <div th:if="${iterStat.index % 3 == 2}" class="w-100"></div>
             </div>
         </div>
     </div>
@@ -250,20 +252,20 @@
             FPS
         </h1>
     </div>
-    <div class="container text-center my-5 ">
-        <div class="row justify-content-center">
-            <div  class="col-lg-2 col-md-3 mb-1" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Fps'">
+     <div class="container text-center my-3 ">
+        <div class="row justify-content-center" style="gap: 0px;">
+            <div  class="col-lg-3 col-md-2" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Fps'">
                 
-                    <div class="card coluno" style="border-radius: 20px;border-color: blue; border-style: double;">
+                    <div class="card coluno my-3" style="border-radius: 20px;border-color: white; border-style: double;">
+						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <p class="carta-testo" th:text="${game.description}"></p>
                             <a th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
                         </div>
                     </div>
                 
                 <!-- Chiusura e apertura di una nuova riga ogni 4 elementi -->
-                <div th:if="${iterStat.index % 4 == 3}" class="w-100"></div>
+                <div th:if="${iterStat.index % 3 == 2}" class="w-100"></div>
             </div>
         </div>
     </div>

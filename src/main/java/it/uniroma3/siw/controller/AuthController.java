@@ -62,10 +62,13 @@ public class AuthController {
 	
 	
 	
+	
+	
+	
 	@GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("credentials", new Credentials());
-        return "register";
+        return "registration";
     }
 
     @PostMapping("/register")

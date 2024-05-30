@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAPORE Cart</title>
+    <link rel="stylesheet" href="css/cssBootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/stile.css">
+    <link rel="stylesheet" href="css/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+
+    <script defer src="js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body class="background">
+
+  
+    <nav class="navbar navbar-expand-lg  coluno">
+        <div class="container coluno">
+          <a class="navbar-brand " >VAPORE</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active bi bi-house" aria-current="page" href="/"></a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit" >Search</button>
+            </form>
+            <a class="btn bi bi-person-circle ms-1" style="background-color: white;" href="/login"></a>
+            <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
+    
+          </div>
+        </div>
+      </nav>
+   
+       
+
+  <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double; background-image: url(/images/cart.jpg); height: 300px;">
+        
+        
+        <div class="row justify-content-center">
+            
+            
+            <div class="col-lg-4 col-md-6 grid-item my-4 justify-content-center " >
+                <h1 class="display-4  my-3 ms-3" style="background-color: rgb(37, 150, 190,0.5); color: white;">
+                   Il Tuo Carrello
+                </h1>
+        
+
+            </div>
+        </div>
+        
+  </div>
+  
+  
+  
+
+  <section id="giochi">
+      <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
+		<div th:if="${games==null || games.isEmpty()}" class="carta-testo text-center">Non ci sono giochi nel carrello</div>
+
+        <div class="row justify-content-center">
+            <div  class="col-lg-2 col-md-3 mb-3" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Adventure'">
+                
+                    <div class="card coluno" style="border-radius: 20px;border-color: blue; border-style: double;">
+						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
+                        <div class="card-body">
+                            <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
+                            <p class="carta-testo" th:text="${game.description}"></p>
+                            <a th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
+                        </div>
+                    </div>
+                
+                <!-- Chiusura e apertura di una nuova riga ogni 4 elementi -->
+                <div th:if="${iterStat.index % 4 == 3}" class="w-100"></div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+
+    
+
+
+    
+  <section id="chisiamo">
+      <div class="container coluno" >
+        <h1 class="display-3" style="text-decoration: overline; color: white;">Chi siamo?</h1>
+        <p class="small" style="color: white; font-style: italic;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates assumenda dignissimos aperiam sit, cum reiciendis. Aliquid necessitatibus aut at vel voluptas, veniam consectetur tempora eos corporis officiis provident itaque alias?</p>
+      </div>
+    </section>
+
+</body>
+
+</html>

@@ -19,4 +19,10 @@ public class HomeController {
     	model.addAttribute("games", gameRepository.findAll());
         return "index.html"; 
     }
+    
+    @GetMapping("/cart")
+	public String getCart(Model model) {
+		return "cart.html";
+	
+	}
 }
