@@ -41,10 +41,10 @@
  
   <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double;">
         
-        <h1 class="display-4 coluno my-3 ms-3" style="color: white;">
+        <h2 class="display-4 coluno my-3 ms-3" style="color: white;" th:text="${game.name}">
             Nome Gioco
             
-        </h1>
+        </h2>
 
         <div class="row justify-content-center">
             
@@ -59,18 +59,10 @@
                 </div>
 
                 <div class="carousel-inner">
-                  <div class="carousel-item active c-item-game">
-                    <img src="/images/minecraft.jpg" class="d-block c-img img-thumbnail shadow-sm rounded-0" alt="Slide 1">
-                    
+                  <div class="carousel-item active c-item-game" th:each="image, iterStat : ${game.images}" th:class="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">
+                		<img th:src="@{/images/{image}(image=${image})}" class="d-block w-100 c-img-game img-thumbnail shadow-sm rounded-0" alt="Game Image">
                   </div>
-                  <div class="carousel-item c-item">
-                    <img src="/images/fifa.jpg" class="d-block w-100 c-img-game img-thumbnail shadow-sm rounded-0" alt="Slide 2">
-                    
-                  </div>
-                  <div class="carousel-item c-item">
-                    <img src="/images/cod.jpg" class="d-block w-100 c-img-game img-thumbnail shadow-sm rounded-0" alt="Slide 3">
-                    
-                  </div>
+                 
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -86,16 +78,28 @@
             </div>
          
             <div class="col-lg-4 col-md-6 grid-item mb-4 ">
-                <img class="img-fluid w-100 mb-3 img-thumbnail shadow-sm rounded-0" src="/images/action.jpg" alt="">
-                <h2 class="h4" style="color: white;">Masonry grid item</h2>
-                <p class="small font-italic" style="color: white;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <h6 style="color: white;">DATA DI RILASCIO: 10 nov 2015</h6>
-                <h6 style="color: white;">SVILUPPATORE: Bethesda Game Studios</h6>
+                <img class="img-fluid w-90 mb-3 img-thumbnail shadow-sm rounded-0"th:src=${game.copertina} alt="">
+                <h2 class="h4" style="color: white;" th:text="${game.name}"></h2>
+                
+				<h6 class="d-inline" style="color: white;">DATA DI RILASCIO: </h6>
+				<h6 class="d-inline" style="color: white;" th:text="${game.releaseDate}"></h6>
+
+				<h6 class="d-inline" style="color: white;">SVILUPPATORE: </h6>
+				<h6 class="d-inline" style="color: white;" th:text="${game.developer}"> nome sviluppatore</h6>
+
+				<h6 class="d-inline" style="color: white;">GAME'S CATEGORY: </h6>
+				<h6 class="d-inline" style="color: white;" th:text="${game.category}"> nome categoria</h6>
+				
+				
+
 
             </div>
         </div>
         
   </div>
+  
+  
+ 
 
  
   <section id="descrizione">

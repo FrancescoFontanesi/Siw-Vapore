@@ -19,16 +19,17 @@ public class GameController {
 
 	@Autowired 
 	private GameValidator gameValidator;
+
+	
 	
 	
 	@GetMapping("/game/{id}")
-	public String getGame(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("game", this.gameRepository.findById(id));
-		return "game.html";
-	}
-	
-	
-	
+    public String getGame(@PathVariable Long id, Model model) {
+        Game game = gameRepository.findById(id)
+               .orElseThrow(() -> new IllegalArgumentException("Invalid game ID:" + id));
+        model.addAttribute("game", game);
+        return "game"; // Assicurati che 'game' sia il nome della tua vista Thymeleaf
+    }
     /*
 	@GetMapping(value="/admin/formNewGame")
 	public String formNewGame(Model model) {
