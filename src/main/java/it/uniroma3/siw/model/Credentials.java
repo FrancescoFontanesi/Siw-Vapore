@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Credentials {
@@ -25,6 +26,7 @@ public class Credentials {
 	@NotEmpty(message = "Ruolo non valido")
 	private String role;
 
+	@NotNull
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	

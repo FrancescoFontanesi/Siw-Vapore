@@ -6,8 +6,6 @@ import it.uniroma3.siw.model.Customer;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 	
-	public Customer findByNameAndSurname(String name, String surname);
-	
 	public Customer findByAge(Integer age);
 
 }

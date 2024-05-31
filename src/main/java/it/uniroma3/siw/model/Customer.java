@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -20,13 +21,17 @@ public class Customer extends User {
 	private Long id;
 	
 	
-	@NotBlank
-	private String name;	
+		
 	
 	private String profilePic;
 	@NotBlank
 	
-	private String surname;
+	
+	
+	@NotBlank
+	@Min(10)
+	public Integer age;
+
 	
 	@OneToOne
 	private Cart cart;
@@ -41,22 +46,17 @@ public class Customer extends User {
 		this.boughtGames = new ArrayList<Game>();
 	}
 
-	public String getName() {
-		return name;
+	
+	
+	public Integer getAge() {
+		return age;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 
 
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
 
 	public Cart getCart() {
 		return cart;

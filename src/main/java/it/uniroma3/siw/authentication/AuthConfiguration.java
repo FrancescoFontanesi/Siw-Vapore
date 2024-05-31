@@ -33,8 +33,8 @@ public class AuthConfiguration {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .authoritiesByUsernameQuery("SELECT username, role from credentials WHERE username=?")
-                .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM credentials WHERE username=?")
+                .authoritiesByUsernameQuery("SELECT email, role from credentials WHERE email=?")
+                .usersByUsernameQuery("SELECT email, password, 1 as enabled FROM credentials WHERE username=?")
                 .passwordEncoder(passwordEncoder());
     }
 

@@ -5,8 +5,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -20,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Customer;
 import it.uniroma3.siw.model.Developer;
+import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.UserService;
 import it.uniroma3.siw.validator.CredentialsValidator;
@@ -34,6 +38,12 @@ public class AuthController {
 	
 	@Autowired
 	private CredentialsService credentialsService;
+
+	
+	@Autowired
+	private CredentialsRepository credentialsRepository;
+
+	
 	
 	@Autowired
 	private UserService userService;
@@ -182,6 +192,28 @@ public class AuthController {
         return "register/customer";
 		
 	}
+	
+
+	    @GetMapping("/mypage")
+	    public String customerMyPage(Authentication authentication, Model model) {
+	        String email = authentication.getName();
+	        Optional<Credentials> c = credentialsRepository.findByEmail(email);
+	        User u = c.get().getUser();
+	        model.addAttribute("user", u );
+	        
+	        switch(c.get().getRole()) {
+            case "Developer":
+                return "developerMypage";
+            case "Customer":
+                return "customerMyPage";
+            case "ADMIN":
+            	return "adminIndex";
+            	default :
+            		return "login";
+          }
+	    }
+	
+	
 	
 	
 
