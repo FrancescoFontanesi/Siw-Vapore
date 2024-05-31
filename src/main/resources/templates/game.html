@@ -48,7 +48,7 @@
 
         <div class="row justify-content-center">
             
-            <div class="col-lg-6 col-md-6 grid-item mb-4">
+            <div class="col-lg-6 col-md-6 grid-item my-4">
                
                 
               <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -79,22 +79,31 @@
          
             <div class="col-lg-4 col-md-6 grid-item mb-4 ">
                 <img class="img-fluid w-90 mb-3 img-thumbnail shadow-sm rounded-0"th:src=${game.copertina} alt="">
-                <h2 class="h4" style="color: white;" th:text="${game.name}"></h2>
                 
-				<h6 class="d-inline" style="color: white;">DATA DI RILASCIO: </h6>
-				<h6 class="d-inline" style="color: white;" th:text="${game.releaseDate}"></h6>
-
-				<h6 class="d-inline" style="color: white;">SVILUPPATORE: </h6>
-				<h6 class="d-inline" style="color: white;" th:text="${game.developer}"> nome sviluppatore</h6>
-
-				<h6 class="d-inline" style="color: white;">GAME'S CATEGORY: </h6>
-				<h6 class="d-inline" style="color: white;" th:text="${game.category}"> nome categoria</h6>
+				<h2 class="h4" style="color: white;" th:text="${game.name}"></h2>
+               
+                <div>
+					<h6 class="d-inline" style="color: white;">DATA DI RILASCIO: </h6>
+					<h6 class="d-inline" style="color: white;" th:text="${game.releaseDate}"></h6>	
+				</div>
+				
+				<div>
+					<h6 class="d-inline" style="color: white;">SVILUPPATORE: </h6>
+					<h6 class="d-inline" style="color: white;" th:text="${game.developer}"> nome sviluppatore</h6>	
+				</div>
+				
+				<div>
+					<h6 class="d-inline" style="color: white;">GAME'S CATEGORY: </h6>
+					<h6 class="d-inline" style="color: white;" th:text="${game.category}"> nome categoria</h6>		
+				</div>
 				
 				
 
 
             </div>
         </div>
+        
+   
         
   </div>
   
