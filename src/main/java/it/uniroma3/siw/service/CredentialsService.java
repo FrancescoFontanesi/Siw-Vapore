@@ -11,7 +11,7 @@ import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.repository.CredentialsRepository;
 
 @Service
-public class CredentialsService {
+public class CredentialsService  {
 
     @Autowired
     protected PasswordEncoder passwordEncoder;
@@ -38,6 +38,7 @@ public class CredentialsService {
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
     }
+   
   
   
 }
