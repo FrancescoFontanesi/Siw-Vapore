@@ -34,11 +34,14 @@
           <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit" >Search</button>
         </form>
-		<!--
-        <li th:if="${#request.userPrincipal == null}"><a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a></li>
-
-        <li th:if="${#request.isUserInRole('CUSTOMER')}"><a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/customer/mypage}">My Page</a></li>
-        -->
+		<ul>
+		            <li th:if="${userPrincipal == null}">
+		                <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
+		            </li>
+		            <li th:if="${userPrincipal != null}">
+		                <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
+		            </li>
+		        </ul>
         <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
 
       </div>
