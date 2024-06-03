@@ -51,5 +51,10 @@ public class User {
 		this.surname = surname;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", surname=" + surname + "]";
+	}
+
 	
 }

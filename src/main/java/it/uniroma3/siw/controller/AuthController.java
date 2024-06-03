@@ -194,7 +194,7 @@ public class AuthController {
 	}
 	
 
-	    @GetMapping("/mypage")
+	    @GetMapping("/myPage")
 	    public String customerMyPage(Authentication authentication, Model model) {
 	        String email = authentication.getName();
 	        Optional<Credentials> c = credentialsRepository.findByEmail(email);

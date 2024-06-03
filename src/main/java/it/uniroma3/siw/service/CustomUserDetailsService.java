@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.model.Credentials;
@@ -15,7 +16,7 @@ import it.uniroma3.siw.repository.CredentialsRepository;
 import java.util.Collections;
 import java.util.Optional;
 
-@Service("userDetailsService")
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
@@ -29,6 +30,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (!credentials.isPresent()) {
             throw new UsernameNotFoundException("User not found");
         }
+        
+        
         
         System.out.println("User found: " + credentials.get().getEmail());
 
