@@ -29,13 +29,14 @@ public class GameController {
 	@Autowired
     private GameService gameService;
 
-    @GetMapping("/randomGames")
-    public String showRandomGames(Model model) {
-        List<Game> randomGames = gameService.getRandomGames();
+	/*
+    @GetMapping("/")
+    public String showIndex(Model model) {
+        List<Game> randomGames = gameService.getRandomGames(4);  // Ottieni 4 giochi casuali
         model.addAttribute("randomGames", randomGames);
         return "index";
     }
-	
+	*/
 	@GetMapping("/game/{id}")
     public String getGame(@PathVariable Long id, Model model) {
         Game game = gameRepository.findById(id)

@@ -14,6 +14,8 @@
 <body class="background">
 
   
+  
+  
   <nav class="navbar navbar-expand-lg  coluno">
     <div class="container coluno">
       <a class="navbar-brand " >VAPORE</a>
@@ -23,19 +25,27 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active bi bi-house" aria-current="page" href="/index.html"></a>
+            <a class="nav-link active bi bi-house" aria-current="page" href="/"></a>
           </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit" >Search</button>
         </form>
-        <a class="btn bi bi-person-circle ms-1" style="background-color: white;" href="/login"></a>
+		<div>
+		     <div th:if="${userPrincipal == null}">
+	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
+	          </div>
+	         <div th:if="${userPrincipal != null}">
+	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
+		     </div>
+		 </div>
         <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
 
       </div>
     </div>
   </nav>
+   
    
        
 
@@ -94,7 +104,7 @@
 
     
   <section id="chisiamo">
-      <div class="container coluno" ">
+      <div class="container coluno" >
         <h1 class="display-3" style="text-decoration: overline; color: white;">Chi siamo?</h1>
         <p class="small" style="color: white; font-style: italic;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates assumenda dignissimos aperiam sit, cum reiciendis. Aliquid necessitatibus aut at vel voluptas, veniam consectetur tempora eos corporis officiis provident itaque alias?</p>
       </div>

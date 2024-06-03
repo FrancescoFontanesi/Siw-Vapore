@@ -34,14 +34,14 @@
           <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit" >Search</button>
         </form>
-		<ul>
-		            <li th:if="${userPrincipal == null}">
-		                <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
-		            </li>
-		            <li th:if="${userPrincipal != null}">
-		                <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
-		            </li>
-		        </ul>
+		<div>
+		     <div th:if="${userPrincipal == null}">
+	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
+	          </div>
+	         <div th:if="${userPrincipal != null}">
+	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
+		     </div>
+		 </div>
         <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
 
       </div>
@@ -167,16 +167,24 @@
   </div>
   </section>
 
-      <div class="container">
-        <h1 class="my-4">Random Games</h1>
+
+    
+     <div class="container">
+        
+        <h2 class="carta-testo"> Random Games</h2>
         <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4" th:each="game : ${randomGames}">
-  		      <h2 th:text="${game.name}"></h2>
-        		<p th:text="${game.description}"></p>
-        <!-- Aggiungi altri dettagli del gioco se necessario -->
-    </div>
+            <div class="col-md-3" th:each="game : ${randomGames}">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${game.name}">Game Name</h5>
+                        <p class="card-text" th:text="${game.description}">Game Description</p>
+                        <!-- Add other game details as needed -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
   
   <section id="adventure">
     <div class="container">
