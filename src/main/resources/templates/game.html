@@ -41,17 +41,17 @@
  
   <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double;">
         
-        <h2 class="display-4 coluno my-3 ms-3" style="color: white;" th:text="${game.name}">
+        
+
+        <div class="row justify-content-center align-items-center ">
+            
+            <div class="col-lg-6 col-md-6 grid-item my-4">
+               <h2 class="display-4 coluno my-3 ms-3" style="color: white;" th:text="${game.name}">
             Nome Gioco
             
         </h2>
-
-        <div class="row justify-content-center">
-            
-            <div class="col-lg-6 col-md-6 grid-item my-4">
                
-                
-              <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+				<div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                   <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -72,17 +72,11 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
-              </div>
-
-            
-            </div>
-         
-            <div class="col-lg-4 col-md-6 grid-item mb-4 ">
-                <img class="img-fluid w-90 mb-3 img-thumbnail shadow-sm rounded-0"th:src=${game.copertina} alt="">
                 
-				<h2 class="h4" style="color: white;" th:text="${game.name}"></h2>
+                
+              	</div>   
                
-                <div>
+                <div class="mt-4">
 					<h6 class="d-inline" style="color: white;">DATA DI RILASCIO: </h6>
 					<h6 class="d-inline" style="color: white;" th:text="${game.releaseDate}"></h6>	
 				</div>
@@ -98,6 +92,18 @@
 				</div>
 				
 				
+                
+              
+
+            
+            </div>
+         
+            <div class="col-lg-4 col-md-6 grid-item mt-5 d-flex flex-column align-items-center justify-content-center ">
+                <img class="img-fluid w-90 mb-3 img-thumbnail shadow-sm rounded-0"th:src=${game.copertina} alt="">
+                
+				<div class="text-center ">
+					<button stype="button" class="btn btn-outline-light btn-lg " th:text="'Add To Cart: ' + ${game.price}"></button>		
+			   </div>
 
 
             </div>
@@ -114,62 +120,31 @@
   <section id="descrizione">
       <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
         <h4 class="display-4" style="color: white;">Informazioni sul gioco</h4>
-        <p style="color: white;">
-          Bethesda Game Studios, pluripremiati creatori di Fallout 3 e The Elder Scrolls V: Skyrim, vi danno il benvenuto nel mondo di Fallout 4, il loro gioco più ambizioso di sempre e la nuova generazione dei giochi in un mondo aperto.
-          Come unico sopravvissuto del Vault 111 devi affrontare un mondo distrutto dalla guerra nucleare. Ogni istante è una lotta per la sopravvivenza e ogni scelta spetta a te. Solo tu puoi ricostruire e definire il destino della Zona Contaminata. Benvenuto a casa.
-          <br>
-          CARATTERISTICHE:
-          Indipendenza e libertà!
-          Fai tutto ciò che vuoi in un enorme mondo aperto con centinaia di località, personaggi e missioni. Diventa parte di numerose fazioni che lottano per il potere, oppure agisci in autonomia: hai tutta la libertà di scegliere.
-          <br>
-          Sei S.P.E.C.I.A.L!
-          Diventa ciò che vuoi essere con il sistema S.P.E.C.I.A.L., da soldato con armatura atomica a oratore carismatico. Puoi scegliere fra centinaia di abilità extra e sviluppare uno stile di gioco tutto tuo.
-          
-          Pixel superlussuosi!
-          Un nuovissimo motore grafico di nuova generazione rende il mondo di Fallout vivo come non mai. Ogni località, dalle foreste devastate del Commonwealth alle rovine di Boston, è colma di dettagli dinamici.
-          
-          Violenza e S.P.A.V.!
-          L'intenso combattimento in prima e terza persona può essere rallentato con il nuovo sistema di puntamento assistito Vault-Tec (S.P.A.V.), che ti permette di scegliere gli attacchi e di goderti una carneficina cinematica.
-          
-          Raccogli e costruisci!
-          Raccogli, migliora e costruisci migliaia di oggetti nel sistema di produzione più avanzato di sempre. Armi, armature, sostanze chimiche e cibo non sono che l’inizio: puoi dar vita a interi insediamenti, e poi gestirli.</p>
+		<p th:text="${game.description}" class="carta-testo"></p>
       </div>
     </section>
 
 
+	<!--
 
-<section id="recensioni">
+	<section id="recensioni">
       <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
         <h4 class="display-4" style="color: white;" >Recensioni</h4>
         
-       
-        <div class="list-group ">
-          <div class="list-group-item py-2 background my-1 testoA">
-          <h5 class="mb-1 carta-testo"> titolo recensione</h5>
-          <p class="mb-1 carta-testo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus velit deserunt illum.</p>
-        </div>
-              
-        <div class="list-group ">
-          <div class="list-group-item py-2 background my-1 testoA">
-          <h5 class="mb-1 carta-testo"> titolo recensione</h5>
-          <p class="mb-1 carta-testo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus velit deserunt illum.</p>
-        </div>
-
-        <div class="list-group ">
-          <div class="list-group-item py-2 background my-1 testoA">
-          <h5 class="mb-1 carta-testo"> titolo recensione</h5>
-          <p class="mb-1 carta-testo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus velit deserunt illum.</p>
-        </div>
-            
-           
-
-        </div>
-
+        
       
+        <div th:if="${game.reviews==null || game.reviews.isEmpty()}">Non ci sono Recensioni nel gioco</div>
 
-      </div>
+        <ul class="list-group">
+            <li th:each="review : ${game.reviews}" class="list-group-item">
+                <h5 th:text="${review.title}">Review Title</h5>
+                <p th:text="${review.content}">Review content goes here...</p>
+                <footer class="blockquote-footer" th:text="${review.author}">Author</footer>
+            </li>
+        </ul>
+    </div>
     </section>
-
+-->
 
 
     

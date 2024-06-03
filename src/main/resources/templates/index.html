@@ -61,7 +61,6 @@
         <div class="carousel-caption top-0 mt-4">
           <p class="mt-5 fs-3 text-uppercase">Discover the beauty of PLAY</p>
           <h1 class="display-1 fw-bolder text-capitalize">The creativity</h1>
-          <button class="btn btn-primary px-4 py-2 fs-5 mt-5">minecraft</button>
         </div>
       </div>
       <div class="carousel-item c-item">
@@ -69,8 +68,6 @@
         <div class="carousel-caption top-0 mt-4">
           <p class="text-uppercase fs-3 mt-5">Play versus the WORD</p>
           <p class="display-1 fw-bolder text-capitalize">Available h24</p>
-          <button class="btn btn-primary px-4 py-2 fs-5 mt-5" data-bs-toggle="modal"
-            data-bs-target="#booking-modal">fifa</button>
         </div>
       </div>
       <div class="carousel-item c-item">
@@ -78,8 +75,6 @@
         <div class="carousel-caption top-0 mt-4">
           <p class="text-uppercase fs-3 mt-5">Response to your DUTY</p>
           <p class="display-1 fw-bolder text-capitalize">don't die</p>
-          <button class="btn btn-primary px-4 py-2 fs-5 mt-5" data-bs-toggle="modal"
-            data-bs-target="#booking-modal">cod of duty</button>
         </div>
       </div>
     </div>
@@ -108,10 +103,9 @@
   </div>
 
   
-  <div class="container text-center my-5">
-
-
-    <section id="bollenti">
+  
+   <section id="bollenti">
+	  <div class="container text-center my-5">
       <h1 class="display-4" style="color: white;">
         Best of month
       </h1>
@@ -170,7 +164,16 @@
   </div>
   </section>
 
-     
+      <div class="container">
+        <h1 class="my-4">Random Games</h1>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4" th:each="game : ${randomGames}">
+  		      <h2 th:text="${game.name}"></h2>
+        		<p th:text="${game.description}"></p>
+        <!-- Aggiungi altri dettagli del gioco se necessario -->
+    </div>
+        </div>
+    </div>
   
   <section id="adventure">
     <div class="container">

@@ -1,5 +1,10 @@
 package it.uniroma3.siw.controller;
 
+
+
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +26,15 @@ public class GameController {
 	private GameValidator gameValidator;
 
 	
-	
+	@Autowired
+    private GameService gameService;
+
+    @GetMapping("/randomGames")
+    public String showRandomGames(Model model) {
+        List<Game> randomGames = gameService.getRandomGames();
+        model.addAttribute("randomGames", randomGames);
+        return "index";
+    }
 	
 	@GetMapping("/game/{id}")
     public String getGame(@PathVariable Long id, Model model) {
@@ -30,6 +43,9 @@ public class GameController {
         model.addAttribute("game", game);
         return "game"; // Assicurati che 'game' sia il nome della tua vista Thymeleaf
     }
+	
+	
+	
     /*
 	@GetMapping(value="/admin/formNewGame")
 	public String formNewGame(Model model) {

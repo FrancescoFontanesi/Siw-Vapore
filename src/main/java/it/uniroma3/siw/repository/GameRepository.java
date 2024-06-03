@@ -2,6 +2,8 @@ package it.uniroma3.siw.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 import it.uniroma3.siw.model.Developer;
@@ -18,6 +20,9 @@ public interface GameRepository extends CrudRepository<Game, Long> {
 	public List<Game> findAllByCategory(String category);
 
 	public Game findByReleaseDate(int year);
+	
+	
+	public List<Game> findAll();
 	
 	
 
