@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.model.Credentials;
@@ -29,7 +30,9 @@ import it.uniroma3.siw.service.UserService;
 import it.uniroma3.siw.validator.CredentialsValidator;
 import jakarta.validation.Valid;
 
-@Controller 
+
+@Controller
+@SessionAttributes("credentials")
 public class AuthController {
 	
 	private final String UPLOAD_DIR = "./static/images";
@@ -152,7 +155,7 @@ public class AuthController {
 
         // save the file on the local file system
         try {
-            Path path = Paths.get(UPLOAD_DIR + fileName);
+            Path path = Paths.get(UPLOAD_DIR +"/"+ fileName);
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
@@ -170,13 +173,13 @@ public class AuthController {
             BindingResult credentialsBindingResult,
             Model model) {
 		
-		System.out.println(userBindingResult.toString() + credentialsBindingResult.toString() );
+		
 		if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
             userService.saveCustomer(customer);
             credentials.setUser(customer);
             credentialsService.saveCredentials(credentials);
             model.addAttribute("customer", customer);
-            return "login";
+            return "redirect:/login";
         }
         return "formRegisterCustomer";
 		

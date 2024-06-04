@@ -38,6 +38,8 @@ public class Customer extends User {
 	public Customer() {
 		super();
 		this.boughtGames = new ArrayList<Game>();
+		this.cart = new Cart();
+		this.walletFunds = 0.0;
 	}
 
 	
