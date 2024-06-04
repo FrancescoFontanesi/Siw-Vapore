@@ -56,37 +56,22 @@ public class AuthController {
 	}
 	
 
-	@GetMapping("/formRegisterDeveloper")
-	public String getFormDev(Model model) {
-		return "formRegisterDeveloper.html";
-	
-	}
 
-
-	@GetMapping("/formRegistrationCustomer")
-	public String getFormCust(Model model) {
-		return "formRegistrationCustomer";
-	
-	}
-	
-	
-	
-	
-	
-	
-	
-	@GetMapping("/register")
+	@GetMapping("/registration")
     public String showRegisterForm(Model model) {
         model.addAttribute("credentials", new Credentials());
         return "registration";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/registration")
     public String showSpecificRoleRegister(Model model, @Valid @ModelAttribute("credentials") Credentials credentials, BindingResult result) {
        
     	this.credentialsValidator.validate(credentials, result);
+    	
+    	System.out.println(credentials.toString());
+    	System.out.println(result.toString());
     	if (result.hasErrors()) {
-            return "register";
+            return "registration";
         }
     	
     	switch(credentials.getRole()) {
@@ -100,13 +85,13 @@ public class AuthController {
                 return "formRegistrationCustomer";
             default:
                 model.addAttribute("error", "This role is not allowed");
-                return "register";
+                return "registration";
           }
     	
     }
 
 	
-	@GetMapping("/register/developer")
+	@GetMapping("/formRegisterDeveloper")
 	public String shwoRegisterDeveloper(Model model, @ModelAttribute("developer") Developer developer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
 		model.addAttribute("credentials", credentials);
 
@@ -128,10 +113,10 @@ public class AuthController {
         }
         developer.setLogo("UPLOAD_DIR"+"fileName");
 		model.addAttribute("developer", developer);
-		return "formNewCustomer";
+		return "formRegisterDeveloper";
 	}
 	
-	@PostMapping("register/developer")
+	@PostMapping("/formRegisterDeveloper")
 	public String registerDeveloper (@Valid @ModelAttribute("developer") Developer dev,
             BindingResult userBindingResult, @Valid
             @ModelAttribute("credentials") Credentials credentials,
@@ -145,13 +130,13 @@ public class AuthController {
             credentials.setUser(dev);
             credentialsService.saveCredentials(credentials);
             model.addAttribute("dev", dev);
-            return "registrationSuccessful";
+            return "login";
         }
-        return "/register/developer";
+        return "formRegisterDeveloper";
 		
 	}
 	
-	@GetMapping("/register/customer")
+	@GetMapping("formRegisterCustomer")
 	public String shwoRegisterCustomer(Model model, @ModelAttribute("customer") Customer customer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
 		model.addAttribute("credentials", credentials);
 		  // check if file is empty
@@ -172,10 +157,10 @@ public class AuthController {
         }
         customer.setProfilePic("UPLOAD_DIR"+"fileName");
 		model.addAttribute("customer", customer);
-		return "formNewDeveloper";
+		return "formRegisterDeveloper";
 	}
 	
-	@PostMapping("register/customer")
+	@PostMapping("formRegisterCustomer")
 	public String registerCustomer (@Valid @ModelAttribute("customer") Customer customer,
             BindingResult userBindingResult, @Valid
             @ModelAttribute("credentials") Credentials credentials,
@@ -187,9 +172,9 @@ public class AuthController {
             credentials.setUser(customer);
             credentialsService.saveCredentials(credentials);
             model.addAttribute("customer", customer);
-            return "registrationSuccessful";
+            return "login";
         }
-        return "register/customer";
+        return "formRegisterDeveloper";
 		
 	}
 	

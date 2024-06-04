@@ -25,10 +25,6 @@ insert into game (id,name,category,release_date,description,copertina,images) va
 /*action*/
 
 
-insert into game (id,name,category,release_date,description,copertina) values (nextval('games_seq'),'Minecraft','Action',2008,'questa è la descrizione di minecraft','/images/minecraft.jpg');
-insert into game (id,name,category,release_date,description,copertina) values (nextval('games_seq'),'The last of Us','Action',2010,'questa è la descrizione di tlou','/images/theLastOfUs.jpg');
-insert into game (id,name,category,release_date,description,copertina) values (nextval('games_seq'),'Destiny','Action',2015,'questa è la descrizione di destiny','/images/destiny.jpg');
-
 
 /*strategy*/
 

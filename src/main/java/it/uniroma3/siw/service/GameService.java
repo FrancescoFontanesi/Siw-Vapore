@@ -18,6 +18,7 @@ public class GameService {
     public List<Game> getRandomGames(int numberOfGames) {
         List<Game> allGames = gameRepository.findAll();
         Collections.shuffle(allGames);
+        
         return allGames.subList(0, Math.min(numberOfGames, allGames.size()));
     }
 }

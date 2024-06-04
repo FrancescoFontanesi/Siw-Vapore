@@ -59,15 +59,15 @@
             <h1 class="display-4 justify-content-center" style="color: white;">
               Benvenuto!
           </h1>
-              <form th:action="@{/register}" th:object="${credentials}" style="width: 100%;">
+              <form th:action="@{/registration}" th:object="${credentials}" method="POST" style="width: 100%;">
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label" style="color: white;">Email address</label>
-                    <input  type="email" th:field="*{email}" id="email" class="form-control"  aria-describedby="emailHelp" placeholder="Email">
+                    <label for="email" class="form-label" style="color: white;">Email address</label>
+            <span><input type="text" placeholder="email" th:field="*{email}" /></span>
                     <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
                   </div>
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label" style="color: white;">Password</label>
-                    <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Enter password">
+                    <label for="password" class="form-label" style="color: white;">Password</label>
+            <span><input type="password" placeholder="password" th:field="*{password}" /></span>
                     <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
                   </div>
           
@@ -81,7 +81,7 @@
                   </div>
                   
   
-                  <a type="submit" class="btn btn-primary" href="">Submit</a>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
           </div>
   

@@ -19,6 +19,8 @@ public class Credentials {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+	
+	
 	@NotEmpty(message ="Email non valida")
 	public String email;
 	@NotEmpty(message = "La password non puo essere vuota")
@@ -26,7 +28,7 @@ public class Credentials {
 	@NotEmpty(message = "Ruolo non valido")
 	private String role;
 
-	@NotNull
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
@@ -75,6 +77,13 @@ public class Credentials {
 	
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Credentials [id=" + id + ", email=" + email + ", password=" + password + ", role=" + role + ", user="
+				+ user + "]";
 	}
 
 }

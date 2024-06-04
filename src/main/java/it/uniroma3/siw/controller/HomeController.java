@@ -1,6 +1,8 @@
 package it.uniroma3.siw.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,9 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Game;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.repository.GameRepository;
+import it.uniroma3.siw.service.GameService;
 
 @Controller
 public class HomeController {
@@ -21,11 +25,16 @@ public class HomeController {
 	public GameRepository gameRepository;
 	@Autowired
 	private CredentialsRepository credentialsRepository;
+	@Autowired 
+	private GameService gameService;
 	
-
+	
     @GetMapping(value = "/")
     public String index(Model model) {
     	 model.addAttribute("games", gameRepository.findAll());
+    	 List<Game> randomGames = gameService.getRandomGames(4);  // Ottieni 4 giochi casuali
+         model.addAttribute("randomGames", randomGames);
+    	 
 
          Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
          if (authentication != null && authentication.isAuthenticated()) {

@@ -49,7 +49,7 @@ public class AuthConfiguration  {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                    .requestMatchers("/", "/index", "/register", "/css/**", "/images/**", "favicon.ico").permitAll()
+                    .requestMatchers("/**", "/index", "/register", "/css/**", "/images/**", "favicon.ico").permitAll()
                     .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
                     .requestMatchers("/admin/**").hasAuthority(Credentials.ADMIN_ROLE)
                     .anyRequest().authenticated())
@@ -64,11 +64,8 @@ public class AuthConfiguration  {
                     .logoutUrl("/logout")
                     .logoutSuccessUrl("/")
                     .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID"))
-            .sessionManagement(sessionManagement ->
-                sessionManagement
-                    .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
-            .anonymous(anonymous -> anonymous.disable());
+                    .deleteCookies("JSESSIONID"));
+         
 
         return http.build();
     }
