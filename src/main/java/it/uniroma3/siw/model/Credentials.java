@@ -28,12 +28,12 @@ public class Credentials {
 	@NotEmpty(message = "Ruolo non valido")
 	private String role;
 
-	
+		
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
 	public Credentials() {
-		super();
+		
 	}
 
 

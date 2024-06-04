@@ -62,12 +62,12 @@
               <form th:action="@{/registration}" th:object="${credentials}" method="POST" style="width: 100%;">
                   <div class="mb-3">
                     <label for="email" class="form-label" style="color: white;">Email address</label>
-            <span><input type="text" placeholder="email" th:field="*{email}" /></span>
+            			<span><input type="text" placeholder="email" th:field="*{email}" /></span>
                     <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
                   </div>
                   <div class="mb-4">
                     <label for="password" class="form-label" style="color: white;">Password</label>
-            <span><input type="password" placeholder="password" th:field="*{password}" /></span>
+        			    <span><input type="password" placeholder="password" th:field="*{password}" /></span>
                     <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
                   </div>
           

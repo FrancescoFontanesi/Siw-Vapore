@@ -60,6 +60,12 @@ public class Developer extends User {
 	public Developer() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "Developer [id=" + id + ", company=" + company + ", logo=" + logo + ", site_url=" + site_url
+				+ ", developedGames=" + developedGames + "]";
+	}
 	
 	
 	

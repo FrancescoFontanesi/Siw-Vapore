@@ -19,16 +19,10 @@ public class Customer extends User {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	
-		
-	
+			
 	private String profilePic;
-	@NotBlank
 	
 	
-	
-	@NotBlank
 	@Min(10)
 	public Integer age;
 
@@ -100,6 +94,14 @@ public class Customer extends User {
 		}
 		return false;
 		
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", profilePic=" + profilePic + ", age=" + age + ", cart=" + cart
+				+ ", walletFunds=" + walletFunds + ", boughtGames=" + boughtGames + "]";
 	}
 
 }

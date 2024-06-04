@@ -82,7 +82,7 @@ public class AuthController {
             case "Customer":
                 model.addAttribute("customer", new Customer());
                 model.addAttribute("credentials", credentials);
-                return "formRegistrationCustomer";
+                return "formRegisterCustomer";
             default:
                 model.addAttribute("error", "This role is not allowed");
                 return "registration";
@@ -113,6 +113,7 @@ public class AuthController {
         }
         developer.setLogo("UPLOAD_DIR"+"fileName");
 		model.addAttribute("developer", developer);
+		System.out.println(developer.toString());
 		return "formRegisterDeveloper";
 	}
 	
@@ -136,9 +137,10 @@ public class AuthController {
 		
 	}
 	
-	@GetMapping("formRegisterCustomer")
+	@GetMapping("/formRegisterCustomer")
 	public String shwoRegisterCustomer(Model model, @ModelAttribute("customer") Customer customer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
 		model.addAttribute("credentials", credentials);
+		
 		  // check if file is empty
         if (file.isEmpty()) {
             model.addAttribute("message", "Please select a file to upload.");
@@ -157,16 +159,18 @@ public class AuthController {
         }
         customer.setProfilePic("UPLOAD_DIR"+"fileName");
 		model.addAttribute("customer", customer);
-		return "formRegisterDeveloper";
+		System.out.println(customer.toString());
+		return "formRegisterCustomer";
 	}
 	
-	@PostMapping("formRegisterCustomer")
+	@PostMapping("/formRegisterCustomer")
 	public String registerCustomer (@Valid @ModelAttribute("customer") Customer customer,
             BindingResult userBindingResult, @Valid
             @ModelAttribute("credentials") Credentials credentials,
             BindingResult credentialsBindingResult,
             Model model) {
 		
+		System.out.println(userBindingResult.toString() + credentialsBindingResult.toString() );
 		if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
             userService.saveCustomer(customer);
             credentials.setUser(customer);
@@ -174,7 +178,7 @@ public class AuthController {
             model.addAttribute("customer", customer);
             return "login";
         }
-        return "formRegisterDeveloper";
+        return "formRegisterCustomer";
 		
 	}
 	
