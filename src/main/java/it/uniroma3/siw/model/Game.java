@@ -2,7 +2,9 @@ package it.uniroma3.siw.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -43,7 +45,7 @@ public class Game {
 	@ManyToOne
 	public Developer developer;
 	
-	@OneToMany(mappedBy = "game")
+	@OneToMany(mappedBy = "game", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public List<Review> reviews;
 	
 	public Long getId() {
