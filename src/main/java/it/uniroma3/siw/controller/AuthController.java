@@ -95,7 +95,7 @@
 	
 		
 		@GetMapping("/formRegisterDeveloper")
-		public String shwoRegisterDeveloper(Model model, @ModelAttribute("developer") Developer developer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
+		public String showRegisterDeveloper(Model model, @ModelAttribute("developer") Developer developer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
 			model.addAttribute("credentials", credentials);
 	
 	        // check if file is empty
@@ -121,7 +121,7 @@
 		}
 		
 		@PostMapping("/formRegisterDeveloper")
-		public String registerDeveloper (@Valid @ModelAttribute("developer") Developer dev,
+		public String registerDeveloper (@Valid @ModelAttribute("developer") Developer developer,
 	            BindingResult userBindingResult, @Valid
 	            @ModelAttribute("credentials") Credentials credentials,
 	            BindingResult credentialsBindingResult,
@@ -130,18 +130,18 @@
 			if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
 				
 				
-	            userService.saveDev(dev);
-	            credentials.setUser(dev);
+	            userService.saveDev(developer);
+	            credentials.setUser(developer);
 	            credentialsService.saveCredentials(credentials);
-	            model.addAttribute("dev", dev);
-	            return "login";
+	            model.addAttribute("developer", developer);
+	            return "redirect:/login";
 	        }
 	        return "formRegisterDeveloper";
 			
 		}
 		
 		@GetMapping("/formRegisterCustomer")
-		public String shwoRegisterCustomer(Model model, @ModelAttribute("customer") Customer customer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
+		public String showRegisterCustomer(Model model, @ModelAttribute("customer") Customer customer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
 			model.addAttribute("credentials", credentials);
 			
 			  // check if file is empty

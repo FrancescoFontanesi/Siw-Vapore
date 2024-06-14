@@ -21,12 +21,14 @@ public class Developer extends User {
 	private Long id;
 	
 	
-	@NotNull
-	private String company;
+	
+	public String company;
 	
 	private String logo;
 	
 	private String site_url;
+
+	private String description;
 
 	
 	@OneToMany(mappedBy = "developer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -56,6 +58,14 @@ public class Developer extends User {
 
 	public void setdevelopedGames(List<Game> developedGames) {
 		this.developedGames = developedGames;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Developer() {
