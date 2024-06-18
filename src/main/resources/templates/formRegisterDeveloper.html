@@ -19,20 +19,17 @@
   
   <nav class="navbar navbar-expand-lg  coluno">
     <div class="container coluno">
-      <a class="navbar-brand " >VAPORE</a>
+      <a class="navbar-brand carta-testo" >VAPORE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active bi bi-house" aria-current="page" href="/"></a>
+            <a class="nav-link active bi bi-house" aria-current="page" style="color: white;" href="/"></a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit" >Search</button>
-        </form>
+        
 		<div>
 		     <div th:if="${userPrincipal == null}">
 	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
@@ -54,7 +51,7 @@
     <div class="row justify-content-center background-blur" style="background-image: url(/images/copertina2.jpeg);">
       
       
-      <div class="col-lg-7 col-md-4 my-3" style="background-color: rgb(37, 150, 190,0.5); border-radius: 20px;">
+      <div class="col-xxl-7 col-lg-7 col-md-4 my-3" style="background-color: rgb(37, 150, 190,0.5); border-radius: 20px;">
 
           <h3 class="display-4 justify-content-center" style="color: white; ">
             Welcome New Developer
