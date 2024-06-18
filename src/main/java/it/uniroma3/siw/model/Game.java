@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -45,7 +46,7 @@ public class Game {
 	@ManyToOne
 	public Developer developer;
 	
-	@OneToMany(mappedBy = "game", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "game",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public List<Review> reviews;
 	
 	public Long getId() {
@@ -120,7 +121,7 @@ public class Game {
 		this.developer = developer;
 	}
 
-	public Iterable<Review> getReviews() {
+	public List<Review> getReviews() {
 		return reviews;
 	}
 
@@ -129,6 +130,8 @@ public class Game {
 	}
 
 	public Game() {
+		this.images = new ArrayList<String>();
+		this.reviews = new ArrayList<Review>();
 		
 	}
 	

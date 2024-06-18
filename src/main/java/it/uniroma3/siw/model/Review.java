@@ -23,7 +23,7 @@ public class Review {
     @Max(5)
 	public Integer rating;
 	
-	public String review;
+	public String text;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     public Game game;
@@ -45,11 +45,11 @@ public class Review {
 	}
 
 	public String getReview() {
-		return review;
+		return text;
 	}
 
 	public void setReview(String review) {
-		this.review = review;
+		this.text = review;
 	}
 
 	public Game getGame() {
@@ -62,6 +62,12 @@ public class Review {
 
 	public Review() {
 		super();
+	}
+
+	public Review(String text, Integer rating, Game game) {
+		this.text = text;
+		this.rating = rating;
+		this.game = game;
 	}
 	
 }

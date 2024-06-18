@@ -9,9 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.model.Game;
+import it.uniroma3.siw.model.Review;
 import it.uniroma3.siw.repository.GameRepository;
 import it.uniroma3.siw.service.GameService;
 import it.uniroma3.siw.validator.GameValidator;
@@ -24,7 +28,11 @@ public class GameController {
 
 	@Autowired 
 	private GameValidator gameValidator;
-
+	@Autowired
+	private GameService gameService;
+	
+	
+	
 
 	
 	
@@ -34,6 +42,21 @@ public class GameController {
                .orElseThrow(() -> new IllegalArgumentException("Invalid game ID:" + id));
         model.addAttribute("game", game);
         return "game"; // Assicurati che 'game' sia il nome della tua vista Thymeleaf
+    }
+	
+
+	@PostMapping("/game/{id}")
+	public String addReview(@PathVariable Long id, @RequestParam("text") String text, @RequestParam("rating") Integer rating) {
+		gameService.addReviewToGame(id, text, rating);
+		return "redirect:/game/" + id;
+	}
+	
+	
+	@GetMapping("/foundGames")
+    public String foundGames(@RequestParam("name") String name, Model model) {
+        List<Game> games = gameRepository.searchGamesByNameContainingIgnoreCase(name);
+        model.addAttribute("games", games);
+        return "foundGames.html";
     }
 	
 	

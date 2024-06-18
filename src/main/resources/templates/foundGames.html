@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="bi bi-house">VAPORE</title>
+    <link rel="stylesheet" href="css/cssBootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/stile.css">
+    <link rel="stylesheet" href="css/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+
+    <script defer src="js/bootstrap.bundle.min.js"></script>
+
+
+
+</head>
+<body class="background">
+
+  
+
+  
+  <nav class="navbar navbar-expand-lg  coluno">
+    <div class="container coluno">
+      <a class="navbar-brand carta-testo" >VAPORE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active bi bi-house " style="color: white;" aria-current="page" href="/"></a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit" >Search</button>
+        </form>
+		<div>
+		     <div th:if="${userPrincipal == null}">
+	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
+	          </div>
+	         <div th:if="${userPrincipal != null}">
+	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
+		     </div>
+		 </div>
+        <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
+
+      </div>
+    </div>
+  </nav>
+   
+ 
+
+
+   <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner carosello2">
+      <div class="carousel-item active c-item">
+        <img src="/images/carosello/minecraft.jpg" class="d-block w-100 c-img  img-thumbnail shadow-sm rounded-0" alt="Slide 1">
+        <div class="carousel-caption top-0 mt-4">
+          <p class="mt-5 fs-3 text-uppercase">Discover the beauty of PLAY</p>
+          <h1 class="display-1 fw-bolder text-capitalize">The creativity</h1>
+        </div>
+      </div>
+      <div class="carousel-item c-item">
+        <img src="/images/carosello/fifa.jpg" class="d-block w-100 c-img  img-thumbnail shadow-sm rounded-0" alt="Slide 2">
+        <div class="carousel-caption top-0 mt-4">
+          <p class="text-uppercase fs-3 mt-5">Play versus the WORD</p>
+          <p class="display-1 fw-bolder text-capitalize">Available h24</p>
+        </div>
+      </div>
+      <div class="carousel-item c-item">
+        <img src="/images/carosello/cod.jpg" class="d-block w-100 c-img  img-thumbnail shadow-sm rounded-0" alt="Slide 3">
+        <div class="carousel-caption top-0 mt-4">
+          <p class="text-uppercase fs-3 mt-5">Response to your DUTY</p>
+          <p class="display-1 fw-bolder text-capitalize">don't die</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+    
+     
+
+  
+  <section id="Ricerca">
+    <div class="container my-4">
+      <h1 class="display-4 coluno p-2 carta-testo" style="border-radius: 20px; border-color: white ; border-style: double;">
+            Giochi trovati
+        </h1>
+    </div>
+    <div class="container text-center my-3 ">
+		
+		
+        <div class="row justify-content-center" style="gap: 0px;">
+             <div th:if="${games==null || games.isEmpty()}" class="carta-testo">
+				 <h4>Non ci sono giochi con questo nome</h4>
+			 </div>
+            <div  class="col-lg-3 col-md-2" th:each="game, iterStat : ${games}" >
+                
+                    <div class="card coluno my-3" style="border-radius: 20px;border-color: white; border-style: double;">
+						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
+                        <div class="card-body">
+                            <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
+                            <a type="button" class="btn btn-outline-light"th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
+
+                        </div>
+                    </div>
+                
+                <!-- Chiusura e apertura di una nuova riga ogni 4 elementi -->
+                <div th:if="${iterStat.index % 4 == 3}" class="w-100"></div>
+            </div>
+        </div>
+    </div>
+ </section>
+
+
+
+
+
+</body>
+</html>

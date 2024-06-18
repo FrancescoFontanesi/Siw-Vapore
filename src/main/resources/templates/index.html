@@ -30,10 +30,13 @@
             <a class="nav-link active bi bi-house " style="color: white;" aria-current="page" href="/"></a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
+        
+        <form class="d-flex" role="search"  action="/foundGames" method="GET">
+          <input class="form-control me-2 "  name="name" style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
+
           <button class="btn btn-outline-success" type="submit" >Search</button>
         </form>
+        
 		<div>
 		     <div th:if="${userPrincipal == null}">
 	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>

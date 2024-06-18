@@ -73,22 +73,24 @@
           </ul>
           <div class="tab-content background" id="myTabContent">
             <div class="tab-pane fade show active  " id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                <ul class="list-group list-group-flush background ">
-                    <li class="list-group-item background carta-testo">An item</li>
-                    <li class="list-group-item background carta-testo">A second item</li>
-                    <li class="list-group-item background carta-testo">A third item</li>
-                    <li class="list-group-item background carta-testo">A fourth item</li>
-                    <li class="list-group-item background carta-testo">And a fifth one</li>
-                  </ul>
+                <div th:if="${customers==null || customers.isEmpty()}" class="carta-testo">Non ci sono customer nel database</div>
+
+			        <ul class="list-group">
+			            <li th:each="customer : ${customers}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
+			                <h5 class="carta-testo" th:text="${customer.user.name}" + "$(customer.user.surname}"></h5>
+			             
+			            </li>
+			        </ul>
             </div>
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                <ul class="list-group list-group-flush background ">
-                    <li class="list-group-item background carta-testo">An item</li>
-                    <li class="list-group-item background carta-testo">A second item</li>
-                    <li class="list-group-item background carta-testo">A third item</li>
-                    <li class="list-group-item background carta-testo">A fourth item</li>
-                    <li class="list-group-item background carta-testo">And a fifth one</li>
-                  </ul>
+                <div th:if="${developers==null || developers.isEmpty()}" class="carta-testo">Non ci sono customer nel database</div>
+
+			        <ul class="list-group">
+			            <li th:each="developer : ${developers}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
+			                <h5 class="carta-testo" th:text="${developer.user.name}" + "$(developer.user.surname}"></h5>
+			             
+			            </li>
+			        </ul>
             </div>
            
           </div>
