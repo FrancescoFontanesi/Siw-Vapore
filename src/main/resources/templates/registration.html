@@ -58,12 +58,15 @@
           </h1>
               <form th:action="@{/registration}" th:object="${credentials}" method="POST" style="width: 100%;">
 				  
+				  <!--email-->
 				  <div class="mb-3">
 					  <label for="formEmail" class="form-label carta-testo">Email</label>
 					  <input th:field="*{email}" type="text" class="form-control" id="formGroupExampleInput" placeholder="Email">
                       <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
 
 					</div>
+		
+				  <!--password-->
 					<div class="mb-3">
 					  <label for="password" class="form-label carta-testo">Password</label>
 					  <input th:field="*{password}" type="password" class="form-control" id="formGroupExampleInput2" placeholder="password">
@@ -73,7 +76,7 @@
 				  
 				  
 			
-          
+				 <!--role-->
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" th:field="*{role}" value="Developer" id="Developer">
                     <label class="form-check-label" for="inlineRadio1" style=" color:  white;">Developer</label>

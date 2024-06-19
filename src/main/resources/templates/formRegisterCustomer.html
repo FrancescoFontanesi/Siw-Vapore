@@ -59,22 +59,26 @@
             <form style="width: 100%;"  th:action="@{/formRegisterCustomer}" th:object="${customer}"method="POST">
 				
                 <div class="row my-3">
+				<!--Name-->	
 				  <div class="col-lg-5">
 				    <input th:field="*{name}" type="text" class="form-control" placeholder="First name" aria-label="First name">
 				  </div>
+				 <!--Surname-->
 				  <div class="col-lg-5">
 				    <input th:field="*{surname}"  type="text" class="form-control" placeholder="Last name" aria-label="Last name">
 				  </div>
 				</div>
 				
+				<!--ProfilePic-->
 				<div class="input-group " style="width: 92%;">
 				  <label class="input-group-text" for="inputGroupFile01">Upload</label>
 				  <input th:field="*{profilePic}" type="file" class="form-control" id="inputGroupFile01">
 				</div>
                 
+                <!--Age-->
 		        <div class="mb-3" style="width: 40%;">
 				  <label for="formAgeInput" class="form-label"></label>
-				  <input th:field="*{age}" type="number" class="form-control" id="age" placeholder="Input your age">
+				  <input th:field="*{date}" type="number" class="form-control" id="age" placeholder="Input your age">
 				</div>
                 
                 <button type="submit" class="btn btn-primary">Submit</button>

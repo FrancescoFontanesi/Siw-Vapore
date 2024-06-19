@@ -32,11 +32,13 @@ insert into game (id,name,category,release_date,description,copertina,images) va
 /*strategy*/
 
 
-
 /*fps*/
-
-
-
+insert into game (id,name,category,release_date,description,copertina,images) values (nextval('games_seq'),'Counter-Strike 2','Fps',2012,'Per oltre due decenni, Counter-Strike ha offerto unesperienza competitiva di alto livello a cui milioni di giocatori da tutto il mondo hanno dato forma. Ora sta per iniziare il prossimo capitolo della storia di Counter-Strike: questo è Counter-Strike 2.','/images/counterStrike2Copertina.jpg' , ARRAY['counterStrike2/img1.jpg', 'counterStrike2/img2.jpg', 'counterStrike2/img3.jpg']);
+insert into game (id,name,category,release_date,description,copertina,images) values (nextval('games_seq'),'Destiny 2','Fps',2019,'Destiny 2 è un MMO d azione con un unico mondo in continua evoluzione, accessibile ovunque, gratuitamente e in qualsiasi momento con gli amici.','/images/destiny2Copertina.jpg' , ARRAY['destiny2/img1.jpg', 'destiny2/img2.jpg', 'destiny2/img3.jpg']);
+insert into game (id,name,category,release_date,description,copertina,images) values (nextval('games_seq'),'Rainbow Six® Siege','Fps',2015,'Tom Clancy s Rainbow Six® Siege è uno sparatutto tattico d élite a squadre, in cui trionfano pianificazione ed esecuzione ad alto livello.','/images/rainbowSixCopertina.jpg' , ARRAY['rainbowSix/img1.jpg', 'rainbowSix/img2.jpg', 'rainbowSix/img3.jpg']);
+insert into game (id,name,category,release_date,description,copertina,images) values (nextval('games_seq'),'Apex Legends™','Fps',2020,'Apex Legends è il pluripremiato battle royale gratuito sviluppato da Respawn Entertainment. Scopri un elenco in continua espansione di personaggi leggendari dotati di potenti abilità, scegli la strategia perfetta per la tua squadra.','/images/apexCopertina.jpg' , ARRAY['apex/img1.jpg', 'apex/img2.jpg', 'apex/img3.jpg']);
+insert into game (id,name,category,release_date,description,copertina,images) values (nextval('games_seq'),'Call of Duty®','Fps',2022,'Call of Duty® HQ supporta Call of Duty®: Black Ops 6, Call of Duty®: Modern Warfare® III, Call of Duty®: Modern Warfare® II e Call of Duty®: Warzone™.','/images/codCopertina.jpg' , ARRAY['codb/img1.jpg', 'codb/img2.jpg', 'codb/img3.jpg']);
+insert into game (id,name,category,release_date,description,copertina,images) values (nextval('games_seq'),'Halo','Fps',2019,'L avventura leggendaria di Master Chief include sei titoli, sviluppati per PC e raccolti in un unica esperienza integrata. ','/images/haloCopertina.jpg' , ARRAY['halo/img1.jpg', 'halo/img2.jpg', 'halo/img3.jpg']);
 
 
 

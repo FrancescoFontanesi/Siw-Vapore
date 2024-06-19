@@ -49,9 +49,13 @@
    
        
 
-  <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double;">
+  <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double; background-image: url(/images/admin.jpg);">
         
-    <img class="img-fluid w-100 mb-3 img-thumbnail shadow-sm rounded-0" src="/images/admin.jpg" style="width:10%; height: auto;">
+    <div class="row text-center carta-testo d-flex justify-content-center align-items-center" style="height: 300px;">
+		<div class="col-lg-8">
+			<h2 class="display-1" style="border-radius: 15px; background-color:  rgb(37, 150, 190,0.5);">ADMIN'PAGE</h2>
+		</div>
+	</div>
    
 
    
@@ -61,13 +65,13 @@
 
 
   <section class="users">
-    <div class="container my-5 coluno p-2" style="border-radius: 20px; border-color: white; border-style: double;">
-        <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+    <div class="container my-3 coluno p-2" style="border-radius: 20px; border-color: white; border-style: double;">
+        <ul class="nav nav-tabs justify-content-center mb-3" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Customers</button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Developer</button>
             </li>
            
           </ul>
@@ -75,12 +79,21 @@
             <div class="tab-pane fade show active  " id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                 <div th:if="${customers==null || customers.isEmpty()}" class="carta-testo">Non ci sono customer nel database</div>
 
+						
 			        <ul class="list-group">
 			            <li th:each="customer : ${customers}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
-			                <h5 class="carta-testo" th:text="${customer.user.name}" + "$(customer.user.surname}"></h5>
-							<a th:href="@{/myPage/edit/{id}(id=${customer.id})}">Edit</a>
-							<a th:href="@{/myPage/delete/{id}(id=${customer.id})}" 
-							onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+						
+						<div style="display: flex; justify-content: space-between; align-items: center;">
+							<div>
+								<h5 class="carta-testo" th:text="${customer.user.name} + ' ' + ${customer.user.surname}">s
+							</div>
+							
+							<div style="display: flex; justify-content: end; align-items: center;">
+								</h5><a class="d-flex justify-content-end btn btn-outline-primary ms-1" th:href="@{/myPage/edit/{id}(id=${customer.id})}">Edit  </a>
+								<a class="d-flex justify-content-end btn btn-outline-primary ms-1" th:href="@{/myPage/delete/{id}(id=${customer.id})}" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>	
+							</div>
+							
+						</div>
 			            </li>
 			        </ul>
             </div>
@@ -89,10 +102,18 @@
 
 			        <ul class="list-group">
 			            <li th:each="developer : ${developers}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
-			                <h5 class="carta-testo" th:text="${developer.user.name}" + "$(developer.user.surname}"></h5>
-							<a th:href="@{/myPage/edit/{id}(id=${developer.id})}">Edit</a>
-							<a th:href="@{/myPage/delete/{id}(id=${developer.id})}" 
-							onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+							<div style="display: flex; justify-content: space-between; align-items: center;">
+							<div>
+								<h5 class="carta-testo" th:text="${developer.user.name}" + "$(developer.user.surname}"></h5>							
+							</div>
+							
+							<div style="display: flex; justify-content: end; align-items: center;">
+								</h5><a class="d-flex justify-content-end btn btn-outline-primary ms-1" th:href="@{/myPage/edit/{id}(id=${developer.id})}">Edit  </a>
+								<a class="d-flex justify-content-end btn btn-outline-primary ms-1" th:href="@{/myPage/delete/{id}(id=${developer.id})}" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>	
+							</div>
+							
+						</div>
+			         
 			            </li>
 			        </ul>
             </div>
@@ -107,14 +128,30 @@
 
     
 
+<div class="container text-center " >
+    <div class="row justify-content-center mb-3" style="gap: 10px;">
+      <div class="col-4 p-2 my-1 coluno" style="border-radius: 15px;">
+        <h1 class="diplay-6 my-4 carta-testo">VAPORE</h1>
+        <a class="btn  btn-outline-light bi bi-person-circle ms-1"  href="/login"> Login</a>
+        <a class="btn  btn-outline-secondary bi bi-plus-circle-fill ms-1"  href="/registration"> Registrati</a>
 
-    
-  <section id="chisiamo">
-      <div class="container coluno" >
-        <h1 class="display-3" style="text-decoration: overline; color: white;">Chi siamo?</h1>
-        <p class="small" style="color: white; font-style: italic;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates assumenda dignissimos aperiam sit, cum reiciendis. Aliquid necessitatibus aut at vel voluptas, veniam consectetur tempora eos corporis officiis provident itaque alias?</p>
       </div>
-    </section>
+      <div class="col-7 text-center p-2 my-1 coluno" style="border-radius: 15px;">
+        <h5 class="carta-testo">Chi siamo ?</h5>
+        <p class="small carta-testo">Siamo un team che ha creato questo blog per rendere meno noisosi le i vostri pranzi e le vostre cene, questo sito web è stato progettato da Niccolo Corraro per il Corso di Sistemi Informativi su Web.</p>
+      	
+      	<div class="d-flex align-items-center justify-content-center" > 
+		    <h6 class="carta-testo">Seguici :</h6>
+		    <a class="bi bi-instagram mx-2" href="https://www.instagram.com/nicc.cor/" ></a>
+   		   	<a class="bi bi-youtube" href="https://www.youtube.com/" ></a>
+		    <a class="bi bi-facebook mx-2" href="https://www.facebook.com/universitaroma3/?locale=it_IT" ></a>
+		    <a class="bi bi-tiktok" href="https://www.tiktok.com/@nicc.cor" ></a>
+
+		    
+		</div>
+      </div>
+    </div>
+  </div>s
 
 </body>
 
