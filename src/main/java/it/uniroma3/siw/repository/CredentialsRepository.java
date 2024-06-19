@@ -11,7 +11,7 @@ import it.uniroma3.siw.model.User;
 public interface CredentialsRepository extends CrudRepository<Credentials, Long> {
 
 	public Optional<Credentials> findByEmail(String email);
-	
+		
 	public boolean existsByEmail(String email);
 	
 	public List<Credentials> findAllByRole(String role);

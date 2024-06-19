@@ -1,5 +1,7 @@
 package it.uniroma3.siw.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,13 +39,5 @@ public class UserService {
         return this.customerRepository.save(c);
 	}
 	
-	public Iterable<Developer> getAllDev(){
-		return this.developerRepository.findAll();
-	}
 	
-	public Iterable<Customer> getAllCustomer(){
-		return this.customerRepository.findAll();
-	}
-	
-
 }

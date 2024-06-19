@@ -29,7 +29,7 @@ public class Credentials {
 	private String role;
 
 		
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
 	private User user;
 	
 	public Credentials() {

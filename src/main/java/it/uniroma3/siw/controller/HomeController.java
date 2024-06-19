@@ -41,8 +41,9 @@ public class HomeController {
              Object principal = authentication.getPrincipal();
              if (principal instanceof UserDetails) {
                  UserDetails userDetails = (UserDetails) principal;
+                 System.out.println(userDetails.toString());
                  String email = userDetails.getUsername();
-                 System.out.println("Authenticated user email: " + email);
+                 System.out.println("Authenticated user email and password: " + email);
 
                  Credentials credentials = credentialsRepository.findByEmail(email)
                      .orElseThrow(() -> new RuntimeException("User not found"));

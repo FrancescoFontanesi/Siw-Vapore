@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -190,9 +191,9 @@ import jakarta.validation.Valid;
 		
 	
 		    @GetMapping("/myPage")
-		    public String customerMyPage(Authentication authentication, Model model) {
-		        String email = authentication.getName();
-		        Optional<Credentials> c = credentialsRepository.findByEmail(email);
+		    public String myPage(Authentication auth, Model model) {
+		 
+		        Optional<Credentials> c = credentialsRepository.findByEmail(auth.getName());
 		        User u = c.get().getUser();
 		        model.addAttribute("user", u );
 		        
@@ -202,11 +203,10 @@ import jakarta.validation.Valid;
 	            case "Customer":
 	                return "customerMyPage";
 	            case "ADMIN":
-	            	System.out.println("peni");
 	            	adminService.loadUsers(model);
 	            	return "admin";
 	            	default :
-	            		return "login";
+	            		return "redirect:/login";
 	          }
 		    }
 		

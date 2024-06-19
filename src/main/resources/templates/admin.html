@@ -78,7 +78,9 @@
 			        <ul class="list-group">
 			            <li th:each="customer : ${customers}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
 			                <h5 class="carta-testo" th:text="${customer.user.name}" + "$(customer.user.surname}"></h5>
-			             
+							<a th:href="@{/myPage/edit/{id}(id=${customer.id})}">Edit</a>
+							<a th:href="@{/myPage/delete/{id}(id=${customer.id})}" 
+							onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
 			            </li>
 			        </ul>
             </div>
@@ -88,7 +90,9 @@
 			        <ul class="list-group">
 			            <li th:each="developer : ${developers}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
 			                <h5 class="carta-testo" th:text="${developer.user.name}" + "$(developer.user.surname}"></h5>
-			             
+							<a th:href="@{/myPage/edit/{id}(id=${developer.id})}">Edit</a>
+							<a th:href="@{/myPage/delete/{id}(id=${developer.id})}" 
+							onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
 			            </li>
 			        </ul>
             </div>
