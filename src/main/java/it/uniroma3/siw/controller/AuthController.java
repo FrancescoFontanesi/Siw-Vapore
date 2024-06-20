@@ -195,6 +195,7 @@ import jakarta.validation.Valid;
 		 
 		        Optional<Credentials> c = credentialsRepository.findByEmail(auth.getName());
 		        User u = c.get().getUser();
+		        System.out.println(u.getClass());
 		        model.addAttribute("user", u );
 		        
 		        switch(c.get().getRole()) {

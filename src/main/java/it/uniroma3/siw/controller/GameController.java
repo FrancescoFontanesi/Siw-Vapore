@@ -6,17 +6,20 @@ package it.uniroma3.siw.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Customer;
 import it.uniroma3.siw.model.Game;
-import it.uniroma3.siw.model.Review;
+import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.repository.GameRepository;
+import it.uniroma3.siw.service.CustomerService;
 import it.uniroma3.siw.service.GameService;
 import it.uniroma3.siw.validator.GameValidator;
 
@@ -31,6 +34,13 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 	
+
+	@Autowired 
+	private CredentialsRepository credentialsRepository;
+	
+	@Autowired
+	private CustomerService customerService;
+	
 	
 	
 
@@ -41,7 +51,7 @@ public class GameController {
         Game game = gameRepository.findById(id)
                .orElseThrow(() -> new IllegalArgumentException("Invalid game ID:" + id));
         model.addAttribute("game", game);
-        return "game"; // Assicurati che 'game' sia il nome della tua vista Thymeleaf
+        return "game";
     }
 	
 
@@ -49,6 +59,16 @@ public class GameController {
 	public String addReview(@PathVariable Long id, @RequestParam("text") String text, @RequestParam("rating") Integer rating) {
 		gameService.addReviewToGame(id, text, rating);
 		return "redirect:/game/" + id;
+	}
+	
+	@GetMapping("/game/{id}/addToCart")
+	public String addToCart(@PathVariable Long id, Model model,Authentication auth) {
+		
+		customerService.addToCartService(auth.getName(), id);
+		
+		return "redirect:/cart";
+		
+		
 	}
 	
 	

@@ -38,14 +38,16 @@
         </form>
         
 		<div>
-		     <div th:if="${userPrincipal == null}">
+		     <div sec:authorize="isAnonymous()">
 	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
 	          </div>
-	         <div th:if="${userPrincipal != null}">
+	         <div sec:authorize="isAuthenticated()">
 	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
+			   <a class="bi bi-door-open" style="background-color: white;" href="/logout"></a>
 		     </div>
+			 <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
 		 </div>
-        <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
+        
 
       </div>
     </div>

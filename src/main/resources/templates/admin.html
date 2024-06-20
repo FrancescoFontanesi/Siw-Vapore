@@ -33,11 +33,11 @@
           <button class="btn btn-outline-success" type="submit" >Search</button>
         </form>
 		<div>
-		     <div th:if="${userPrincipal == null}">
-	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
-	          </div>
-	         <div th:if="${userPrincipal != null}">
-	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
+			<div sec:authorize="isAnonymous()">
+			    <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
+			 </div>
+			<div sec:authorize="isAuthenticated()">
+			    <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
 		     </div>
 		 </div>
         <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
@@ -82,6 +82,7 @@
 						
 			        <ul class="list-group">
 			            <li th:each="customer : ${customers}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
+<<<<<<< Updated upstream
 						
 						<div style="display: flex; justify-content: space-between; align-items: center;">
 							<div>
@@ -94,6 +95,12 @@
 							</div>
 							
 						</div>
+=======
+			                <h5 class="carta-testo" th:text="${customer.user.name} + $(customer.user.surname}"></h5>
+							<a th:href="@{/myPage/edit/{id}(id=${customer.id})}">Edit</a>
+							<a th:href="@{/myPage/delete/{id}(id=${customer.id})}" 
+							onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+>>>>>>> Stashed changes
 			            </li>
 			        </ul>
             </div>
@@ -102,6 +109,7 @@
 
 			        <ul class="list-group">
 			            <li th:each="developer : ${developers}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
+<<<<<<< Updated upstream
 							<div style="display: flex; justify-content: space-between; align-items: center;">
 							<div>
 								<h5 class="carta-testo" th:text="${developer.user.name}" + "$(developer.user.surname}"></h5>							
@@ -114,6 +122,12 @@
 							
 						</div>
 			         
+=======
+			                <h5 class="carta-testo" th:text="${developer.user.name} + $(developer.user.surname}"></h5>
+							<a th:href="@{/myPage/edit/{id}(id=${developer.id})}">Edit</a>
+							<a th:href="@{/myPage/delete/{id}(id=${developer.id})}" 
+							onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+>>>>>>> Stashed changes
 			            </li>
 			        </ul>
             </div>

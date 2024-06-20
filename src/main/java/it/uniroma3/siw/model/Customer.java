@@ -27,9 +27,10 @@ public class Customer extends User {
 	@Min(10)
 	public Integer age;
 
-	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Cart cart;
+
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Game> cart;
 	
 	private Double walletFunds;
 	
@@ -39,7 +40,7 @@ public class Customer extends User {
 	public Customer() {
 		super();
 		this.boughtGames = new ArrayList<Game>();
-		this.cart = new Cart();
+		this.cart = new ArrayList<Game>();
 		this.walletFunds = 0.0;
 	}
 
@@ -52,16 +53,18 @@ public class Customer extends User {
 	public void setAge(Integer age) {
 		this.age = age;
 	}
-
-
-
-	public Cart getCart() {
+    
+	
+	public List<Game> getCart() {
 		return cart;
 	}
 
-	public void setCart(Cart cart) {
+
+
+	public void setCart(List<Game> cart) {
 		this.cart = cart;
 	}
+
 
 	public String getProfilePic() {
 		return profilePic;
@@ -86,19 +89,6 @@ public class Customer extends User {
 	public void setBoughtGames(List<Game> boughtGames) {
 		this.boughtGames = boughtGames;
 	}
-	//da implementare in services
-	public Boolean buyGames() {
-		Double total = this.cart.getTotal();
-		
-		if(total < this.walletFunds) {
-			boughtGames.addAll(this.cart.getGames());
-			this.walletFunds -= total;
-			return true;
-		}
-		return false;
-		
-	}
-
 
 
 	@Override

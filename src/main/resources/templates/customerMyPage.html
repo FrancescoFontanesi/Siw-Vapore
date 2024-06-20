@@ -33,12 +33,12 @@
           <button class="btn btn-outline-success" type="submit" >Search</button>
         </form>
 		<div>
-		     <div th:if="${userPrincipal == null}">
-	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
-	          </div>
-	         <div th:if="${userPrincipal != null}">
-	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
-		     </div>
+			<div sec:authorize="isAnonymous()">
+				<a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
+			</div>
+			<div sec:authorize="isAuthenticated()">
+				<a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
+			</div>
 		 </div>
         <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
 
@@ -75,8 +75,23 @@
         <button type="button" class="btn btn-outline-primary my-3 bi bi-cart2" >Carrello</button>
         <button type="button" class="btn btn-outline-primary my-3 bi bi-currency-exchange"> Add Founds</button>
       </div>
+	  <div 	  class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
+	  </ul>
+	  	         <div class="tab-content background" id="myTabContent">
+	  	           <div class="tab-pane fade show active  " id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+	  	               <div th:if="${user.boughtGames==null || user.boughtGames.isEmpty()}" class="carta-testo">Non ci sono giochi nella tua libreria</div>
+	  	
+	  			        <ul class="list-group">
+	  			            <li th:each="game : ${user.boughtGames}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
+	  			                <h5 class="carta-testo" th:text="${game.name}"></h5>
+	  							
+	  			            </li>
+	  			        </ul>
+						</div>
     </section>
-
+	
+	
+	        
 
     
 
