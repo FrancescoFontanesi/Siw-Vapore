@@ -56,6 +56,11 @@ import jakarta.validation.Valid;
 		private AdminService adminService;
 		
 		
+		 // Directory where profile images will be saved
+	    private static String UPLOADED_FOLDER = "src/main/resources/static/images/profili/";
+
+		
+		
 		@GetMapping("/login")
 		public String getLogin(Model model) {
 			return "login.html";
@@ -174,16 +179,34 @@ import jakarta.validation.Valid;
 		public String registerCustomer (@Valid @ModelAttribute("customer") Customer customer,
 	            BindingResult userBindingResult, @Valid
 	            @ModelAttribute("credentials") Credentials credentials,
-	            BindingResult credentialsBindingResult,
+	            BindingResult credentialsBindingResult,@RequestParam("file") MultipartFile file,
 	            Model model) {
 			
+
+			 if (!file.isEmpty()) {
+	             try {
+	                 byte[] bytes = file.getBytes();
+	                 Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+	                 Files.write(path, bytes);
+	                 customer.setProfilePic("/images/profili/" + file.getOriginalFilename() );
+	                 System.out.println("pene1");
+	             } catch (IOException e) {
+	                 e.printStackTrace();
+
+	                 model.addAttribute("message", "Failed to upload image");
+	                 return "formRegisterCustomer";
+	             }
+	         }
 			
 			if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
 	            userService.saveCustomer(customer);
 	            credentials.setUser(customer);
 	            credentialsService.saveCredentials(credentials);
 	            model.addAttribute("customer", customer);
+                System.out.println("pene2");
+
 	            return "redirect:/login";
+
 	        }
 	        return "formRegisterCustomer";
 			

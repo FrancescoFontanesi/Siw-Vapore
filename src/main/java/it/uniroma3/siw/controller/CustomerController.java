@@ -5,6 +5,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.service.CustomerService;
 
@@ -27,4 +29,11 @@ public class CustomerController {
             return "cart";
         }
     }
+	
+	
+	@PostMapping("/addFounds")
+	public String addFounds(@RequestParam("amount") double amount,Authentication auth, Model model) {
+		customerService.addFunds(auth.getName(), amount);
+		return "redirect:/myPage";
+	} 
 }

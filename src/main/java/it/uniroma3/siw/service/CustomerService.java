@@ -54,4 +54,14 @@ public class CustomerService {
             }
         }
     }
+    
+    @Transactional
+    public void addFunds(String email, double amount) {
+        Credentials credentials = credentialsRepository.findByEmail(email).orElse(null);
+        if (credentials!= null && credentials.getUser() instanceof Customer) {
+            Customer customer = (Customer) credentials.getUser();
+            customer.setWalletFunds(customer.getWalletFunds() + amount);
+            credentialsRepository.save(credentials);
+        }
+    }
 }

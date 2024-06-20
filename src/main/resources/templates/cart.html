@@ -75,11 +75,10 @@
         <div class="row justify-content-center">
             <div  class="col-lg-2 col-md-3 mb-3" th:each="game, iterStat : ${customer.cart}">
                 
-                    <div class="card coluno" style="border-radius: 20px;border-color: blue; border-style: double;">
+                    <div class="card coluno text-center my-2" style="border-radius: 20px;border-color: white; border-style: double;">
 						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <p class="carta-testo" th:text="${game.description}"></p>
                             <a th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
                         </div>
                     </div>
@@ -88,6 +87,12 @@
                 <div th:if="${iterStat.index % 4 == 3}" class="w-100"></div>
             </div>
         </div>
+        
+        <div class="row ">
+			<div class="col d-flex justify-content-end">
+				<a type="button" class="btn btn-outline-light  ms-2 my-2" th:href="@{/buyGames}">Compra</a>
+			</div>
+		</div>
       </div>
     </section>
 
