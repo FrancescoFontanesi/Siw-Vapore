@@ -27,25 +27,15 @@
             <a class="nav-link active bi bi-house" aria-current="page" style="color: white;" href="/"></a>
           </li>
         </ul>
-<<<<<<< Updated upstream
-        
-		<div>
-		     <div th:if="${userPrincipal == null}">
-	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
-	          </div>
-	         <div th:if="${userPrincipal != null}">
-	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
-		     </div>
-		 </div>
-        <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
+		<div class="row ">
+					
+				    <div class="col d-flex justify-content-end">
+					    <a class="btn bi bi-arrow-return-right" style="background-color: white;" href="/logout"></a>
+					</div>
 
-      </div>
-=======
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 " style="text-decoration: white;" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit" >Search</button>
-        </form>
->>>>>>> Stashed changes
+				</div>
+
+        
     </div>
   </nav>
    
@@ -87,31 +77,20 @@
         <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
           <h4 class="display-4" style="color: white;" >Giochi Pubblicati</h4>
           
-         
-          <div class="list-group ">
-            <div class="list-group-item py-2 background my-1 testoA">
-            <h5 class="mb-1 carta-testo"> titolo recensione</h5>
-            <p class="mb-1 carta-testo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus velit deserunt illum.</p>
-          </div>
-                
-          <div class="list-group ">
-            <div class="list-group-item py-2 background my-1 testoA">
-            <h5 class="mb-1 carta-testo"> titolo recensione</h5>
-            <p class="mb-1 carta-testo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus velit deserunt illum.</p>
-          </div>
+          <div th:if="${user.developedGames==null || user.developedGames.isEmpty()}" class="carta-testo">Non ci sono Giochi pubblicati</div>
+
+
+	        <ul class="list-group">
+			    <li th:each="game : ${user.developedGames}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+	
+			        <h5 class="carta-testo" th:text="${game.name} ">Review Title</h5>
+			        
+			        </div>
+			    </li>
+			</ul>
   
-          <div class="list-group ">
-            <div class="list-group-item py-2 background my-1 testoA">
-            <h5 class="mb-1 carta-testo"> titolo recensione</h5>
-            <p class="mb-1 carta-testo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus velit deserunt illum.</p>
-          </div>
-              
-             
-  
-          </div>
-  
-        
-  
+  			<a class="btn btn-outline-light my-2" th:href="@{/newGame}"> Aggiungi un Gioco!</a>
         </div>
       </section>
     

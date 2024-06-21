@@ -28,25 +28,28 @@
           </li>
         </ul>
         
-		<div>
-<<<<<<< Updated upstream
-		     <div th:if="${userPrincipal != null}">
-	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
-	          </div>
-	         <div th:if="${userPrincipal == null}">
-	           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
-		     </div>
-=======
-			<div sec:authorize="isAnonymous()">
-				<a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
-			</div>
-			<div sec:authorize="isAuthenticated()">
-				<a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
-			</div>
->>>>>>> Stashed changes
+		<div class="row d-flex justify-content-end">
+					
+		   <div class="col d-flex justify-content-end">
+			   
+			   
+			   
+			   
+				<div sec:authorize="isAnonymous()">
+			           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
+			    </div>
+	            <div sec:authorize="isAuthenticated()">
+				       <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
+			     </div>		
+			
+				<div class=" d-flex justify-content-end">
+     				 <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
+				</div>
+				
+		    </div>
+		    
+		    
 		 </div>
-		 
-        <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
 
       </div>
     </div>
@@ -147,7 +150,7 @@
 
 
 	<section id="recensioni">
-      <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
+      <div class="container coluno my-5 " style="border-radius: 20px; border-color: white; border-style: double;">
         <h4 class="display-4" style="color: white;" >Recensioni</h4>
         
         
@@ -171,42 +174,62 @@
 		    </li>
 		</ul>
 
-        
-        
-        <div class="my-2">
-			<h6 class=" display-6 carta-testo">Aggiungi una recensione ! </h6>
-                <form th:action="@{/game/{id}(id=${game.id})}" method="POST">				
-				<div class="mb-3" style="width: 75%;">
-				  <textarea class="form-control" placeholder="testo della recensione" placeid="text" name="text" rows="3" required></textarea>
-				</div>
-				 
-				 
-				 <div class="form-check form-check-inline">
-				  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating1" name="rating" min="0" max="5" value="1" required ></i>
-				  <label class="form-check-label carta-testo" for="inlineRadio1">1</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating2" name="rating" min="0" max="5"  value="2" required></i>
-				  <label class="form-check-label carta-testo" for="inlineRadio2">2</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating3" name="rating" min="0" max="5" value="3" required ></i>
-				  <label class="form-check-label carta-testo" for="inlineRadio2">3</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating4" name="rating" min="0" max="5"  value="4" required></i>
-				  <label class="form-check-label carta-testo" for="inlineRadio2">4</label>
-				</div>
-				<div class="form-check form-check-inline">
-				  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating5" name="rating" min="0" max="5" value="5" required></i>
-				  <label class="form-check-label carta-testo" for="inlineRadio2">5</label>
-				</div>
-			  <button type="submit" class="btn btn-outline-light">Submit</button>
-
-			</form>
-		</div>
+        <!-- Button trigger modal -->
+			<button type="button" class="btn btn-outline-light my-2  " data-bs-toggle="modal" data-bs-target="#exampleModal">
+			  Aggiungi una recensione ! 
+			</button>
+			
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content background">
+			      <div class="modal-header">
+			        <h1 class="modal-title fs-5 carta-testo" id="exampleModalLabel">Nuova Recensione</h1>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body background">
+					  
+			        <form th:action="@{/game/{id}(id=${game.id})}" method="POST">				
+						<div class="mb-3" style="width: 75%;">
+						  <textarea class="form-control" placeholder="testo della recensione" placeid="text" name="text" rows="3" required></textarea>
+						</div>
+						 
+						 
+						 <div class="form-check form-check-inline">
+						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating1" name="rating" min="0" max="5" value="1" required ></i>
+						  <label class="form-check-label carta-testo" for="inlineRadio1">1</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating2" name="rating" min="0" max="5"  value="2" required></i>
+						  <label class="form-check-label carta-testo" for="inlineRadio2">2</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating3" name="rating" min="0" max="5" value="3" required ></i>
+						  <label class="form-check-label carta-testo" for="inlineRadio2">3</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating4" name="rating" min="0" max="5"  value="4" required></i>
+						  <label class="form-check-label carta-testo" for="inlineRadio2">4</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating5" name="rating" min="0" max="5" value="5" required></i>
+						  <label class="form-check-label carta-testo" for="inlineRadio2">5</label>
+						</div>
+						
+					  <button type="submit" class="btn btn-outline-light">Submit</button>
 		
-    </div>
+					</form>
+			        
+			      </div>
+			      
+			      
+			    </div>
+			  </div>
+			</div>
+        
+        
+		
+   		 </div>
     </section>
 
 

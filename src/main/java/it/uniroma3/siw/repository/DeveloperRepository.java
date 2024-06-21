@@ -9,4 +9,7 @@ public interface DeveloperRepository extends CrudRepository<Developer, Long> {
 	
 	public Iterable<Developer> findByName(String name);
 
+	
+	public Developer findByNameAndSurname(String name,String surname);
+
 }
