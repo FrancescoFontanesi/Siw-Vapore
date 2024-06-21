@@ -22,7 +22,7 @@ public class Developer extends User {
 	
 	
 	
-	public String company;
+	private String company;
 	
 	private String logo;
 	

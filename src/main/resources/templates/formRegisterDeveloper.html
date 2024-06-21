@@ -47,37 +47,44 @@
           <h3 class="display-4 justify-content-center" style="color: white; ">
             Welcome New Developer
           </h3>
-           <form style="width: 100%;"  th:action="@{/formRegisterDeveloper}" th:object="${developer}"method="POST">
+           <form style="width: 100%;"  th:action="@{/formRegisterDeveloper}" th:object="${developer}"method="POST" enctype="multipart/form-data">
 				
+				<!--Name-->	
                 <div class="row my-3">
-				  <div class="col-lg-5">
+				  <div class="col">
+					  
 				    <input th:field="*{name}" type="text" class="form-control" placeholder="First name" aria-label="First name">
 				  </div>
-				  <div class="col-lg-5">
+				  <!--Surname-->
+				  <div class="col">
 				    <input th:field="*{surname}"  type="text" class="form-control" placeholder="Last name" aria-label="Last name">
 				  </div>
 				</div>
-				<!--
-				<div class="mb-3" style="width: 40%;">
-				  <label for="formCompanyInput" class="form-label"></label>
-				  <input th:field="*{company}" type="text" class="form-control" id="company" placeholder="Input your Company">
-				</div>
-				-->
+				
+				
+				<!--sito_url-->
 				<div class="input-group my-3">
             	  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-            	  <input th:field="*{site_url}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+            	  <input th:field="*{site_url}" type="text" class="form-control" id="basic-url" placeholder="Url Sito personale" aria-describedby="basic-addon3 basic-addon4">
           		 </div>
+          		 
+          		 <!--company
+				<div class="input-group my-3">
+            	  <span class="input-group-text" id="basic-addon4">Compagnia</span>
+            	  <input th:field="*{company}" type="text" class="form-control" id="company" aria-describedby="basic-addon3 basic-addon4">
+          		 </div>-->
 				
 				
-          		
-          		
+          		<!--descrizione-->
         		  <div class="input-group my-3">
- 			          <input th:field="*{description}" type="text" class="form-control" placeholder="Description" aria-label="Company" aria-describedby="basic-addon1">
+ 			          <input th:field="*{description}" type="text" class="form-control" placeholder="Biografia" aria-label="Company" aria-describedby="basic-addon1">
       		    </div>
       		    
-      		    <div class="input-group " style="width: 92%;">
-			        <input th:field="*{logo}" type="file" class="form-control" id="inputGroupFile01">
-			    </div>
+      		    <!--Foto-->
+				<div class="input-group my-3">
+				  <input type="file" class="form-control" id="file" name="file">
+				  <label class="input-group-text" for="inputGroupFile02" >Logo</label>
+				</div>
                 
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>

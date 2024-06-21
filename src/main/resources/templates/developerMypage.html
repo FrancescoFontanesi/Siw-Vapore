@@ -42,29 +42,25 @@
    
        
 
-  <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double;">
+  <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double; background-image: url(/images/fabbrica.jpg);">
         
-        
-        <div class="row justify-content-center" style="background-image: url(/images/fabbrica.jpg);">
-            
-            
-            <div class="col-lg-4 col-md-6 grid-item my-4 ">
-                <img class="img-fluid w-100 mb-3 img-thumbnail shadow-sm rounded-0"  style="width:10%; height: auto;">
-                <h2 class="display-4 coluno my-3 ms-3" style="color: white;" th:text="${user.name} +' '+ ${user.surname}" >
-                    Nome Sviluppatore
-                </h2>
-        
+        <div class="row justify-content-center" >
+      
+            <div class="col-lg-7 text-center my-5 ms-5 " >
+   	            <span><img width="50%" th:src=${user.logo} class="my-3 img-fluid img-thumbnail" style="border-radius: 20px;"/></span>
+                <h4 class="display-2  " style="color: white;background-color:  rgb(37, 150, 190,0.8); border-radius: 15px;" th:text="${user.name} +' ' +  ${user.surname}" ></h1>
 
-            </div>
+        	</div>
+            
         </div>
         
   </div>
 
   <section id="descrizione">
-      <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
+      <div class="container  my-5" style="border-radius: 20px; border-color: white; border-style: double; background-color:  rgb(37, 150, 190,0.8);">
         <h4 class="display-4" style="color: white;" >Informazioni sul profilo</h4>
-        <h6 class="display-6 carta-testo" th:text="'Data di nascita: ' + ${user.date}">Data di nascita:</h6>
-        <h6 class="display-6 carta-testo" >Azienda: Come accedo ai campi del sottoelemento?</h6>
+        <h6 class="display-6 carta-testo" th:text="'Bio: ' + ${user.description}"></h6>
+        <h6 class="display-6 carta-testo" th:text="'Sito Compagnia: ' + ${user.site_url}"></h6>
 
       
       </div>
