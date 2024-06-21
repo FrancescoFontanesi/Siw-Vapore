@@ -40,9 +40,24 @@ public class Game {
 	
 	public Double price;
 	
-	@NotBlank
 	public String category;
 	
+	public Integer getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(Integer releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	@ManyToOne
 	public Developer developer;
 	
@@ -105,13 +120,7 @@ public class Game {
 		this.price = price;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategories(String category) {
-		this.category = category;
-	}
+	
 
 	public Developer getDeveloper() {
 		return developer;

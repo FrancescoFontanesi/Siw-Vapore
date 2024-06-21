@@ -203,7 +203,6 @@ import jakarta.validation.Valid;
 	            credentials.setUser(customer);
 	            credentialsService.saveCredentials(credentials);
 	            model.addAttribute("customer", customer);
-                System.out.println("pene2");
 
 	            return "redirect:/login";
 
@@ -218,7 +217,6 @@ import jakarta.validation.Valid;
 		 
 		        Optional<Credentials> c = credentialsRepository.findByEmail(auth.getName());
 		        User u = c.get().getUser();
-		        System.out.println(u.getClass());
 		        model.addAttribute("user", u );
 		        
 		        switch(c.get().getRole()) {

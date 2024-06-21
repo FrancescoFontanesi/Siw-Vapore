@@ -87,6 +87,7 @@ public class GameController {
 	}
 	
 	
+	
 	@GetMapping("/foundGames")
     public String foundGames(@RequestParam("name") String name, Model model) {
         List<Game> games = gameRepository.searchGamesByNameContainingIgnoreCase(name);
@@ -137,49 +138,36 @@ public class GameController {
 	*/
 
 	
-	 
-    @GetMapping("/newGame")
-	public String newGame(Model model) {
-    	model.addAttribute("game",new Game());
-		return "newGame.html";
-	
-	}
-    
-    @PostMapping("/newGame")
-    public String newGame(@Valid @ModelAttribute("ricetta") Game game, BindingResult bindingResult, 
-                                     Model model, @AuthenticationPrincipal UserDetails userDetails,Authentication authentication,@RequestParam("file") MultipartFile file){
-
-    	 if (!file.isEmpty()) {
-             try {
-                 byte[] bytes = file.getBytes();
-                 Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-                 Files.write(path, bytes);
-                 game.setCopertina("/images/newGame/" + file.getOriginalFilename() );
-             } catch (IOException e) {
-                 e.printStackTrace();
-                 model.addAttribute("message", "Failed to upload image");
-                 return "newGame";
-             }
-         }
-    	
-    	 String email = authentication.getName();
-         Optional<Credentials> c = credentialsRepository.findByEmail(email);
-         User u = c.get().getUser();
-
-        this.gameValidator.validate(game, bindingResult);
-        if (!bindingResult.hasErrors()) {
-            Developer developer = developerRepository.findByNameAndSurname(u.getName(),u.getSurname()) ;
-            game.setDeveloper(developer);
-            this.gameRepository.save(game);
-            developer.getdevelopedGames().add(game);
-            this.developerRepository.save(developer);
-            return "redirect:/";
-        } else {
-            return "redirect:/myPage";
-        }
-    }
-     
-    
+	/*
+	 * @GetMapping("/newGame") public String newGame(Model model) {
+	 * model.addAttribute("game",new Game()); return "newGame.html";
+	 * 
+	 * }
+	 * 
+	 * @PostMapping("/newGame") public String
+	 * newGame(@Valid @ModelAttribute("ricetta") Game game, BindingResult
+	 * bindingResult, Model model, @AuthenticationPrincipal UserDetails
+	 * userDetails,Authentication authentication,@RequestParam("file") MultipartFile
+	 * file){
+	 * 
+	 * if (!file.isEmpty()) { try { byte[] bytes = file.getBytes(); Path path =
+	 * Paths.get(UPLOADED_FOLDER + file.getOriginalFilename()); Files.write(path,
+	 * bytes); game.setCopertina("/images/newGame/" + file.getOriginalFilename() );
+	 * } catch (IOException e) { e.printStackTrace(); model.addAttribute("message",
+	 * "Failed to upload image"); return "newGame"; } }
+	 * 
+	 * String email = authentication.getName(); Optional<Credentials> c =
+	 * credentialsRepository.findByEmail(email); User u = c.get().getUser();
+	 * 
+	 * this.gameValidator.validate(game, bindingResult); if
+	 * (!bindingResult.hasErrors()) { Developer developer =
+	 * developerRepository.findByNameAndSurname(u.getName(),u.getSurname()) ;
+	 * game.setDeveloper(developer); this.gameRepository.save(game);
+	 * developer.getdevelopedGames().add(game);
+	 * this.developerRepository.save(developer); return "redirect:/"; } else {
+	 * return "redirect:/myPage"; } }
+	 * 
+	 */    
     
 }
 
