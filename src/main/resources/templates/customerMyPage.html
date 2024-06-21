@@ -49,40 +49,34 @@
 
 
 
-	<div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double;">
+	<div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double; background-image: url(/images/profilo.jpg);">
+        
+        <div class="row justify-content-center" >
+      
+            <div class="col-lg-7 text-center my-5 ms-5 " >
+   	            <span><img width="50%" th:src=${user.profilePic} class="my-3 img-fluid img-thumbnail" style="border-radius: 20px;"/></span>
+                <h4 class="display-2  " style="color: white;background-color:  rgb(37, 150, 190,0.8); border-radius: 15px;" th:text="${user.name} +' ' +  ${user.surname}" ></h1>
 
-
-		<div class="row justify-content-center" style="background-image: url(/images/profio.jpg);">
-
-
-			<div class="col-lg-4 col-md-6 grid-item my-4 ">
-            <span><img width="50%" th:src=${user.profilePic} class="my-3 img-fluid img-thumbnail" style="border-radius: 20px;"/></span>
-				<h1 class="display-4 coluno my-3 ms-3" style="color: white;">
-					<td th:text="${user.name}">Name</td>
-					<td th:text="${user.surname}">Name</td>
-
-				</h1>
-
-
-			</div>
-		</div>
-
-	</div>
+        	</div>
+            
+        </div>
+        
+  </div>
 
 	<section id="descrizione">
-		<div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
+		<div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;background-color:  rgb(37, 150, 190,0.8);">
 			<h4 class="display-4" style="color: white;">Informazioni sul profilo</h4>
 			<h6 class="display-6 carta-testo" th:text="'Data di nascita: ' + ${user.date}">Data di nascita:</h6>
 			<h6 class="display-6 carta-testo" th:text="'Fondi disponibili: ' + ${user.walletFunds}">Data di nascita:</h6>
 
-			<button type="button" class="btn btn-outline-primary my-3 bi bi-cart2">Carrello</button>
+			<button type="button" class="btn btn-outline-light my-3 bi bi-cart2">Carrello</button>
 	
 	
 	
 	
 			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-			  Launch demo modal
+			<button type="button" class="btn btn-outline-light bi bi-currency-euro" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			  Aggiungi Fondi
 			</button>
 			
 			<!-- Modal -->
@@ -90,7 +84,7 @@
 			  <div class="modal-dialog">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+			        <h1 class="modal-title fs-5" id="exampleModalLabel">Aggiunta Fondi</h1>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">

@@ -9,7 +9,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -57,7 +56,10 @@ import jakarta.validation.Valid;
 		
 		
 		 // Directory where profile images will be saved
-	    private static String UPLOADED_FOLDER = "src/main/resources/static/images/profili/";
+	    private static String UPLOADED_FOLDER_C = "src/main/resources/static/images/profili/";
+
+	    // Directory where profile images will be saved
+	    private static String UPLOADED_FOLDER_D = "src/main/resources/static/images/sviluppatori/";
 
 		
 		
@@ -133,8 +135,22 @@ import jakarta.validation.Valid;
 		public String registerDeveloper (@Valid @ModelAttribute("developer") Developer developer,
 	            BindingResult userBindingResult, @Valid
 	            @ModelAttribute("credentials") Credentials credentials,
-	            BindingResult credentialsBindingResult,
+	            BindingResult credentialsBindingResult,@RequestParam("file") MultipartFile file,
 	            Model model) {
+			
+			 if (!file.isEmpty()) {
+	             try {
+	                 byte[] bytes = file.getBytes();
+	                 Path path = Paths.get(UPLOADED_FOLDER_D + file.getOriginalFilename());
+	                 Files.write(path, bytes);
+	                 developer.setLogo("/images/sviluppatori/" + file.getOriginalFilename() );
+	             } catch (IOException e) {
+	                 e.printStackTrace();
+
+	                 model.addAttribute("message", "Failed to upload image");
+	                 return "formRegisterCustomer";
+	             }
+	         }
 			
 			if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
 				
@@ -186,10 +202,9 @@ import jakarta.validation.Valid;
 			 if (!file.isEmpty()) {
 	             try {
 	                 byte[] bytes = file.getBytes();
-	                 Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+	                 Path path = Paths.get(UPLOADED_FOLDER_C + file.getOriginalFilename());
 	                 Files.write(path, bytes);
 	                 customer.setProfilePic("/images/profili/" + file.getOriginalFilename() );
-	                 System.out.println("pene1");
 	             } catch (IOException e) {
 	                 e.printStackTrace();
 
@@ -203,7 +218,6 @@ import jakarta.validation.Valid;
 	            credentials.setUser(customer);
 	            credentialsService.saveCredentials(credentials);
 	            model.addAttribute("customer", customer);
-                System.out.println("pene2");
 
 	            return "redirect:/login";
 

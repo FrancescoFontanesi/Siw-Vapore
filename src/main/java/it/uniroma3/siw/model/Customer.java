@@ -10,8 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.validation.constraints.Min;
 
 @Entity
 public class Customer extends User {
@@ -23,9 +21,7 @@ public class Customer extends User {
 			
 	private String profilePic;
 	
-	
-	@Min(10)
-	public Integer age;
+	public String dataDiNascita;
 
 
 
@@ -46,14 +42,7 @@ public class Customer extends User {
 
 	
 	
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-    
+	
 	
 	public List<Game> getCart() {
 		return cart;
@@ -93,8 +82,40 @@ public class Customer extends User {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", profilePic=" + profilePic + ", age=" + age + ", cart=" + cart
+		return "Customer [id=" + id + ", profilePic=" + profilePic + ", cart=" + cart
 				+ ", walletFunds=" + walletFunds + ", boughtGames=" + boughtGames + "]";
+	}
+
+
+
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+
+
+	public String getDataDiNascita() {
+		return dataDiNascita;
+	}
+
+
+
+
+
+	public void setDataDiNascita(String dataDiNascita) {
+		this.dataDiNascita = dataDiNascita;
 	}
 
 }
