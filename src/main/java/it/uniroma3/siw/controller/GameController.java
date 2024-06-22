@@ -69,6 +69,8 @@ public class GameController {
         return "game";
     }
 	
+	
+	
 
 	@PostMapping("/game/{id}")
 	public String addReview(@PathVariable Long id, @RequestParam("text") String text, @RequestParam("rating") Integer rating) {

@@ -39,6 +39,16 @@ public class GameService {
     		game.getReviews().add(review);
     		gameRepository.save(game);
     	}
+    	
+    	@Transactional
+    	public void deleteGame(Long id) {
+    		
+    		Game game = gameRepository.findById(id)
+    				.orElseThrow(() -> new IllegalArgumentException("Invalid game ID:" + id));
+    		gameRepository.delete(game);
+    		
+    	}
+    	
     }
 
 

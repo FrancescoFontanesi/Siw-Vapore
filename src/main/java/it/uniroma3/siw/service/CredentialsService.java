@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CredentialsRepository;
 
 @Service
@@ -44,6 +45,18 @@ public class CredentialsService  {
         Credentials credentials = credentialsRepository.findById(credentialsId).orElse(null);
         if(credentials!=null) credentialsRepository.delete(credentials);
     }
+
+    
+    @Transactional
+	public void updateUser(Long id, User user) {
+		
+		 Credentials credentials = credentialsRepository.findById(id).orElse(null);
+	        if(credentials!=null) 
+	        	credentials.setUser(user);
+	        	credentialsRepository.save(credentials);
+		
+		
+	}
     
 }
    

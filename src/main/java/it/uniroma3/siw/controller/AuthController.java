@@ -230,6 +230,7 @@ import jakarta.validation.Valid;
 		    @GetMapping("/myPage")
 		    public String myPage(Authentication auth, Model model) {
 		 
+		    	
 		        Optional<Credentials> c = credentialsRepository.findByEmail(auth.getName());
 		        User u = c.get().getUser();
 		        model.addAttribute("user", u );

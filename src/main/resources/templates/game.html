@@ -106,10 +106,13 @@
 				</div>
 				
 				<div>
-					<h6 class="d-inline" style="color: white;">GAME'S CATEGORY: </h6>
+					<h6 class="d-inline" style="color: white;">CATERGORIA: </h6>
 					<h6 class="d-inline" style="color: white;" th:text="${game.category}"> nome categoria</h6>		
 				</div>
 				
+				<div th:if="${#authentication.authorities[0].authority == 'ADMIN'}">
+					<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/delete(id=${game.id})}">Cancella</a>
+				</div>
 				
                 
               
@@ -120,15 +123,22 @@
             <div class="col-lg-4 col-md-6 grid-item mt-5 d-flex flex-column align-items-center justify-content-center ">
                 <img class="img-fluid w-90 mb-3 img-thumbnail shadow-sm rounded-0"th:src=${game.copertina} alt="">
                 
-				<div class="text-center ">
-					<div >
+				<div class="text-center" >
+					<div th:if="${#authentication.authorities[0].authority == 'Customer'}" >
 						<a stype="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/addToCart(id=${game.id})}"
 							th:text="'Add To Cart: ' + ${game.price}"></a>
 					</div>
-			   </div>
+				</div>
+					
+					<div class="text-center">
+						<div>
+							<a stype="button" class="btn btn-outline-light btn-lg " href="/login"
+								th:text="'Prezzo: ' + ${game.price}"></a>
+						</div>
+			       </div>
 
 
-            </div>
+
         </div>
         
    
