@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Credentials;
-import it.uniroma3.siw.model.Game;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.service.CredentialsService;
@@ -30,15 +29,15 @@ public class AdminController {
 	private GameService gameService;
 	
 
-	@GetMapping("myPage/edit/{id}")
-	public String showEditUserForm(@PathVariable("id") Long id, Model model) {
+	@GetMapping("edit/{id}")
+	public String editCustomer(@PathVariable("id") Long id, Model model) {
 		Optional<Credentials> user = credentialsRepository.findById(id);
 		model.addAttribute("user", user);
-		return "editUser";
+		return "editCustomer.html";
 	}
 
 	
-	@PostMapping("myPage/edit/{id}")
+	@PostMapping("edit/{id}")
 	public String editUser(@PathVariable("id") Long id, @ModelAttribute("user") User user) {
 		credentialsService.updateUser(id, user);
 		return "redirect:/myPage";
