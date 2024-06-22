@@ -29,15 +29,30 @@ public class AdminController {
 	private GameService gameService;
 	
 
-	@GetMapping("edit/{id}")
+	
+	@GetMapping("/editDeveloper/{id}")
+	public String editDeveloper(@PathVariable Long id, Model model) {
+		Optional<Credentials> user = credentialsRepository.findById(id);
+		model.addAttribute("user", user);
+		return "editDeveloper";
+	}
+	@PostMapping("/editDeveloper/{id}")
+	public String editDev(@PathVariable("id") Long id, @ModelAttribute("user") User user) {
+		credentialsService.updateUser(id, user);
+		return "redirect:/myPage";
+	}
+	
+	
+	
+	@GetMapping("/edit/{id}")
 	public String editCustomer(@PathVariable("id") Long id, Model model) {
 		Optional<Credentials> user = credentialsRepository.findById(id);
 		model.addAttribute("user", user);
-		return "editCustomer.html";
+		return "editCustomer";
 	}
 
 	
-	@PostMapping("edit/{id}")
+	@PostMapping("myPage/edit/{id}")
 	public String editUser(@PathVariable("id") Long id, @ModelAttribute("user") User user) {
 		credentialsService.updateUser(id, user);
 		return "redirect:/myPage";

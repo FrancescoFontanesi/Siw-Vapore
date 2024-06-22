@@ -56,10 +56,7 @@ public class GameController {
 	
 	
 	
-	  // Directory where profile images will be saved
-    private static String UPLOADED_FOLDER = "src/main/resources/static/images/newGame/";
-
-	
+	 
 	
 	@GetMapping("/game/{id}")
     public String getGame(@PathVariable Long id, Model model) {
@@ -99,77 +96,6 @@ public class GameController {
 	
 	
 	
-    /*
-	@GetMapping(value="/admin/formNewGame")
-	public String formNewGame(Model model) {
-		model.addAttribute("game", new Game());
-		return "admin/formNewGame.html";
-	}
-
-	@GetMapping(value="/admin/formUpdateGame/{id}")
-	public String formUpdateGame(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("game", gameRepository.findById(id).get());
-		return "admin/formUpdateGame.html";
-	}
-
-	@GetMapping(value="/admin/indexgame")
-	public String indexgame() {
-		return "admin/indexGame.html";
-	}
-	
-	@GetMapping(value="/admin/manageGames")
-	public String manageGames(Model model) {
-		model.addAttribute("games", this.gameRepository.findAll());
-		return "admin/managegames.html";
-	}
-	
-    /*
-	@PostMapping("/admin/game")
-	public String newgame(@Valid @ModelAttribute("game") Game game, BindingResult bindingResult, Model model) {
-		
-		this.gameValidator.validate(game, bindingResult);
-		if (!bindingResult.hasErrors()) {
-			this.gameRepository.save(game); 
-			model.addAttribute("game", game);
-			return "game.html";
-		} else {
-			return "admin/formNewgame.html"; 
-		}
-	}
-
-	*/
-
-	
-	/*
-	 * @GetMapping("/newGame") public String newGame(Model model) {
-	 * model.addAttribute("game",new Game()); return "newGame.html";
-	 * 
-	 * }
-	 * 
-	 * @PostMapping("/newGame") public String
-	 * newGame(@Valid @ModelAttribute("ricetta") Game game, BindingResult
-	 * bindingResult, Model model, @AuthenticationPrincipal UserDetails
-	 * userDetails,Authentication authentication,@RequestParam("file") MultipartFile
-	 * file){
-	 * 
-	 * if (!file.isEmpty()) { try { byte[] bytes = file.getBytes(); Path path =
-	 * Paths.get(UPLOADED_FOLDER + file.getOriginalFilename()); Files.write(path,
-	 * bytes); game.setCopertina("/images/newGame/" + file.getOriginalFilename() );
-	 * } catch (IOException e) { e.printStackTrace(); model.addAttribute("message",
-	 * "Failed to upload image"); return "newGame"; } }
-	 * 
-	 * String email = authentication.getName(); Optional<Credentials> c =
-	 * credentialsRepository.findByEmail(email); User u = c.get().getUser();
-	 * 
-	 * this.gameValidator.validate(game, bindingResult); if
-	 * (!bindingResult.hasErrors()) { Developer developer =
-	 * developerRepository.findByNameAndSurname(u.getName(),u.getSurname()) ;
-	 * game.setDeveloper(developer); this.gameRepository.save(game);
-	 * developer.getdevelopedGames().add(game);
-	 * this.developerRepository.save(developer); return "redirect:/"; } else {
-	 * return "redirect:/myPage"; } }
-	 * 
-	 */    
     
 }
 
