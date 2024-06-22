@@ -20,8 +20,11 @@ public class Customer extends User {
 	private Long id;
 			
 	private String profilePic;
-	
-	public String dataDiNascita;
+
+
+
+
+	public String birthDay;
 
 
 
@@ -86,6 +89,21 @@ public class Customer extends User {
 				+ ", walletFunds=" + walletFunds + ", boughtGames=" + boughtGames + "]";
 	}
 
+	
+	
+	public String getBirthDay() {
+		return birthDay;
+	}
+
+
+
+
+
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
+	}
+
+
 
 
 
@@ -106,16 +124,5 @@ public class Customer extends User {
 
 
 
-	public String getDataDiNascita() {
-		return dataDiNascita;
-	}
-
-
-
-
-
-	public void setDataDiNascita(String dataDiNascita) {
-		this.dataDiNascita = dataDiNascita;
-	}
 
 }
