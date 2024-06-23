@@ -31,14 +31,17 @@ public class AdminController {
 
 	
 	@GetMapping("/editDeveloper/{id}")
-	public String editDeveloper(@PathVariable Long id, Model model) {
-		Optional<Credentials> user = credentialsRepository.findById(id);
-		model.addAttribute("user", user);
+	public String editDeveloper(@PathVariable("id") Long id,Model model) {
+		model.addAttribute("developer", credentialsRepository.findById(id).get().getUser());
+		model.addAttribute("id",id);
 		return "editDeveloper";
 	}
-	@PostMapping("/editDeveloper/{id}")
-	public String editDev(@PathVariable("id") Long id, @ModelAttribute("user") User user) {
+	
+	
+	@PostMapping("/editDeveloper")
+	public String editDev(@ModelAttribute("id") Long id, @ModelAttribute("developer") User user) {
 		credentialsService.updateUser(id, user);
+		System.out.println(user.toString()+id);
 		return "redirect:/myPage";
 	}
 	

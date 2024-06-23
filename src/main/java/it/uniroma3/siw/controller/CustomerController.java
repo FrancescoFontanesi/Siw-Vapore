@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.service.CustomerService;
-import it.uniroma3.siw.validator.GameValidator;
 
 @Controller
 public class CustomerController {
