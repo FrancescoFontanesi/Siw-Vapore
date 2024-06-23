@@ -1,7 +1,5 @@
 package it.uniroma3.siw.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +8,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import it.uniroma3.siw.model.Credentials;
-import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.model.Developer;
 import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.DeveloperService;
 import it.uniroma3.siw.service.GameService;
+
+
 
 @Controller
 public class AdminController {
@@ -24,6 +24,9 @@ public class AdminController {
 	
 	@Autowired
 	private CredentialsService credentialsService;
+	
+	@Autowired
+	private DeveloperService developerService;
 	
 	@Autowired
 	private GameService gameService;
@@ -38,28 +41,14 @@ public class AdminController {
 	}
 	
 	
-	@PostMapping("/editDeveloper")
-	public String editDev(@ModelAttribute("id") Long id, @ModelAttribute("developer") User user) {
-		credentialsService.updateUser(id, user);
-		System.out.println(user.toString()+id);
+	@PostMapping("/editDeveloper/{id}")
+	public String editDev( @ModelAttribute("developer") Developer dev, @PathVariable("id") Long id ) {
+		developerService.updateDeveloper((Developer)credentialsRepository.findById(id).get().getUser(), dev);
 		return "redirect:/myPage";
 	}
 	
-	
-	
-	@GetMapping("/edit/{id}")
-	public String editCustomer(@PathVariable("id") Long id, Model model) {
-		Optional<Credentials> user = credentialsRepository.findById(id);
-		model.addAttribute("user", user);
-		return "editCustomer";
-	}
 
-	
-	@PostMapping("myPage/edit/{id}")
-	public String editUser(@PathVariable("id") Long id, @ModelAttribute("user") User user) {
-		credentialsService.updateUser(id, user);
-		return "redirect:/myPage";
-	}
+
 
 	@GetMapping("myPage/delete/{id}") 
 	public String deleteUser(@PathVariable("id") Long id){

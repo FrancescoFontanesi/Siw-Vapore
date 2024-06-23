@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CredentialsRepository;
+import jakarta.validation.Valid;
 
 @Service
 public class CredentialsService  {
@@ -48,14 +51,12 @@ public class CredentialsService  {
 
     
     @Transactional
-	public void updateUser(Long id, User user) {
+	public void updateUser(User user, Credentials cred,  BindingResult userBindingResult) {
 		
-		 Credentials credentials = credentialsRepository.findById(id).orElse(null);
-	        if(credentials!=null) 
-	        	credentials.setUser(user);
-	        	credentialsRepository.save(credentials);
-		
-		
+
+		cred.setUser(user);
+		credentialsRepository.save(cred);
+		 
 	}
     
 }

@@ -43,4 +43,4 @@ insert into game (id,name,category,release_date,description,copertina,images) va
 
 
 INSERT INTO utente (id,name) values (nextval('utente_seq'),'admin');
-INSERT INTO credentials (id, email, password, role, user_id) VALUES (nextval('credentials_seq'),'admin@example.com', 'password', 'ADMIN', (SELECT id FROM utente where id = 1));
+INSERT INTO credentials (id, email, password, role, user_id) VALUES (nextval('credentials_seq'),'admin@example.com', 'p', 'ADMIN', (SELECT id FROM utente where id = 1));

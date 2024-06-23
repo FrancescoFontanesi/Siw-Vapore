@@ -35,6 +35,47 @@ public class DeveloperService {
 		
 	     }
 	}
+    
+
+    public void updateDeveloper(Developer oldDev, Developer newDev) {
+    	
+    	newDev.setId(oldDev.getId());
+    	newDev.setdevelopedGames(oldDev.getdevelopedGames());
+    	
+    	
+    	if (newDev.getName() != null && !newDev.getName().equals(oldDev.getName())) {
+            oldDev.setName(newDev.getName());
+        }
+
+        if (newDev.getSurname() != null && !newDev.getSurname().equals(oldDev.getSurname())) {
+            oldDev.setSurname(newDev.getSurname());
+        }
+
+		/*
+		 * if (newDev.getSite_url() != null &&
+		 * !newDev.getSite_url().equals(oldDev.getSite_url())) {
+		 * oldDev.setSite_url(newDev.getSite_url()); }
+		 * 
+		 * if (newDev.getDescription() != null &&
+		 * !newDev.getDescription().equals(oldDev.getDescription())) {
+		 * oldDev.setDescription(newDev.getDescription()); }
+		 * 
+		 * if (newDev.getLogo() != null && !newDev.getLogo().equals(oldDev.getLogo())) {
+		 * oldDev.setLogo(newDev.getLogo()); }
+		 */
+        
+        Credentials c = credentialsRepository.findByUser(oldDev);
+        c.setUser(newDev);
+        credentialsRepository.save(c);
+    	
+    	
+      
+}
+
+    
+    
+
+        
         
 
 }
