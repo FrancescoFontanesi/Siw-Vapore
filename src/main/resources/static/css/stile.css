@@ -80,3 +80,17 @@
    width: 20%;
    height: 100px;
 }
+
+
+.bordR{
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+
+
+.bordL{
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
