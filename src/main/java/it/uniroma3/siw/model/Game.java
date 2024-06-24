@@ -29,7 +29,6 @@ public class Game {
 	
 	public String description;
 	
-	public List<String> images;
 	
 	public String copertina;
 	
@@ -41,6 +40,20 @@ public class Game {
 	public Double price;
 	
 	public String category;
+	
+	private List<String> images = new ArrayList<>();
+
+	public List<String> getImages() {
+	    return images;
+	}
+
+	public void setImages(List<String> images) {
+	    this.images = images;
+	}
+
+	public void addImages(String imagePath) {
+	    this.images.add(imagePath);
+	}
 	
 	public Integer getReleaseDate() {
 		return releaseDate;
@@ -96,13 +109,7 @@ public class Game {
 		this.description = description;
 	}
 
-	public List<String> getImages() {
-		return images;
-	}
-
-	public void setImages(List<String> images) {
-		this.images = images;
-	}
+	
 
 	public String getCopertina() {
 		return copertina;

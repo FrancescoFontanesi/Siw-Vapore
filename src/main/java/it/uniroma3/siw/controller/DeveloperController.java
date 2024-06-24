@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -53,7 +55,8 @@ public class DeveloperController {
 	}
 	
 	@PostMapping("/addGame")
-	public String addGame(Model m, @Valid @ModelAttribute("game") Game g, Authentication auth,BindingResult gameBindingResult,@RequestParam("file") MultipartFile file) {
+	public String addGame(Model m, @Valid @ModelAttribute("game") Game g, Authentication auth,BindingResult gameBindingResult,
+			@RequestParam("file") MultipartFile file,@RequestParam("additionalFiles") List<MultipartFile> additionalFiles) {
 		
 		if (!file.isEmpty()) {
             try {
@@ -67,6 +70,25 @@ public class DeveloperController {
                 return "newGame";
             }
         }
+		
+		if (!additionalFiles.isEmpty()) {
+            for (MultipartFile additionalFile : additionalFiles) {
+                if (!additionalFile.isEmpty()) {
+                    try {
+                        byte[] bytes = additionalFile.getBytes();
+                        Path path = Paths.get(UPLOADED_FOLDER + additionalFile.getOriginalFilename());
+                        Files.copy(additionalFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+                        // Add the path to the game object's list of additional images
+                        g.addImages("/images/newGame/" + additionalFile.getOriginalFilename());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        m.addAttribute("message", "Failed to upload additional image");
+                        return "newGame";
+                    }
+                }
+            }
+        }
+
 
 		
 		
