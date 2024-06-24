@@ -10,39 +10,111 @@
     <script defer th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </head>
 <body class="background">
-  <div class="container my-5 coluno" style="border-radius: 20px; border-color: white; border-style: double;">
-    <div class="row text-center carta-testo d-flex justify-content-center align-items-center" style="height: 300px;">
-        <div class="col-lg-8">
-            <h2 class="display-1" style="border-radius: 15px; background-color: rgb(37, 150, 190,0.5);">Edit Developer</h2>
-        </div>
+  
+  
+  <nav class="navbar navbar-expand-lg  coluno">
+    <div class="container coluno">
+      <a class="navbar-brand carta-testo" >VAPORE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active bi bi-house " style="color: white;" aria-current="page" href="/"></a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="container">
-      <form th:action="@{/editDeveloper/{id}(id=${id})}" th:object="${user}" method="post">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" name="name" th:value="*{name}">
-        </div>
-        <div class="mb-3">
-          <label for="surname" class="form-label">Surname</label>
-          <input type="text" class="form-control" id="surname" name="surname" th:value="*{surname}">
-        </div>
+  </nav>
+  
+  
+  
+  <div class="container my-5 coluno" style="border-radius: 20px; border-color: white; border-style: double;">
+    
+   
+    <div class="row carta-testo d-flex justify-content-center align-items-center" style="height: 300px;">
+	  <div class="d-flex justify-content-center align-items-center" style="background-image: url(/images/chiavi.jpeg);border-radius: 15px;border-style: double;border-color: white; background-size: cover; height: 80%; width: 90%;" >
+		<div class="col-lg-8" >
+            <h2 class="display-1 text-center" style="border-radius: 15px; background-color: rgb(37, 150, 190,0.5);">Edit Developer</h2>
+        </div>  
+	  </div>
+        
+    </div>
+  
+  
+  
+  
+    <div class="container d-flex justify-content-center align-items-center">
 		
-		<!--sito_url-->
-		<div class="input-group my-3">
-			<span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-			<input type="text" class="form-control" id="basic-url" name="site_url" 			th:value="*{site_url}">
+      <form th:action="@{/editDeveloper/{id}(id=${id})}" th:object="${user}" method="post" style="width: 95%;">
+        
+        
+        <!--Name-->	
+        <div class="row my-3">
+		  <div class="col">
+              <label for="name" class="form-label carta-testo">Name</label>
+			  <input id="name" name="name" th:value="*{name}" type="text" class="form-control" placeholder="First name" aria-label="First name">
+		  </div>
+		<!--Surname-->
+		  <div class="col">
+            <label for="surname" class="form-label carta-testo">Surname</label>
+			  <input id="surname" name="surname" th:value="*{surname}" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+		  </div>
 		</div>
 		
-		<!--company
-		<div class="input-group my-3">
-		 <span class="input-group-text" id="basic-addon4">Compagnia</span>
-		 <input th:field="*{company}" type="text" class="form-control" id="company" aria-describedby="basic-addon3 basic-addon4">
-		 </div>-->
+		<!--sito_url-->
+		<label for="site_url" class="form-label carta-testo">Sito privato</label>
+		<div class="input-group mb-3">
+            
+			<span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+			<input type="text" class="form-control" id="basic-url" name="site_url" th:value="*{site_url}">
+		</div>
 		
+		<!--descrizione-->
+        <label for="description" class="form-label carta-testo">Biografia</label>
+        <div class="input-group mb-3">
+ 		    <input th:value="*{description}" id="description" name="description" type="text" class="form-control" aria-label="Company" aria-describedby="basic-addon1">
+      	</div>
 		
+		<!--compagnia-->
+        <label for="company" class="form-label carta-testo">Compagnia di riferimento</label>
+		<div class="input-group mb-3">
+          	  <input th:value="*{company}" id="company" name="company" type="text" class="form-control"   aria-describedby="basic-addon3 basic-addon4">
+         </div>
 		
-        <button type="submit" class="btn btn-primary">Save</button>
+		<div class="d-flex justify-content-end align-items-center my-2">
+			<button type="submit" class="btn btn-outline-primary">Save</button>	
+		</div>
+        
       </form>
+    </div>
+  </div>
+  
+    
+
+<div class="container text-center " >
+    <div class="row justify-content-center mb-3" style="gap: 10px;">
+      <div class="col-4 p-2 my-1 coluno" style="border-radius: 15px;">
+        <h1 class="diplay-6 my-4 carta-testo">VAPORE</h1>
+        <a class="btn  btn-outline-light bi bi-person-circle ms-1"  href="/login"> Login</a>
+        <a class="btn  btn-outline-secondary bi bi-plus-circle-fill ms-1"  href="/registration"> Registrati</a>
+
+      </div>
+      <div class="col-7 text-center p-2 my-1 coluno" style="border-radius: 15px;">
+        <h5 class="carta-testo">Chi siamo ?</h5>
+        <p class="small carta-testo">Siamo un team che ha creato questo blog per rendere meno noisosi le i vostri pranzi e le vostre cene, questo sito web è stato progettato da Niccolo Corraro per il Corso di Sistemi Informativi su Web.</p>
+      	
+      	<div class="d-flex align-items-center justify-content-center" > 
+		    <h6 class="carta-testo">Seguici :</h6>
+		    <a class="bi bi-instagram mx-2" href="https://www.instagram.com/nicc.cor/" ></a>
+   		   	<a class="bi bi-youtube" href="https://www.youtube.com/" ></a>
+		    <a class="bi bi-facebook mx-2" href="https://www.facebook.com/universitaroma3/?locale=it_IT" ></a>
+		    <a class="bi bi-tiktok" href="https://www.tiktok.com/@nicc.cor" ></a>
+
+		    
+		</div>
+      </div>
     </div>
   </div>
 </body>

@@ -35,23 +35,47 @@
   </nav>
    
    
-       
-       
-  <div class="container my-5">
-   
     
-    <div class="row justify-content-center background-blur" style="background-image: url(/images/copertina2.jpeg);">
-      
-      
-      <div class="col-lg-7 col-md-4 my-3" style="background-color: rgb(37, 150, 190,0.5); border-radius: 20px;">
-
-          <h3 class="display-4 justify-content-center" style="color: white; ">
-            Welcome New Customer
-          </h3>
-          
-      </div>
-
-       
+  <div class="container my-5 coluno" style="border-radius: 20px; border-color: white; border-style: double;">
+    
+   
+    <div class="row carta-testo d-flex justify-content-center align-items-center" style="height: 300px;">
+	  <div class="d-flex justify-content-center align-items-center" style="background-image: url(/images/chiavi.jpeg);border-radius: 15px;border-style: double;border-color: white; background-size: cover; height: 80%; width: 90%;" >
+		<div class="col-lg-8" >
+            <h2 class="display-1 text-center" style="border-radius: 15px; background-color: rgb(37, 150, 190,0.5);">Edit Customer</h2>
+        </div>  
+	  </div>
+        
+    </div>
+  
+  
+  
+  
+    <div class="container d-flex justify-content-center align-items-center">
+		
+      <form th:action="@{/editCustomer/{id}(id=${id})}" th:object="${user}" method="post" style="width: 95%;">
+        
+        
+        <!--Name-->	
+        <div class="row my-3">
+		  <div class="col">
+              <label for="name" class="form-label carta-testo">Name</label>
+			  <input id="name" name="name" th:value="*{name}" type="text" class="form-control" placeholder="First name" aria-label="First name">
+		  </div>
+		<!--Surname-->
+		  <div class="col">
+            <label for="surname" class="form-label carta-testo">Surname</label>
+			  <input id="surname" name="surname" th:value="*{surname}" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+		  </div>
+		</div>
+		
+		
+		
+		<div class="d-flex justify-content-end align-items-center my-2">
+			<button type="submit" class="btn btn-outline-primary">Save</button>	
+		</div>
+        
+      </form>
     </div>
   </div>
 

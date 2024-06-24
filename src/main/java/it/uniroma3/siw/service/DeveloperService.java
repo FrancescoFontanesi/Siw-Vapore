@@ -53,15 +53,15 @@ public class DeveloperService {
             oldDev.setSurname(newDev.getSurname());
         }
 
-		/*
-		 * if (newDev.getSite_url() != null &&
-		 * !newDev.getSite_url().equals(oldDev.getSite_url())) {
-		 * oldDev.setSite_url(newDev.getSite_url()); }
-		 * 
-		 * if (newDev.getDescription() != null &&
-		 * !newDev.getDescription().equals(oldDev.getDescription())) {
-		 * oldDev.setDescription(newDev.getDescription()); }
-		 * 
+		
+		if (newDev.getSite_url() != null && !newDev.getSite_url().equals(oldDev.getSite_url())) {
+		  oldDev.setSite_url(newDev.getSite_url()); }
+		
+		
+		 if (newDev.getDescription() != null &&
+		 !newDev.getDescription().equals(oldDev.getDescription())) {
+		 oldDev.setDescription(newDev.getDescription()); }
+		 /*
 		 * if (newDev.getLogo() != null && !newDev.getLogo().equals(oldDev.getLogo())) {
 		 * oldDev.setLogo(newDev.getLogo()); }
 		 */

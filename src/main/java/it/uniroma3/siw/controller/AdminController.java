@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.model.Customer;
 import it.uniroma3.siw.model.Developer;
@@ -43,6 +45,7 @@ public class AdminController {
 	@Autowired
 	private GameService gameService;
 	
+    private static String UPLOADED_FOLDER = "src/main/resources/static/images/newGame/";
 
 	
 	@GetMapping("/edit/{id}")
@@ -69,7 +72,21 @@ public class AdminController {
 	}
 	
 	@PostMapping("/editGame/{id}")
-	public String editGame(@Valid @ModelAttribute("game") Game g,  @PathVariable("id") Long id ) {
+	public String editGame(@Valid @ModelAttribute("game") Game g,  @PathVariable("id") Long id,
+			@RequestParam("file") MultipartFile file) {
+		
+		if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+                Files.write(path, bytes);
+                g.setCopertina("/images/newGame/" + file.getOriginalFilename() );
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "newGame";
+            }
+		}
+            
 		gameService.updateGame(id,g);
 		return "redirect:/myPage";
 	}

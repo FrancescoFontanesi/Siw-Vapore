@@ -10,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Developer extends User {
@@ -76,6 +75,30 @@ public class Developer extends User {
 	public String toString() {
 		return "Developer [name ="+ super.getName()+", surname =" + super.getSurname() + ",  id=" + id + ", company=" + company + ", logo=" + logo + ", site_url=" + site_url
 				+ ", developedGames=" + developedGames + "]";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public List<Game> getDevelopedGames() {
+		return developedGames;
+	}
+
+	public void setDevelopedGames(List<Game> developedGames) {
+		this.developedGames = developedGames;
 	}
 	
 	

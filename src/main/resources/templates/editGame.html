@@ -1,271 +1,151 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAPORE Game</title>
-    <link rel="stylesheet" href="/css/cssBootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/stile.css">
-    <link rel="stylesheet" href="/css/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
-
-    <script defer src="/js/bootstrap.bundle.min.js"></script>
-
+	<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Edit Customer</title>
+	    <link rel="stylesheet" th:href="@{/css/cssBootstrap/bootstrap.min.css}">
+	    <link rel="stylesheet" th:href="@{/css/stile.css}">
+	    <link rel="stylesheet" th:href="@{/css/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css}">
+	    <script defer th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script defer src="js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="background">
 
- 
+  
+  
   
   <nav class="navbar navbar-expand-lg  coluno">
     <div class="container coluno">
-      <a class="navbar-brand carta-testo" >VAPORE</a>
+      <a class="navbar-brand carta-testo " >VAPORE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active bi bi-house " style="color: white;" aria-current="page" href="/"></a>
+            <a class="nav-link active bi bi-house" aria-current="page" style="color: white;" href="/"></a>
           </li>
         </ul>
         
-		<div class="row d-flex justify-content-end">
-					
-		   <div class="col d-flex justify-content-end">
-			   
-			   
-			   
-			   
-				<div sec:authorize="isAnonymous()">
+        
+        <div sec:authorize="isAnonymous()">
 			           <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/login}">Login</a>
 			    </div>
 	            <div sec:authorize="isAuthenticated()">
 				       <a class="btn bi bi-person-circle ms-1" style="background-color: white;" th:href="@{/myPage}">My Page</a>
 			     </div>		
-			
-				<div class=" d-flex justify-content-end">
-     				 <a class="btn  bi bi-cart2 ms-1" style="background-color: white;" href="/cart"></a>
-				</div>
-				
-		    </div>
-		    
-		    
-		 </div>
+		
 
       </div>
     </div>
   </nav>
    
-       
-
- 
-  <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double;">
-        
-        
-
-        <div class="row justify-content-center align-items-center ">
-            
-            <div class="col-lg-6 col-md-6 grid-item my-4">
-               <h2 class="display-4 coluno my-3 ms-3" style="color: white;" th:text="${game.name}">
-            Nome Gioco
-            
-        </h2>
-               
-				<div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-
-                <div class="carousel-inner">
-                  <div class="carousel-item active c-item-game" th:each="image, iterStat : ${game.images}" th:class="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">
-                		<img th:src="@{/images/{image}(image=${image})}" class="d-block w-100 c-img-game img-thumbnail shadow-sm rounded-0" alt="Game Image">
-                  </div>
-                 
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-                
-                
-              	</div>   
-               
-                <div class="mt-4">
-					<h6 class="d-inline" style="color: white;">DATA DI RILASCIO: </h6>
-					<h6 class="d-inline" style="color: white;" th:text="${game.releaseDate}"></h6>	
-				</div>
-				
-				<div>
-					<h6 class="d-inline" style="color: white;">SVILUPPATORE: </h6>
-					<h6 class="d-inline" style="color: white;" th:text="${game.developer}"> nome sviluppatore</h6>	
-				</div>
-				
-				<div>
-					<h6 class="d-inline" style="color: white;">CATERGORIA: </h6>
-					<h6 class="d-inline" style="color: white;" th:text="${game.category}"> nome categoria</h6>		
-				</div>
-				
-			
-				
-                
-              
-
-            
-            </div>
-         
-            <div class="col-lg-4 col-md-6 grid-item mt-5 d-flex flex-column align-items-center justify-content-center ">
-                <img class="img-fluid w-90 mb-3 img-thumbnail shadow-sm rounded-0"th:src=${game.copertina} alt="">
-                
-				<div class="text-center" >
-					<div th:if="${#authentication.authorities[0].authority == 'Customer'}" >
-						<a stype="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/addToCart(id=${game.id})}"
-							th:text="'Add To Cart: ' + ${game.price}"></a>
-					</div>
-						<div th:if="${#authentication.authorities[0].authority == 'ADMIN'}">
-					<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/delete(id=${game.id})}">Cancella</a>
-				</div>
-				</div>
-					
-					
-
-
-
-        </div>
-        
    
-        
-  </div>
-  
-  
- 
-
- 
-  <section id="descrizione">
-      <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
-        <h4 class="display-4" style="color: white;">Informazioni sul gioco</h4>
-		<p th:text="${game.description}" class="carta-testo"></p>
-      </div>
-    </section>
-
-
-
-
-	<section id="recensioni">
-      <div class="container coluno my-5 " style="border-radius: 20px; border-color: white; border-style: double;">
-        <h4 class="display-4" style="color: white;" >Recensioni</h4>
-        
-        
-      
-        <div th:if="${game.reviews==null || game.reviews.isEmpty()}" class="carta-testo">Non ci sono Recensioni nel gioco</div>
-
-
-        <ul class="list-group">
-		    <li th:each="review : ${game.reviews}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
-				<div style="display: flex; justify-content: space-between; align-items: center;">
-
-		        <h5 class="carta-testo" th:text="${review.text} ">Review Title</h5>
-		        <h5 class="carta-testo" th:switch="${review.rating}">
-		            <span th:case="1"><i class="bi bi-star-fill"></i></span>
-		            <span th:case="2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-		            <span th:case="3"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-		            <span th:case="4"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-		            <span th:case="5"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
-		        </h5>
-		        </div>
-		    </li>
-		</ul>
-
-        <!-- Button trigger modal -->
-			<button type="button" class="btn btn-outline-light my-2  " data-bs-toggle="modal" data-bs-target="#exampleModal">
-			  Aggiungi una recensione ! 
-			</button>
-			
-			<!-- Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content background">
-			      <div class="modal-header">
-			        <h1 class="modal-title fs-5 carta-testo" id="exampleModalLabel">Nuova Recensione</h1>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body background">
-					  
-			        <form th:action="@{/game/{id}(id=${game.id})}" method="POST">				
-						<div class="mb-3" style="width: 75%;">
-						  <textarea class="form-control" placeholder="testo della recensione" placeid="text" name="text" rows="3" required></textarea>
-						</div>
-						 
-						 
-						 <div class="form-check form-check-inline">
-						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating1" name="rating" min="0" max="5" value="1" required ></i>
-						  <label class="form-check-label carta-testo" for="inlineRadio1">1</label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating2" name="rating" min="0" max="5"  value="2" required></i>
-						  <label class="form-check-label carta-testo" for="inlineRadio2">2</label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating3" name="rating" min="0" max="5" value="3" required ></i>
-						  <label class="form-check-label carta-testo" for="inlineRadio2">3</label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating4" name="rating" min="0" max="5"  value="4" required></i>
-						  <label class="form-check-label carta-testo" for="inlineRadio2">4</label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <i class="bi bi-star-fill" style="color: white;"> <input class="form-check-input" type="radio" id="rating5" name="rating" min="0" max="5" value="5" required></i>
-						  <label class="form-check-label carta-testo" for="inlineRadio2">5</label>
-						</div>
-						
-					  <button type="submit" class="btn btn-outline-light">Submit</button>
-		
-					</form>
-			        
-			      </div>
-			      
-			      
-			    </div>
-			  </div>
-			</div>
-        
-        
-		
-   		 </div>
-    </section>
-
-
-
     
-    <div class="container text-center " >
-    <div class="row justify-content-center mb-3" style="gap: 10px;">
-      <div class="col-4 p-2 my-1 coluno" style="border-radius: 15px;">
-        <h1 class="diplay-6 my-4 carta-testo">VAPORE</h1>
-        <a class="btn  btn-outline-light bi bi-person-circle ms-1"  href="/login"> Login</a>
-        <a class="btn  btn-outline-secondary bi bi-plus-circle-fill ms-1"  href="/registration"> Registrati</a>
-
-      </div>
-      <div class="col-7 text-center p-2 my-1 coluno" style="border-radius: 15px;">
-        <h5 class="carta-testo">Chi siamo ?</h5>
-        <p class="small carta-testo">Siamo un team che ha creato questo blog per rendere meno noisosi le i vostri pranzi e le vostre cene, questo sito web è stato progettato da Niccolo Corraro per il Corso di Sistemi Informativi su Web.</p>
-      	
-      	<div class="d-flex align-items-center justify-content-center" > 
-		    <h6 class="carta-testo">Seguici :</h6>
-		    <a class="bi bi-instagram mx-2" href="https://www.instagram.com/nicc.cor/" ></a>
-   		   	<a class="bi bi-youtube" href="https://www.youtube.com/" ></a>
-		    <a class="bi bi-facebook mx-2" href="https://www.facebook.com/universitaroma3/?locale=it_IT" ></a>
-		    <a class="bi bi-tiktok" href="https://www.tiktok.com/@nicc.cor" ></a>
-
-		    
+  <div class="container my-5 coluno" style="border-radius: 20px; border-color: white; border-style: double;">
+    
+   
+    <div class="row carta-testo d-flex justify-content-center align-items-center" style="height: 300px;">
+	  <div class="d-flex justify-content-center align-items-center" style="background-image: url(/images/chiavi.jpeg);border-radius: 15px;border-style: double;border-color: white; background-size: cover; height: 80%; width: 90%;" >
+		<div class="col-lg-8" >
+            <h2 class="display-1 text-center" style="border-radius: 15px; background-color: rgb(37, 150, 190,0.5);">Edit Game</h2>
+        </div>  
+	  </div>
+        
+    </div>
+  
+  
+  
+  
+    <div class="container d-flex justify-content-center align-items-center">
+		
+      <form th:action="@{/editGame/{id}(id=${id})}" th:object="${game}"   enctype="multipart/form-data" method="post" style="width: 95%;">
+        
+        
+        <!--Name-->	
+        <div class="row my-3">
+		  <div class="col">
+              <label for="name" class="form-label carta-testo">Name</label>
+			  <input id="name" name="name" th:value="*{name}" type="text" class="form-control" placeholder="First name" aria-label="First name">
+		  </div>
+		<!--releaseDate-->
+		  <div class="col">
+            <label for="releaseDate" class="form-label carta-testo">Anno di uscita:</label>
+			  <input id="releaseDate" name="releaseDate" th:value="*{releaseDate}" type="number" class="form-control" placeholder="Last name" aria-label="Last name">
+		  </div>
 		</div>
-      </div>
+		
+		
+		 <!--descrizione-->
+         <div class="form-group">
+             <label class="carta-testo" for="description">Descrizione</label>
+             <textarea class="form-control" id="description"  name="description" th:value="*{description}" rows="3" required></textarea>
+         </div>
+         
+         <!--price-->	
+        <div class="row my-3">
+		  <div class="col">
+			  <label class="carta-testo" for="price">Prezzo</label>
+             <input type="number" class="form-control" name="price" id="price" th:value="*{price}"  required></input>
+
+		  </div>
+		<!--category-->
+		  <div class="col">
+           <label class="carta-testo" for="category">Categoria</label>
+			<select class="form-control" id="category" name="category" th:value="*{category}" required>
+				<option value="" disabled selected>Seleziona una categoria</option>
+				<option value="Adventure">Adventure</option>
+				<option value="Action">Action</option>
+				<option value="Strategy">Strategy</option>
+				<option value="Fps">Fps</option>
+			</select>
+		  </div>
+		</div>
+		
+		<!--foto-->
+		<div class="input-group my-2">
+		 <input type="file" class="form-control" id="file" name="file">
+     	  <label class="input-group-text" for="inputGroupFile02" >Copertina </label>
+		</div>
+		
+		
+		<div class="d-flex justify-content-end align-items-center my-2">
+			<button type="submit" class="btn btn-outline-primary">Save</button>	
+		</div>
+        
+      </form>
     </div>
   </div>
 
-</body>
+  
 
+  <div class="container text-center ">
+		<div class="row justify-content-center mb-3" style="gap: 10px;">
+			<div class="col-4 p-2 my-1 coluno" style="border-radius: 15px;">
+				<h1 class="diplay-6 my-4 carta-testo">VAPORE</h1>
+				<a class="btn  btn-outline-light bi bi-person-circle ms-1" href="/login"> Login</a>
+				<a class="btn  btn-outline-secondary bi bi-plus-circle-fill ms-1" href="/registration"> Registrati</a>
+
+			</div>
+			<div class="col-7 text-center p-2 my-1 coluno" style="border-radius: 15px;">
+				<h5 class="carta-testo">Chi siamo ?</h5>
+				<p class="small carta-testo">Siamo un team che ha creato questo blog per rendere meno noisosi le i
+					vostri pranzi e le vostre cene, questo sito web è stato progettato da Niccolo Corraro per il Corso
+					di Sistemi Informativi su Web.</p>
+
+				<div class="d-flex align-items-center justify-content-center">
+					<h6 class="carta-testo">Seguici :</h6>
+					<a class="bi bi-instagram mx-2" href="https://www.instagram.com/nicc.cor/"></a>
+					<a class="bi bi-youtube" href="https://www.youtube.com/"></a>
+					<a class="bi bi-facebook mx-2" href="https://www.facebook.com/universitaroma3/?locale=it_IT"></a>
+					<a class="bi bi-tiktok" href="https://www.tiktok.com/@nicc.cor"></a>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
 </html>

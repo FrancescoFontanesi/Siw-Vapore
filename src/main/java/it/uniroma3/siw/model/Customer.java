@@ -21,9 +21,6 @@ public class Customer extends User {
 			
 	private String profilePic;
 
-
-
-
 	public String birthDay;
 
 

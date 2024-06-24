@@ -81,7 +81,8 @@
 					<div style="display: flex; justify-content: space-between; align-items: center;">
 	
 			        <h5 class="carta-testo" th:text="${game.name} ">Review Title</h5>
-			        
+   					<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/editGame/{id}(id=${game.id})}">Modifica</a>
+
 			        </div>
 			    </li>
 			</ul>
