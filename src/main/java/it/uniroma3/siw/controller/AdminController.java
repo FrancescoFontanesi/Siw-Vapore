@@ -1,5 +1,10 @@
 package it.uniroma3.siw.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,10 +49,10 @@ public class AdminController {
 	public String editDeveloper(@PathVariable("id") Long id,Model model) {
 		model.addAttribute("user", credentialsRepository.findById(id).get().getUser());
 		model.addAttribute("id",id);
-		if(credentialsRepository.findById(id).get().getRole() == "Developer")
+		if(credentialsRepository.findById(id).get().getRole().equals("Developer"))
 		return "editDeveloper";
 		else
-			return "editCustomer";
+		return "editCustomer";
 	}
 	
 	
