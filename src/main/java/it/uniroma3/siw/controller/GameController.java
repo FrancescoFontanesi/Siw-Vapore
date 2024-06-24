@@ -67,8 +67,7 @@ public class GameController {
 		customerService.addToCartService(auth.getName(), id);
 		
 		return "redirect:/cart";
-		
-		
+			
 	}
 	
 	

@@ -1,5 +1,6 @@
 package it.uniroma3.siw.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import it.uniroma3.siw.model.Review;
 import it.uniroma3.siw.repository.GameRepository;
 import it.uniroma3.siw.repository.ReviewRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @Service
 public class GameService {
@@ -48,6 +50,40 @@ public class GameService {
     		gameRepository.delete(game);
     		
     	}
+
+
+
+		public void updateGame(Long id, @Valid Game newGame) {
+			
+		    Game oldGame = gameRepository.findById(id).get();
+		    
+		    newGame.setDeveloper(oldGame.getDeveloper());
+		    newGame.setReviews(new ArrayList<Review>());
+		    
+		    if (newGame.getName() != null && !newGame.getName().equals(oldGame.getName())) {
+	            oldGame.setName(newGame.getName());
+	        }
+		    
+		    if (newGame.getCategory()!= null && !newGame.getCategory().equals(oldGame.getCategory())) {
+	            oldGame.setCategory(newGame.getCategory());
+	        }
+		    
+		    if (newGame.getPrice() != null && !newGame.getPrice().equals(oldGame.getPrice())) {
+	            oldGame.setPrice(newGame.getPrice());
+	        }
+		    
+		    if (newGame.getCopertina()!= null && !newGame.getCopertina().equals(oldGame.getCopertina())) {
+	            oldGame.setCopertina(newGame.getCopertina());
+	        }
+		    
+		    if (newGame.getReleaseDate()!= null && !newGame.getReleaseDate().equals(oldGame.getReleaseDate())) {
+	            oldGame.setReleaseDate(newGame.getReleaseDate());
+	        }
+
+		    gameRepository.save(newGame);
+		    
+			
+		}
     	
     }
 

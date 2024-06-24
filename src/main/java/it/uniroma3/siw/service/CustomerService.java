@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Customer;
+import it.uniroma3.siw.model.Developer;
 import it.uniroma3.siw.model.Game;
 import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.repository.GameRepository;
@@ -64,4 +65,45 @@ public class CustomerService {
             credentialsRepository.save(credentials);
         }
     }
+
+    @Transactional
+	public void updateCustomer(Long id, Customer newC) {
+    	
+    	Customer oldC = (Customer)credentialsRepository.findById(id).get().getUser();
+    	
+    	newC.setId(oldC.getId());
+    	newC.setBoughtGames(oldC.getBoughtGames());
+    	newC.setCart(oldC.getCart());
+    	newC.getWalletFunds();
+    	
+    	
+    	if (newC.getName() != null && !newC.getName().equals(oldC.getName())) {
+            oldC.setName(newC.getName());
+        }
+
+        if (newC.getSurname() != null && !newC.getSurname().equals(oldC.getSurname())) {
+            oldC.setSurname(newC.getSurname());
+        }
+
+		/*
+		 * if (newC.getSite_url() != null &&
+		 * !newC.getSite_url().equals(oldC.getSite_url())) {
+		 * oldC.setSite_url(newC.getSite_url()); }
+		 * 
+		 * if (newC.getDescription() != null &&
+		 * !newC.getDescription().equals(oldC.getDescription())) {
+		 * oldC.setDescription(newC.getDescription()); }
+		 * 
+		 * if (newC.getLogo() != null && !newC.getLogo().equals(oldC.getLogo())) {
+		 * oldC.setLogo(newC.getLogo()); }
+		 */
+        
+        Credentials c = credentialsRepository.findByUser(oldC);
+        c.setUser(newC);
+        credentialsRepository.save(c);
+    	
+    	
+      
+}
+
 }

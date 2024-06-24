@@ -44,20 +44,17 @@ public class CredentialsService  {
     }
     
     @Transactional
+    public String updatePassword(String psw) {
+    	return this.passwordEncoder.encode(psw);
+    }
+    
+    @Transactional
     public void deleteCredentials(Long credentialsId) {
         Credentials credentials = credentialsRepository.findById(credentialsId).orElse(null);
         if(credentials!=null) credentialsRepository.delete(credentials);
     }
 
     
-    @Transactional
-	public void updateUser(User user, Credentials cred,  BindingResult userBindingResult) {
-		
-
-		cred.setUser(user);
-		credentialsRepository.save(cred);
-		 
-	}
     
 }
    

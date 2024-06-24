@@ -37,7 +37,9 @@ public class DeveloperService {
 	}
     
 
-    public void updateDeveloper(Developer oldDev, Developer newDev) {
+    public void updateDeveloper(Long id, Developer newDev) {
+    	
+    	Developer oldDev = (Developer)credentialsRepository.findById(id).get().getUser();
     	
     	newDev.setId(oldDev.getId());
     	newDev.setdevelopedGames(oldDev.getdevelopedGames());

@@ -128,7 +128,10 @@
 					</div>
 						<div th:if="${#authentication.authorities[0].authority == 'ADMIN'}">
 					<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/delete(id=${game.id})}">Cancella</a>
-				</div>
+					<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/editGame/{id}(id=${game.id})}">Modifica</a>
+					</div>
+					
+						
 				</div>
 					
 					

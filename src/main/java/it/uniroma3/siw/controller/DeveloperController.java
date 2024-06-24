@@ -12,11 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.model.Game;
+import it.uniroma3.siw.repository.GameRepository;
 import it.uniroma3.siw.service.DeveloperService;
 import it.uniroma3.siw.validator.GameValidator;
 import jakarta.validation.Valid;
@@ -29,6 +31,9 @@ public class DeveloperController {
 	
     private static String UPLOADED_FOLDER = "src/main/resources/static/images/newGame/";
 
+    
+    @Autowired
+    private GameRepository gameRepository;
 	
 	
 	@Autowired
@@ -38,6 +43,13 @@ public class DeveloperController {
 	public String getNewGameForm(Model m) {
 		m.addAttribute("game", new Game());
 		return "newGame";
+	}
+	
+	@GetMapping("/editGame/{id}")
+	public String editGame(@PathVariable("id") Long id, Model m) {
+		m.addAttribute("game", gameRepository.findById(id).get());
+		m.addAttribute("id", id);
+		return "editGame";
 	}
 	
 	@PostMapping("/addGame")

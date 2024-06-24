@@ -64,6 +64,14 @@ public class Game {
 	@OneToMany(mappedBy = "game",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public List<Review> reviews;
 	
+	
+
+	public Game() {
+		this.images = new ArrayList<String>();
+		this.reviews = new ArrayList<Review>();
+		
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -104,14 +112,6 @@ public class Game {
 		this.copertina = copertina;
 	}
 
-	public Integer getreleaseDate() {
-		return releaseDate;
-	}
-
-	public void setreleaseDate(Integer releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-
 	public Double getPrice() {
 		return price;
 	}
@@ -119,8 +119,6 @@ public class Game {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-
-	
 
 	public Developer getDeveloper() {
 		return developer;
@@ -136,12 +134,6 @@ public class Game {
 
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
-	}
-
-	public Game() {
-		this.images = new ArrayList<String>();
-		this.reviews = new ArrayList<Review>();
-		
 	}
 	
 	

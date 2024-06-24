@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="container">
-      <form th:action="@{/editDeveloper/{id}(id=${id})}" th:object="${developer}" method="post">
+      <form th:action="@{/editDeveloper/{id}(id=${id})}" th:object="${user}" method="post">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
           <input type="text" class="form-control" id="name" name="name" th:value="*{name}">
@@ -26,7 +26,21 @@
           <label for="surname" class="form-label">Surname</label>
           <input type="text" class="form-control" id="surname" name="surname" th:value="*{surname}">
         </div>
-        
+		
+		<!--sito_url-->
+		<div class="input-group my-3">
+			<span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+			<input type="text" class="form-control" id="basic-url" name="site_url" 			th:value="*{site_url}">
+		</div>
+		
+		<!--company
+		<div class="input-group my-3">
+		 <span class="input-group-text" id="basic-addon4">Compagnia</span>
+		 <input th:field="*{company}" type="text" class="form-control" id="company" aria-describedby="basic-addon3 basic-addon4">
+		 </div>-->
+		
+		
+		
         <button type="submit" class="btn btn-primary">Save</button>
       </form>
     </div>
