@@ -27,7 +27,7 @@ public class DeveloperService {
 
 		
 			g.setDeveloper(d);
-			d.getdevelopedGames().add(g);
+			d.getDevelopedGames().add(g);
 			c.setUser(d);
 			
 			gameRepository.save(g);
@@ -42,7 +42,7 @@ public class DeveloperService {
     	Developer oldDev = (Developer)credentialsRepository.findById(id).get().getUser();
     	
     	newDev.setId(oldDev.getId());
-    	newDev.setdevelopedGames(oldDev.getdevelopedGames());
+    	newDev.setDevelopedGames(oldDev.getDevelopedGames());
     	
     	
     	if (newDev.getName() != null && !newDev.getName().equals(oldDev.getName())) {

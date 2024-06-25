@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -34,6 +35,29 @@ public class Developer extends User {
 	public List<Game> developedGames;
 	
 
+	
+
+	public Developer() {
+		super();
+		this.developedGames = new ArrayList<>();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
 	public String getLogo() {
 		return logo;
 	}
@@ -42,21 +66,12 @@ public class Developer extends User {
 		this.logo = logo;
 	}
 
-
 	public String getSite_url() {
 		return site_url;
 	}
 
 	public void setSite_url(String site_url) {
 		this.site_url = site_url;
-	}
-
-	public List<Game> getdevelopedGames() {
-		return developedGames;
-	}
-
-	public void setdevelopedGames(List<Game> developedGames) {
-		this.developedGames = developedGames;
 	}
 
 	public String getDescription() {
@@ -67,8 +82,12 @@ public class Developer extends User {
 		this.description = description;
 	}
 
-	public Developer() {
-		super();
+	public List<Game> getDevelopedGames() {
+		return developedGames;
+	}
+
+	public void setDevelopedGames(List<Game> developedGames) {
+		this.developedGames = developedGames;
 	}
 
 	@Override
