@@ -41,6 +41,3 @@ insert into game (id,name,category,release_date,description,copertina,images) va
 insert into game (id,name,category,release_date,description,copertina,images) values (nextval('games_seq'),'Halo','Fps',2019,'L avventura leggendaria di Master Chief include sei titoli, sviluppati per PC e raccolti in un unica esperienza integrata. ','/images/haloCopertina.jpg' , ARRAY['/images/halo/img1.jpg', '/images/halo/img2.jpg', '/images/halo/img3.jpg']);
 
 
-
-INSERT INTO utente (id,name) values (nextval('utente_seq'),'admin');
-INSERT INTO credentials (id, email, password, role, user_id) VALUES (nextval('credentials_seq'),'admin@example.com', 'p', 'ADMIN', (SELECT id FROM utente where id = 1));

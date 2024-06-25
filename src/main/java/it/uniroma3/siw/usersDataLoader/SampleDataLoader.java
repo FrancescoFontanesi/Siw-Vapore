@@ -10,9 +10,6 @@ import it.uniroma3.siw.model.Customer;
 import it.uniroma3.siw.model.Developer;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CredentialsRepository;
-import it.uniroma3.siw.repository.CustomerRepository;
-import it.uniroma3.siw.repository.DeveloperRepository;
-import it.uniroma3.siw.repository.UserRepository;
 
 @Component
 public class SampleDataLoader implements CommandLineRunner {

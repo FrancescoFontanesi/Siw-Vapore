@@ -96,30 +96,6 @@ public class Developer extends User {
 				+ ", developedGames=" + developedGames + "]";
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getCompany() {
-		return company;
-	}
-
-	public void setCompany(String company) {
-		this.company = company;
-	}
-
-	public List<Game> getDevelopedGames() {
-		return developedGames;
-	}
-
-	public void setDevelopedGames(List<Game> developedGames) {
-		this.developedGames = developedGames;
-	}
-	
 	
 	
 }
