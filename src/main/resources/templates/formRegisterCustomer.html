@@ -50,7 +50,7 @@
           </h3>
             <form style="width: 100%;"  th:action="@{/formRegisterCustomer}" th:object="${customer}"method="POST" enctype="multipart/form-data">
 				
-                <div class="row my-3">
+                <div class="row " style="gap: 0px;">
 				<!--Name-->	
 				  <div class="col-lg-5">
 				    <input th:field="*{name}" type="text" class="form-control" placeholder="First name" aria-label="First name">
@@ -64,13 +64,13 @@
 				
                 
                 <!--Age-->
-		        <div class="mb-3" style="width: 40%;">
+		        <div class="mb-4" style="width: 40%;">
 				  <label for="formAgeInput" class="form-label"></label>
 				  <input th:field="*{birthDay}" type="text" class="form-control" id="birthDay" placeholder="Input your age">
 				</div>
 				
 				<!--Foto-->
-				<div class="input-group mt-2">
+				<div class="input-group mt-2 mb-4" style="width: 82%;">
 				  <input type="file" class="form-control" id="file" name="file">
 				  <label class="input-group-text" for="inputGroupFile02" >Foto Profilo</label>
 				</div>
