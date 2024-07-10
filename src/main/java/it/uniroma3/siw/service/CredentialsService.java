@@ -51,7 +51,9 @@ public class CredentialsService  {
     @Transactional
     public void deleteCredentials(Long credentialsId) {
         Credentials credentials = credentialsRepository.findById(credentialsId).orElse(null);
-        if(credentials!=null) credentialsRepository.delete(credentials);
+        if(credentials!=null) 
+        	
+        	credentialsRepository.delete(credentials);
     }
 
     

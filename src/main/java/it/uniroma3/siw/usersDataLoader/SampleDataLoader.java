@@ -57,7 +57,7 @@ public class SampleDataLoader implements CommandLineRunner {
 
         // Creating credentials for user
         Credentials userCredentials = new Credentials();
-        userCredentials.setEmail("ajeje.brazorf@peperonata.com");
+        userCredentials.setEmail("admin@email.com");
         userCredentials.setPassword(passwordEncoder.encode("pass"));
         userCredentials.setRole(Credentials.ADMIN_ROLE);
         userCredentials.setUser(user);

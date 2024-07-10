@@ -10,7 +10,6 @@
 		import jakarta.validation.constraints.NotBlank;
 		
 		@Entity
-		@Inheritance(strategy = InheritanceType.JOINED)
 		@Table(name = "utente")
 		public class User {
 			

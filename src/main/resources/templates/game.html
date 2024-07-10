@@ -119,7 +119,7 @@
             </div>
          
             <div class="col-lg-4 col-md-6 grid-item mt-5 d-flex flex-column align-items-center justify-content-center ">
-                <img class="img-fluid w-90 mb-3 img-thumbnail shadow-sm rounded-0"th:src=${game.copertina} alt="">
+                <img class="img-fluid w-90 mb-3 img-thumbnail shadow-sm rounded-0" style="width: auto;height: 345px;" th:src=${game.copertina} alt="">
                 
 				<div class="text-center" >
 					<div th:if="${#authentication.authorities[0].authority == 'Customer'}" >

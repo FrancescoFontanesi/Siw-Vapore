@@ -47,7 +47,7 @@ public class AuthConfiguration  {
                 authorizeRequests
                     .requestMatchers("/**", "/index", "/register", "/css/**", "/images/**", "favicon.ico").permitAll()
                     .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
-                    .requestMatchers("/myPage/**","/cart").authenticated()
+                    .requestMatchers("/myPage/**","/editGame","/addGame","/cart").authenticated()
                     .anyRequest().authenticated())
             .formLogin(formLogin ->
                 formLogin
