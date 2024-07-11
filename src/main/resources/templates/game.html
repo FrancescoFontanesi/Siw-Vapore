@@ -58,17 +58,19 @@
        
 
  
-  <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double;">
+  <div class="container my-3 coluno " style="border-radius: 20px; border-color: white; border-style: double;">
         
-        
+        <div class="row " style="width: 100%;">
+            <div class="col-lg-7   text-center ">
+	            <h2 class="display-4 coluno my-3  " style="color: white;" th:text="${game.name}"></h2>
+            </div>
+            
+        </div>
 
-        <div class="row justify-content-center align-items-center ">
+        <div class="row d-flex justify-content-center align-items-center mb-4 ">
             
             <div class="col-lg-6 col-md-6 grid-item my-4">
-               <h2 class="display-4 coluno my-3 ms-3" style="color: white;" th:text="${game.name}">
-            Nome Gioco
-            
-        </h2>
+ 
                
 				<div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -94,64 +96,65 @@
                 
                 
               	</div>   
-               
-                <div class="mt-4">
-					<h6 class="d-inline" style="color: white;">DATA DI RILASCIO: </h6>
-					<h6 class="d-inline" style="color: white;" th:text="${game.releaseDate}"></h6>	
-				</div>
-				
-				<div>
-					<h6 class="d-inline" style="color: white;">SVILUPPATORE: </h6>
-					<h6 class="d-inline" style="color: white;" th:text="${game.developer}"> nome sviluppatore</h6>	
-				</div>
-				
-				<div>
-					<h6 class="d-inline" style="color: white;">CATERGORIA: </h6>
-					<h6 class="d-inline" style="color: white;" th:text="${game.category}"> nome categoria</h6>		
-				</div>
-				
-			
-				
-                
-              
-
-            
+           
             </div>
          
-            <div class="col-lg-4 col-md-6 grid-item mt-5 d-flex flex-column align-items-center justify-content-center ">
-                <img class="img-fluid w-90 mb-3 img-thumbnail shadow-sm rounded-0" style="width: auto;height: 345px;" th:src=${game.copertina} alt="">
+            <div class="col-lg-4 col-md-6 grid-item d-flex align-items-center justify-content-center  ">
                 
-				<div class="text-center" >
+                <img class=" img-thumbnail shadow-sm rounded-0 " style="width: auto;height: 365px;" th:src=${game.copertina} alt="">
+                
+				
+		
+		        </div>
+		  </div>
+		  
+		  <div class="row mb-4" style="width: 90%;">
+           <div class="text-center d-flex justify-content-end align-items-end" >
 					<div th:if="${#authentication.authorities[0].authority == 'Customer'}" >
 						<a stype="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/addToCart(id=${game.id})}"
 							th:text="'Add To Cart: ' + ${game.price}"></a>
 					</div>
-						<div th:if="${#authentication.authorities[0].authority == 'ADMIN'}">
-					<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/delete(id=${game.id})}">Cancella</a>
-					<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/editGame/{id}(id=${game.id})}">Modifica</a>
+					<div th:if="${#authentication.authorities[0].authority == 'ADMIN'}">
+						<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/delete(id=${game.id})}">Cancella</a>
+						<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/editGame/{id}(id=${game.id})}">Modifica</a>
 					</div>
 					
 						
 				</div>
-					
-					
-
-
-
         </div>
-        
-   
-        
+
   </div>
+		
   
   
  
 
  
   <section id="descrizione">
-      <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
-        <h4 class="display-4" style="color: white;">Informazioni sul gioco</h4>
-		<p th:text="${game.description}" class="carta-testo"></p>
+      <div class="container coluno my-3 p-3" style="border-radius: 20px; border-color: white; border-style: double;">
+        <h4 class="display-4 carta-testo" >Informazioni sul gioco</h4>
+     		   <div class="mt-1">
+					<h6 class="d-inline carta-testo" >DATA DI RILASCIO: </h6>
+					<h6 class="d-inline carta-testo" th:text="${game.releaseDate}"></h6>	
+				</div>
+				
+				<div>
+					<h6 class="d-inline carta-testo" >SVILUPPATORE: </h6>
+					<h6 class="d-inline carta-testo" th:if="${game.developer == null or game.developer == ''}"> Anonimo</h6>
+						<div class="d-inline" th:unless="${game.developer == null or game.developer == ''}">	
+							<h6 class="d-inline carta-testo" style="color: white;" th:text="${game.developer.name}"> nome sviluppatore</h6>	
+                        </div>		
+				</div>
+				
+				<div>
+					<h6 class="d-inline carta-testo" >CATERGORIA: </h6>
+					<h6 class="d-inline carta-testo"  th:text="${game.category}"> nome categoria</h6>		
+				</div>
+				
+				<div>
+					<h6 class="d-inline carta-testo"  >DESCRIZIONE: </h6>
+					<h6 class="d-inline carta-testo" th:text="${game.description}"> nome categoria</h6>		
+				</div>
       </div>
     </section>
 
@@ -159,7 +162,7 @@
 
 
 	<section id="recensioni">
-      <div class="container coluno my-5 " style="border-radius: 20px; border-color: white; border-style: double;">
+      <div class="container coluno my-3 " style="border-radius: 20px; border-color: white; border-style: double;">
         <h4 class="display-4" style="color: white;" >Recensioni</h4>
         
         

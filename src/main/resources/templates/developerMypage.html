@@ -57,39 +57,83 @@
   </div>
 
   <section id="descrizione">
-      <div class="container  my-5" style="border-radius: 20px; border-color: white; border-style: double; background-color:  rgb(37, 150, 190,0.8);">
+      <div class="container  my-5 p-3" style="border-radius: 20px; border-color: white; border-style: double; background-color:  rgb(37, 150, 190,0.6);">
         <h4 class="display-4" style="color: white;" >Informazioni sul profilo</h4>
         <h6 class="display-6 carta-testo" th:text="'Bio: ' + ${user.description}"></h6>
-        <h6 class="display-6 carta-testo" th:text="'Sito Compagnia: ' + ${user.site_url}"></h6>
+        <h6 class="display-6 d-inline carta-testo" >Sito Compagnia:</h6>
+        <a href="#" class=" display-6 d-inline carta-testo  " th:href="${user.site_url}" target="_blank"><h5 class="d-inline">Visita il nostro sito</h5></a>
 
       
       </div>
     </section>
 
-
-   
-
+      
+      	<!--giochi-->
       <section id="giochi">
-        <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
-          <h4 class="display-4" style="color: white;" >Giochi Pubblicati</h4>
-          
-          <div th:if="${user.developedGames==null || user.developedGames.isEmpty()}" class="carta-testo">Non ci sono Giochi pubblicati</div>
-
-
-	        <ul class="list-group">
-			    <li th:each="game : ${user.developedGames}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
-					<div style="display: flex; justify-content: space-between; align-items: center;">
-	
-			        <h5 class="carta-testo" th:text="${game.name} ">Review Title</h5>
-   					<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/editGame/{id}(id=${game.id})}">Modifica</a>
-
-			        </div>
-			    </li>
-			</ul>
+        <div class="container text-center  coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
+        <div class="row  mt-1 coluno " style="border-top-right-radius: 15px; border-top-left-radius: 15px;">
+          <div class="col p-2  ">
   
-  			<a class="btn btn-outline-light my-2" th:href="@{/addGame}"> Aggiungi un Gioco!</a>
-        </div>
-      </section>
+          <h4 class="display-4" style="color: white;" >Giochi Pubblicati</h4>
+	        
+	        
+	      
+          <div th:if="${user.developedGames==null || user.developedGames.isEmpty()}" class="carta-testo">Non ci sono Giochi pubblicati</div>
+	
+			 <div class="row justify-content-center">
+		            <div  class="col-lg-2 col-md-3 mb-2" th:each="game , iterStat : ${user.developedGames}"  >
+		                
+		                    <div class="card coluno" style="border-radius: 20px;border-color: #b5e8e9; border-style: double;">
+		                        <span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
+		                        <div class="card-body"style="height: 100px;">
+		                            <h6 class="card-title carta-testo" th:text="${game.name}"></h6>
+		                            <a type="button" class="btn btn-outline-primary btn-sm bi bi-info-square-fill"th:href="@{'/game' + '/' + ${game.id}}"></a>
+		                            
+					                <a type="button" class="btn btn-outline-primary btn-sm bi bi-trash-fill " data-bs-toggle="modal" data-bs-target="#modal" ></a>
+					                <a type="button" class="btn btn-outline-primary btn-sm bi bi-pen-fill" th:href="@{/editGame/{id}(id=${game.id})}"></a>
+					  
+					                
+					         
+										
+										<!-- Modal -->
+										<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										  <div class="modal-dialog">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h1 class="modal-title fs-5" id="exampleModalLabel">AVVISO!</h1>
+										        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										      </div>
+										      <div class="modal-body">
+										        Se elimini il gioco non sara' piu' possibile recuperarla
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              									<!--<a th:href="@{/ricetta/delete/{id}(id=${ricetta.id})}" class="btn btn-primary">Elimina</a>-->
+    											<a class="btn btn-primary" th:href="@{/game/{id}/delete(id=${game.id})}">Elimina</a>
+
+										      </div>
+										    </div>
+										  </div>
+										</div>
+				                 </div>
+		                    </div>
+		                
+		                <!-- Chiusura e apertura di una nuova riga ogni 4 elementi -->
+		                <div th:if="${iterStat.index % 4 == 3}" class="w-100"></div>
+		            </div>
+		        </div>
+		        
+	      
+          </div>
+  		  
+  			
+      </div>
+      <div class="row blu2 d-flex justify-content-end p-2" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+ 			  <a class="btn btn-outline-light ms-4 my-2" style="width: 20%;"th:href="@{/addGame}"> Aggiungi un Gioco!</a>
+	  </div>
+	
+    </div>
+   </section>
     
  <div class="container text-center " >
     <div class="row justify-content-center mb-3" style="gap: 0px;">
