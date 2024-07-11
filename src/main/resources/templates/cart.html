@@ -48,30 +48,18 @@
    
        
 
-  <div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double; background-image: url(/images/cart.jpg); height: 300px;">
-        
-        
-        <div class="row justify-content-center">
-            
-            
-            <div class="col-lg-4 col-md-6 grid-item my-4 justify-content-center " >
-                <h1 class="display-4  my-3 ms-3" style="background-color: rgb(37, 150, 190,0.5); color: white;">
-                   Il Tuo Carrello
-                </h1>
-        
-
-            </div>
-        </div>
-        
-  </div>
+  <div class="container my-5 d-flex align-items-center justify-content-center" style="border-radius: 20px; border-color: white; border-style: double; background-image: url(/images/cart.jpg); height: 300px; background-size: cover; background-position: center; background-repeat: no-repeat;">
+          <h4 class="display-1 carta-testo text-center" style="font-size: 58px; border-radius: 15px; background-color: rgba(37, 150, 190, 0.5);">
+              IL TUO CARRELLO
+          </h4>
+      </div>
   
   
   
 
-  <section id="giochi">
-      <div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
+  <section id="giochi">	
+      <div class="container d-flex align-items-center justify-content-center my-5" style="border-radius: 20px; border-color: white; border-style: double;">
 		<div th:if="${customer.cart==null || customer.cart.isEmpty()}" class="carta-testo text-center">Non ci sono giochi nel carrello</div>
-
         <div class="row justify-content-center">
             <div  class="col-lg-2 col-md-3 mb-3" th:each="game, iterStat : ${customer.cart}">
                 

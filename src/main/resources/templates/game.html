@@ -81,7 +81,7 @@
 
                 <div class="carousel-inner">
                   <div class="carousel-item active c-item-game" th:each="image, iterStat : ${game.images}" th:class="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">
-                		<img th:src="@{{image}(image=${image})}" class="d-block w-100 c-img-game img-thumbnail shadow-sm rounded-0" alt="Game Image">
+                		<img th:src="@{${image}}" class="d-block w-100 c-img-game img-thumbnail shadow-sm rounded-0" 					style="width: auto; height: 365px;" alt="Game Image">
                   </div>
                  
                 </div>

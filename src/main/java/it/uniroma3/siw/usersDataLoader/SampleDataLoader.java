@@ -35,7 +35,7 @@ public class SampleDataLoader implements CommandLineRunner {
 
         // Creating a developer
         Developer developer = new Developer();
-        developer.setName("Pavlo");
+        developer.setName("Jane");
         developer.setSurname("Doe");
         developer.setDate("02-02-1985");
         developer.setDescription("Game Developer");
@@ -57,7 +57,7 @@ public class SampleDataLoader implements CommandLineRunner {
 
         // Creating credentials for user
         Credentials userCredentials = new Credentials();
-        userCredentials.setEmail("admin@email.com");
+        userCredentials.setEmail("admin@example.com");
         userCredentials.setPassword(passwordEncoder.encode("pass"));
         userCredentials.setRole(Credentials.ADMIN_ROLE);
         userCredentials.setUser(user);

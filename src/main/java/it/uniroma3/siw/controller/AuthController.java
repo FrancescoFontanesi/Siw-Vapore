@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Customer;
@@ -78,14 +79,12 @@ import jakarta.validation.Valid;
 	    }
 	
 	    @PostMapping("/registration")
-	    public String showSpecificRoleRegister(Model model, @Valid @ModelAttribute("credentials") Credentials credentials, BindingResult result) {
+	    public String showSpecificRoleRegister(Model model, @Valid @ModelAttribute("credentials") Credentials credentials, BindingResult result, RedirectAttributes redirectAttributes) {
 	       
 	    	this.credentialsValidator.validate(credentials, result);
-	    	
-	    	System.out.println(credentials.toString());
-	    	System.out.println(result.toString());
 	    	if (result.hasErrors()) {
-	            return "registration";
+			    redirectAttributes.addAttribute("error", true);
+	            return "redirect:/registration";
 	        }
 	    	
 	    	switch(credentials.getRole()) {
@@ -106,26 +105,8 @@ import jakarta.validation.Valid;
 	
 		
 		@GetMapping("/formRegisterDeveloper")
-		public String showRegisterDeveloper(Model model, @ModelAttribute("developer") Developer developer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
+		public String showRegisterDeveloper(Model model, @ModelAttribute("developer") Developer developer, @ModelAttribute("credentials") Credentials credentials) {
 			model.addAttribute("credentials", credentials);
-	
-	        // check if file is empty
-	        if (file.isEmpty()) {
-	            model.addAttribute("message", "Please select a file to upload.");
-	            return "redirect:/";
-	        }
-	
-	        // normalize the file path
-	        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-	
-	        // save the file on the local file system
-	        try {
-	            Path path = Paths.get(UPLOAD_DIR + fileName);
-	            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	        developer.setLogo("UPLOAD_DIR"+"fileName");
 			model.addAttribute("developer", developer);
 			System.out.println(developer.toString());
 			return "formRegisterDeveloper";
@@ -153,39 +134,20 @@ import jakarta.validation.Valid;
 	         }
 			
 			if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
-				
-				
 	            userService.saveDev(developer);
 	            credentials.setUser(developer);
 	            credentialsService.saveCredentials(credentials);
 	            model.addAttribute("developer", developer);
 	            return "redirect:/login";
 	        }
+			
 	        return "formRegisterDeveloper";
 			
 		}
 		
 		@GetMapping("/formRegisterCustomer")
-		public String showRegisterCustomer(Model model, @ModelAttribute("customer") Customer customer, @ModelAttribute("credentials") Credentials credentials,@RequestParam("file") MultipartFile file) {
+		public String showRegisterCustomer(Model model, @ModelAttribute("customer") Customer customer, @ModelAttribute("credentials") Credentials credentials) {
 			model.addAttribute("credentials", credentials);
-			
-			  // check if file is empty
-	        if (file.isEmpty()) {
-	            model.addAttribute("message", "Please select a file to upload.");
-	            return "redirect:/";
-	        }
-	
-	        // normalize the file path
-	        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-	
-	        // save the file on the local file system
-	        try {
-	            Path path = Paths.get(UPLOAD_DIR +"/"+ fileName);
-	            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	        customer.setProfilePic("UPLOAD_DIR"+"fileName");
 			model.addAttribute("customer", customer);
 			System.out.println(customer.toString());
 			return "formRegisterCustomer";
@@ -212,7 +174,7 @@ import jakarta.validation.Valid;
 	                 return "formRegisterCustomer";
 	             }
 	         }
-			
+			 
 			if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
 	            userService.saveCustomer(customer);
 	            credentials.setUser(customer);
