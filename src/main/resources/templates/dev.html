@@ -47,8 +47,8 @@
         <div class="row justify-content-center" >
       
             <div class="col-lg-7 text-center my-5 ms-5 " >
-   	            <span><img width="50%" th:src=${user.logo} class="my-3 img-fluid img-thumbnail" style="border-radius: 20px;"/></span>
-                <h4 class="display-2  " style="color: white;background-color:  rgb(37, 150, 190,0.8); border-radius: 15px;" th:text="${user.name} +' ' +  ${user.surname}" ></h1>
+   	            <span><img width="50%" th:src=${developer.logo} class="my-3 img-fluid img-thumbnail" style="border-radius: 20px;"/></span>
+                <h4 class="display-2  " style="color: white;background-color:  rgb(37, 150, 190,0.8); border-radius: 15px;" th:text="${developer.name} +' ' +  ${developer.surname}" ></h1>
 
         	</div>
             
@@ -59,10 +59,10 @@
   <section id="descrizione">
       <div class="container  my-5 p-3" style="border-radius: 20px; border-color: white; border-style: double; background-color:  rgb(37, 150, 190,0.6);">
         <h4 class="display-4" style="color: white;" >Informazioni sul profilo</h4>
-        <h6 class="display-6 carta-testo" th:text="'Bio: ' + ${user.description}"></h6>
+        <h6 class="display-6 carta-testo" th:text="'Bio: ' + ${developer.description}"></h6>
         <h6 class="display-6 d-inline carta-testo" >Sito Compagnia:</h6>
-        <a href="#" class=" display-6 d-inline carta-testo  " th:href="${user.site_url}" target="_blank"><h5 class="d-inline">Visita il nostro sito</h5></a>
-        <h6 class="display-6 carta-testo" th:text="'Compagnia: ' + ${user.company}"></h6>
+        <a href="#" class=" display-6 d-inline carta-testo  " th:href="${developer.site_url}" target="_blank"><h5 class="d-inline">Visita il nostro sito</h5></a>
+        <h6 class="display-6 carta-testo" th:text="'Compagnia: ' + ${developer.company}"></h6>
 
       
       </div>
@@ -79,43 +79,17 @@
 	        
 	        
 	      
-          <div th:if="${user.developedGames==null || user.developedGames.isEmpty()}" class="carta-testo">Non ci sono Giochi pubblicati</div>
+          <div th:if="${developer.developedGames==null || developer.developedGames.isEmpty()}" class="carta-testo">Non ci sono Giochi pubblicati</div>
 	
 			 <div class="row justify-content-center">
-		            <div  class="col-lg-2 col-md-3 mb-2" th:each="game , iterStat : ${user.developedGames}"  >
+		            <div  class="col-lg-2 col-md-3 mb-2" th:each="game , iterStat : ${developer.developedGames}"  >
 		                
 		                    <div class="card coluno" style="border-radius: 20px;border-color: #b5e8e9; border-style: double;">
 		                        <span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 70%;"/></span>
 		                        <div class="card-body"style="height: 100px;">
 		                            <h6 class="card-title carta-testo" th:text="${game.name}"></h6>
-		                            <a type="button" class="btn btn-outline-primary btn-sm bi bi-info-square-fill"th:href="@{'/game' + '/' + ${game.id}}"></a>
-		                            
-					                <a type="button" class="btn btn-outline-primary btn-sm bi bi-trash-fill " data-bs-toggle="modal" data-bs-target="#modal" ></a>
-					                <a type="button" class="btn btn-outline-primary btn-sm bi bi-pen-fill" th:href="@{/editGame/{id}(id=${game.id})}"></a>
-					  
-					                
-					         
-										
-										<!-- Modal -->
-										<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										  <div class="modal-dialog">
-										    <div class="modal-content">
-										      <div class="modal-header">
-										        <h1 class="modal-title fs-5" id="exampleModalLabel">AVVISO!</h1>
-										        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-										      </div>
-										      <div class="modal-body">
-										        Se elimini il gioco non sara' piu' possibile recuperarla
-										      </div>
-										      <div class="modal-footer">
-										        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              									<!--<a th:href="@{/ricetta/delete/{id}(id=${ricetta.id})}" class="btn btn-primary">Elimina</a>-->
-    											<a class="btn btn-primary" th:href="@{/game/{id}/delete(id=${game.id})}">Elimina</a>
-
-										      </div>
-										    </div>
-										  </div>
-										</div>
+		                            <a type="button" class="btn btn-outline-primary btn-sm bi bi-info-square-fill" th:href="@{'/game' + '/' + ${game.id}}"></a>
+		                           
 				                 </div>
 		                    </div>
 		                
@@ -129,9 +103,7 @@
   		  
   			
       </div>
-      <div class="row blu2 d-flex justify-content-end p-2" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
- 			  <a class="btn btn-outline-light ms-4 my-2" style="width: 20%;"th:href="@{/addGame}"> Aggiungi un Gioco!</a>
-	  </div>
+     
 	
     </div>
    </section>

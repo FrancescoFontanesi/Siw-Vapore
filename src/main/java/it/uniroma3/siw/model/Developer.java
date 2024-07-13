@@ -19,9 +19,7 @@ public class Developer extends User {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	
-	
+
 	private String company;
 	
 	private String logo;

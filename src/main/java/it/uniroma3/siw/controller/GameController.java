@@ -49,6 +49,7 @@ public class GameController {
         Game game = gameRepository.findById(id)
                .orElseThrow(() -> new IllegalArgumentException("Invalid game ID:" + id));
         model.addAttribute("game", game);
+       
         return "game";
     }
 	

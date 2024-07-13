@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import it.uniroma3.siw.model.Developer;
 import it.uniroma3.siw.model.Game;
+import it.uniroma3.siw.repository.DeveloperRepository;
 import it.uniroma3.siw.repository.GameRepository;
 import it.uniroma3.siw.service.DeveloperService;
 import it.uniroma3.siw.validator.GameValidator;
@@ -37,9 +39,20 @@ public class DeveloperController {
     @Autowired
     private GameRepository gameRepository;
 	
-	
+    @Autowired
+	private DeveloperRepository developerRepository;
+    
 	@Autowired
 	private DeveloperService developerService;
+	
+	@GetMapping("/developer/{id}")
+    public String getDeveloper(@PathVariable Long id, Model model) {
+        Developer dev = developerRepository.findAllById(id);
+        System.out.println(dev.getId());
+        model.addAttribute("developer", dev);
+        return "dev";
+    }
+	
 	
 	@GetMapping("/addGame")
 	public String getNewGameForm(Model m) {
@@ -107,4 +120,7 @@ public class DeveloperController {
 		
 
 	}
+	
+	
+	
 }

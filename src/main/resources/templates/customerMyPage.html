@@ -49,7 +49,7 @@
 
 
 
-	<div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double; background-image: url(/images/profilo.jpg); background-size: cover;">
+	<div class="container my-5 coluno " style="border-radius: 20px; border-color: white; border-style: double; background-image: url(/images/house.jpg); background-size: cover;">
         
         <div class="row justify-content-center" >
       
@@ -64,7 +64,7 @@
   </div>
 
 	<section id="descrizione">
-		<div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;background-color:  rgb(37, 150, 190,0.8);">
+		<div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;background-color:  rgb(37, 150, 190,0.6);">
 			<h4 class="display-4" style="color: white;">Informazioni sul profilo</h4>
 			<h6 class="display-6 carta-testo" th:text="'Data di nascita: ' + ${user.birthDay}">Data di nascita:</h6>
 			<h6 class="display-6 carta-testo" th:text="'Fondi disponibili: ' + ${user.walletFunds}">Data di nascita:</h6>
@@ -84,15 +84,15 @@
 			  <div class="modal-dialog">
 			    <div class="modal-content" 	style="background-color: #343445;">
 			      <div class="modal-header">
-			        <h1 class="modal-title fs-5" id="exampleModalLabel">Aggiunta Fondi</h1>
+			        <h1 class="modal-title fs-5 carta-testo" id="exampleModalLabel">Aggiunta Fondi</h1>
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
 					  
 			        <form th:action="@{/addFounds}" method="post" >
-						<div class="mb-3" style="width: 30%;">
-						  <label for="budget" class="form-label">Inserisci l'importo </label>
-						  <input type="number" class="form-control" style="background-color:#343445;" id="exampleFormControlInput1" placeholder="" name="amount" >
+						<div class="mb-3 carta-testo" style="width: 30%;">
+						  <label for="budget" class="form-label carta-testo">Inserisci l'importo </label>
+						  <input type="number" class="form-control" style="background-color:white;" id="exampleFormControlInput1" placeholder="" name="amount" >
 						</div>
 						
 						<div class="modal-footer">
@@ -112,17 +112,15 @@
 	
 	
 		</div>
-		<div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;">
+		<div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;background-color:  rgb(37, 150, 190,0.6);">
 			</ul>
-			<div class="tab-content background" id="myTabContent">
-				<div class="tab-pane fade show active  " id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
-					tabindex="0">
+			<div class="tab-content " id="myTabContent">
+				<div class="tab-pane fade show active  " id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 					<div th:if="${user.boughtGames==null || user.boughtGames.isEmpty()}" class="carta-testo">Non ci sono
 						giochi nella tua libreria</div>
 	
 					<ul class="list-group">
-						<li th:each="game : ${user.boughtGames}" class="list-group-item"
-							style="background-color: rgb(34, 34, 51,0.5);">
+						<li th:each="game : ${user.boughtGames}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
 							<h5 class="carta-testo" th:text="${game.name}"></h5>
 	
 						</li>

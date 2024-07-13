@@ -42,6 +42,20 @@ public class Game {
 	public String category;
 	
 	private List<String> images = new ArrayList<>();
+	
+	@ManyToOne
+	public Developer developer;
+	
+	@OneToMany(mappedBy = "game",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public List<Review> reviews;
+	
+	
+
+	public Game() {
+		this.images = new ArrayList<String>();
+		this.reviews = new ArrayList<Review>();
+		
+	}
 
 	public List<String> getImages() {
 	    return images;
@@ -71,19 +85,7 @@ public class Game {
 		this.category = category;
 	}
 
-	@ManyToOne
-	public Developer developer;
 	
-	@OneToMany(mappedBy = "game",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	public List<Review> reviews;
-	
-	
-
-	public Game() {
-		this.images = new ArrayList<String>();
-		this.reviews = new ArrayList<Review>();
-		
-	}
 
 	public Long getId() {
 		return id;
