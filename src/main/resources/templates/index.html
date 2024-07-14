@@ -131,7 +131,22 @@
 						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 200px; object-fit: cover;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <a type="button" class="btn btn-outline-light"th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
+                            <a type="button" class="btn btn-outline-light bi bi-info-square-fill d-inline"th:href="@{'/game' + '/' + ${game.id}}"></a>
+
+                            <div class="d-inline" th:if="${#authentication.authorities[0].authority == 'Customer'}" >
+								<a stype="button" class="btn btn-outline-light bi bi-cart2 " th:href="@{/game/{id}/addToCart(id=${game.id})}">
+									<span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+							</div>
+				
+							 <div class="d-inline" th:unless="${#authentication.authorities[0].authority == 'Customer' || #authentication.authorities[0].authority == 'ADMIN'}">
+								<a stype="button" class="btn btn-outline-light bi bi-cart2  " th:href="@{/login}">
+									<span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+					        </div>
+
 
                         </div>
                     </div>
@@ -149,7 +164,7 @@
   <section id="adventure">
     <div class="container">
 		
-		<div class="row coluno p-2  carta-testo" style="border-radius: 20px; border-color: white ; border-style: double;">
+		<div class="row coluno p-5  carta-testo" style="background-image: url(/images/adventure2.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
 			
 			<div class="col">
 				<h1 class="display-4">
@@ -168,8 +183,23 @@
 				</p>
 			</div>
 			
-			<div class="col my-4 mr-5 " style="background-image: url(/images/adventure.jpeg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;">
-     
+			<div class="col my-4 mr-5 " >
+     			<div class="row my-3" style="height: 50%;">
+					 <div class="col" style="background-image: url(/images/pokerAd/img1.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+					 <div class="col" style="background-image: url(/images/pokerAd/img2.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+				 </div>
+				 <div class="row my-3" style="height: 50%;">
+					 <div class="col" style="background-image: url(/images/pokerAd/img3.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+					 <div class="col" style="background-image: url(/images/pokerAd/img4.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+				 </div>
 				
 			</div>
 			
@@ -188,7 +218,22 @@
 						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 200px; object-fit: cover;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <a type="button" class="btn btn-outline-light"th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
+                            <a type="button" class="btn btn-outline-light bi bi-info-square-fill d-inline"th:href="@{'/game' + '/' + ${game.id}}"></a>
+
+                            <div class="d-inline" th:if="${#authentication.authorities[0].authority == 'Customer'}" >
+								<a stype="button" class="btn btn-outline-light bi bi-cart2 " th:href="@{/game/{id}/addToCart(id=${game.id})}">
+									<span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+							</div>
+				
+							 <div class="d-inline" th:unless="${#authentication.authorities[0].authority == 'Customer' || #authentication.authorities[0].authority == 'ADMIN'}">
+								<a stype="button" class="btn btn-outline-light bi bi-cart2  " th:href="@{/login}">
+									 <span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+					        </div>
+
 
                         </div>
                     </div>
@@ -204,7 +249,7 @@
  <section id="action">
     <div class="container">
 		
-		<div class="row coluno p-2  carta-testo" style="border-radius: 20px; border-color: white ; border-style: double;">
+		<div class="row coluno p-5  carta-testo" style="background-image: url(/images/simulationBlur.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;">
 			
 			<div class="col">
 				<h1 class="display-4">
@@ -215,14 +260,44 @@
 				reale in modo dettagliato e interattivo. Questi giochi offrono agli giocatori l'opportunità di immergersi in mondi virtuali che replicano vari aspetti della 
 				vita quotidiana, dalle professioni e dai hobby fino alle sfide ambientali e sociali.
 
+
+
+
+
 				I giochi di simulazione offrono un'esperienza di gioco immersiva e coinvolgente, permettendo ai giocatori di esplorare nuovi mondi e sfide in un ambiente 
 				controllato. La categoria "Simulation" rappresenta una porzione significativa del mercato dei videogiochi, attraendo sia appassionati di giochi che curiosi 
 				di esperienze di simulazione realistica.
+				La categoria "Simulation" in un negozio di giochi si riferisce a un vasto spettro di videogiochi progettati per simulare attività e situazioni della vita 
+				reale in modo dettagliato e interattivo. Questi giochi offrono agli giocatori l'opportunità di immergersi in mondi virtuali che replicano vari aspetti della 
+				vita quotidiana, dalle professioni e dai hobby fino alle sfide ambientali e sociali.
+
+	La categoria "Simulation" in un negozio di giochi si riferisce a un vasto spettro di videogiochi progettati per simulare attività e situazioni della vita 
+				reale in modo dettagliato e interattivo. Questi giochi offrono agli giocatori l'opportunità di immergersi in mondi virtuali che replicano vari aspetti della 
+				vita quotidiana, dalle professioni e dai hobby fino alle sfide ambientali e sociali.
+
+
+
+
 				</p>
 			</div>
 			
-			<div class="col my-4 " style="background-image: url(/images/simulation.jpeg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;">
-     
+			<div class="col my-4 mr-5 " >
+     			<div class="row my-3" style="height: 50%;">
+					 <div class="col" style="background-image: url(/images/pokerSim/img1.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+					 <div class="col" style="background-image: url(/images/pokerSim/img3.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+				 </div>
+				 <div class="row my-3" style="height: 50%;">
+					 <div class="col" style="background-image: url(/images/pokerSim/img4.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+					 <div class="col" style="background-image: url(/images/pokerSim/img2.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+				 </div>
 				
 			</div>
 			
@@ -231,13 +306,27 @@
     </div>
      <div class="container text-center my-3 ">
         <div class="row justify-content-center" style="gap: 0px;">
-            <div  class="col-lg-3 col-md-2" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Action'">
+            <div  class="col-lg-3 col-md-2" th:each="game, iterStat : ${games}" th:if="${game.category} == 'Simulation'">
                 
                     <div class="card coluno my-3" style="border-radius: 20px;border-color: white; border-style: double;">
 						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 200px; object-fit: cover;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <a type="button" class="btn btn-outline-light"th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
+                            <a type="button" class="btn btn-outline-light bi bi-info-square-fill d-inline"th:href="@{'/game' + '/' + ${game.id}}"></a>
+
+                            <div class="d-inline" th:if="${#authentication.authorities[0].authority == 'Customer'}" >
+								<a stype="button" class="btn btn-outline-light bi bi-cart2 " th:href="@{/game/{id}/addToCart(id=${game.id})}">
+									<span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+							</div>
+				
+							 <div class="d-inline" th:unless="${#authentication.authorities[0].authority == 'Customer' || #authentication.authorities[0].authority == 'ADMIN'}">
+								<a stype="button" class="btn btn-outline-light bi bi-cart2  " th:href="@{/login}">
+									<span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+					        </div>
                         </div>
                     </div>
                 
@@ -250,7 +339,7 @@
  
   <section id="strategy">
     <div class="container">
-		<div class="row coluno p-2  carta-testo" style="border-radius: 20px; border-color: white ; border-style: double;">
+		<div class="row coluno p-5  carta-testo" style="background-image: url(/images/strategyBlur.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;">
 			
 			<div class="col">
 				<h1 class="display-4">
@@ -263,11 +352,31 @@
 				una vasta gamma di sottocategorie, tra cui giochi di guerra, giochi di gestione delle risorse, giochi di costruzione di città, 
 				giochi di simulazione di battaglie e molto altro ancora. Gli sviluppatori di giochi Strategy si concentrano spesso su meccaniche 
 				di gioco che promuovono la competizione strategica, la cooperazione tra giocatori e la capacità di adattarsi alle sfide in tempo reale.
+					La categoria "Strategy" in un game store si riferisce ai giochi che richiedono agli giocatori di pianificare strategie complesse, 
+				spesso attraverso turni o movimenti sequenziali, per raggiungere obiettivi specifici. Questi giochi tendono ad essere profondi, 
+				strategici e spesso richiedono una buona dose di pensiero tattico e strategico per vincere. La categoria Strategy può includere 
+				
 				</p>
 			</div>
 			
-			<div class="col my-4 " style="background-image: url(/images/strategy.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;">
      
+			<div class="col my-4 mr-5 " >
+     			<div class="row my-3" style="height: 50%;">
+					 <div class="col" style="background-image: url(/images/pokerSt/img1.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+					 <div class="col" style="background-image: url(/images/pokerSt/img2.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+				 </div>
+				 <div class="row my-3" style="height: 50%;">
+					 <div class="col" style="background-image: url(/images/pokerSt/img3.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+					 <div class="col" style="background-image: url(/images/pokerSt/img4.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+				 </div>
 				
 			</div>
 			
@@ -283,7 +392,21 @@
 						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 200px; object-fit: cover;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <a type="button" class="btn btn-outline-light"th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
+                            <a type="button" class="btn btn-outline-light bi bi-info-square-fill d-inline"th:href="@{'/game' + '/' + ${game.id}}"></a>
+
+                            <div class="d-inline" th:if="${#authentication.authorities[0].authority == 'Customer'}" >
+								<a stype="button" class="btn btn-outline-light bi bi-cart2 " th:href="@{/game/{id}/addToCart(id=${game.id})}">
+									<span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+							</div>
+				
+							 <div class="d-inline" th:unless="${#authentication.authorities[0].authority == 'Customer' || #authentication.authorities[0].authority == 'ADMIN'}">
+								<a stype="button" class="btn btn-outline-light bi bi-cart2  " th:href="@{/login}">
+									<span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+					        </div>
                         </div>
                     </div>
                 
@@ -298,7 +421,7 @@
  
   <section id="fps">
     <div class="container">
-		<div class="row coluno p-2  carta-testo" style="border-radius: 20px; border-color: white ; border-style: double;">
+		<div class="row coluno p-5  carta-testo" style="background-image: url(/images/fpsBlur.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;">
 			
 			<div class="col">
 				<h1 class="display-4">
@@ -312,12 +435,31 @@
 				Nelle partite FPS, i giocatori possono scegliere tra vari modi di gioco, inclusi multiplayer online competitivi, campagne 
 				singolari con missioni da completare e modalità cooperativo. La precisione, la velocità di riflessi e la capacità di lavorare 
 				in squadra sono fondamentali per vincere nei giochi FPS, rendendoli ideali per i fan delle competizioni e per coloro che cercano sfide continue.
+				Nelle partite FPS, i giocatori possono scegliere tra vari modi di gioco, inclusi multiplayer online competitivi, campagne 
+				singolari con missioni da completare e modalità cooperativo. La precisione, la velocità di riflessi e la capacità di lavorare 
+				in squadra sono fondamentali per vincere nei giochi FPS, rendendoli ideali per i fan delle competizioni e per coloro che cercano sfide continue.
 
 				</p>
 			</div>
 			
-			<div class="col my-4 " style="background-image: url(/images/fps.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;">
      
+			<div class="col my-4 mr-5 " >
+     			<div class="row my-3" style="height: 50%;">
+					 <div class="col" style="background-image: url(/images/pokerFps/img1.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+					 <div class="col" style="background-image: url(/images/pokerFps/img2.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+				 </div>
+				 <div class="row my-3" style="height: 50%;">
+					 <div class="col" style="background-image: url(/images/pokerFps/img3.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+					 <div class="col" style="background-image: url(/images/pokerFps/img4.jpg);background-size: cover; border-style: double; border-color: white;border-radius: 15px;  ">
+						 
+					 </div>
+				 </div>
 				
 			</div>
 			
@@ -332,7 +474,21 @@
 						<span><img width="75%" th:src=${game.copertina} class="mt-3" style="border-radius: 20px;height: 200px; object-fit: cover;"/></span>
                         <div class="card-body">
                             <h5 class="card-title carta-testo" th:text="${game.name}"></h5>
-                            <a type="button" class="btn btn-outline-light"th:href="@{'/game' + '/' + ${game.id}}">Dettagli</a>
+                            <a type="button" class="btn btn-outline-light bi bi-info-square-fill d-inline"th:href="@{'/game' + '/' + ${game.id}}"></a>
+
+                            <div class="d-inline" th:if="${#authentication.authorities[0].authority == 'Customer'}" >
+								<a stype="button" class="btn btn-outline-light bi bi-cart2 " th:href="@{/game/{id}/addToCart(id=${game.id})}">
+									<span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+							</div>
+				
+							 <div class="d-inline" th:unless="${#authentication.authorities[0].authority == 'Customer' || #authentication.authorities[0].authority == 'ADMIN'}">
+								<a stype="button" class="btn btn-outline-light bi bi-cart2  " th:href="@{/login}">
+									<span th:text="${game.price}"></span>
+        							 <i class="bi bi-currency-euro"></i>
+								</a>
+					        </div>
                         </div>
                     </div>
                 

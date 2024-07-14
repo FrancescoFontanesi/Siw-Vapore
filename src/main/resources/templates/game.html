@@ -111,13 +111,21 @@
 		  <div class="row mb-4" style="width: 90%;">
            <div class="text-center d-flex justify-content-end align-items-end" >
 					<div th:if="${#authentication.authorities[0].authority == 'Customer'}" >
-						<a stype="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/addToCart(id=${game.id})}"
-							th:text="'Add To Cart: ' + ${game.price}"></a>
+						<a stype="button" class="btn btn-outline-light btn-lg  bi bi-cart2  " th:href="@{/game/{id}/addToCart(id=${game.id})}">
+							 <span th:text="' Add To Cart: ' +${game.price}"></span>
+     					     <i class="bi bi-currency-euro " ></i>
+						</a>
 					</div>
 					<div th:if="${#authentication.authorities[0].authority == 'ADMIN'}">
 						<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/game/{id}/delete(id=${game.id})}">Cancella</a>
 						<a type="button" class="btn btn-outline-light btn-lg " th:href="@{/editGame/{id}(id=${game.id})}">Modifica</a>
 					</div>
+					 <div th:unless="${#authentication.authorities[0].authority == 'Customer' || #authentication.authorities[0].authority == 'ADMIN'}">
+						<a stype="button" class="btn btn-outline-light btn-lg  bi bi-cart2  " th:href="@{/login}">
+							 <span th:text="' Add To Cart: ' +${game.price}"></span>
+     					     <i class="bi bi-currency-euro " ></i>
+						</a>
+			        </div>
 					
 						
 				</div>
@@ -142,7 +150,7 @@
 		        <h6 class="d-inline carta-testo">SVILUPPATORE: </h6>
 		        <h6 class="d-inline carta-testo" th:if="${game.developer == null or game.developer == ''}"> Anonimo</h6>
 		        <div class="d-inline" th:unless="${game.developer == null or game.developer == ''}">
-		          <a class="d-inline carta-testo" style="color: white;"  th:href="@{/developer/{id}(id=${game.id})}"> nome sviluppatore</a>
+		          <a class="d-inline carta-testo" style="color: white;" th:text="${game.developer.name} +' ' +  ${game.developer.surname}" th:href="@{/developer/{id}(id=${game.id})}"> nome sviluppatore</a>
 		        </div>
 		      </div>
 				

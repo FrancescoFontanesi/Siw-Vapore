@@ -52,7 +52,6 @@ public class SampleDataLoader implements CommandLineRunner {
         customer.setDate("03-03-1992");
         customer.setDescription("Gamer");
         customer.setProfilePic("profilepic.png");
-        customer.setBirthDay("1992-03-03");
 
 
         // Creating credentials for user

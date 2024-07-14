@@ -21,7 +21,6 @@ public class Customer extends User {
 			
 	private String profilePic;
 
-	public String birthDay;
 
 
 
@@ -88,18 +87,6 @@ public class Customer extends User {
 
 	
 	
-	public String getBirthDay() {
-		return birthDay;
-	}
-
-
-
-
-
-	public void setBirthDay(String birthDay) {
-		this.birthDay = birthDay;
-	}
-
 
 
 
