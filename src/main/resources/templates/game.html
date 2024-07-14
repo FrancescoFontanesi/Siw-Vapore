@@ -139,12 +139,12 @@
 				</div>
 				
 				<div>
-					<h6 class="d-inline carta-testo" >SVILUPPATORE: </h6>
-					<h6 class="d-inline carta-testo" th:if="${game.developer == null or game.developer == ''}"> Anonimo</h6>
-						<div class="d-inline" th:unless="${game.developer == null or game.developer == ''}">	
-							<a class="d-inline carta-testo" style="color: white;" th:text="${game.developer.name}" th:href="@{'/developer' + '/' + ${game.developer.id}}"> nome sviluppatore</a>	
-                        </div>		
-				</div>
+		        <h6 class="d-inline carta-testo">SVILUPPATORE: </h6>
+		        <h6 class="d-inline carta-testo" th:if="${game.developer == null or game.developer == ''}"> Anonimo</h6>
+		        <div class="d-inline" th:unless="${game.developer == null or game.developer == ''}">
+		          <a class="d-inline carta-testo" style="color: white;"  th:href="@{/developer/{id}(id=${game.id})}"> nome sviluppatore</a>
+		        </div>
+		      </div>
 				
 				<div>
 					<h6 class="d-inline carta-testo" >CATERGORIA: </h6>

@@ -21,8 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.model.Developer;
 import it.uniroma3.siw.model.Game;
+import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.DeveloperRepository;
 import it.uniroma3.siw.repository.GameRepository;
+import it.uniroma3.siw.repository.UserRepository;
 import it.uniroma3.siw.service.DeveloperService;
 import it.uniroma3.siw.validator.GameValidator;
 import jakarta.validation.Valid;
@@ -42,14 +44,18 @@ public class DeveloperController {
     @Autowired
 	private DeveloperRepository developerRepository;
     
+    @Autowired 
+    private UserRepository userRepository;
+    
 	@Autowired
 	private DeveloperService developerService;
 	
 	@GetMapping("/developer/{id}")
     public String getDeveloper(@PathVariable Long id, Model model) {
-        Developer dev = developerRepository.findAllById(id);
-        System.out.println(dev.getId());
-        model.addAttribute("developer", dev);
+		Game game = gameRepository.findById(id)
+	               .orElseThrow(() -> new IllegalArgumentException("Invalid game ID:" + id));
+		 
+        model.addAttribute("developer", game.developer);
         return "dev";
     }
 	
