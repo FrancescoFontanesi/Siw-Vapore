@@ -52,7 +52,6 @@
 				<!--Name-->	
                 <div class="row my-3">
 				  <div class="col">
-					  
 				    <input th:field="*{name}" type="text" class="form-control" placeholder="First name" aria-label="First name" required / >
 				  </div>
 				  <!--Surname-->
@@ -76,7 +75,7 @@
 				
           		<!--descrizione-->
         		  <div class="input-group my-3">
- 			          <textarea th:field="*{description}" type="text" class="form-control" placeholder="Biografia" aria-label="Company" aria-describedby="basic-addon1"></textarea>
+ 			        <textarea th:field="*{description}" id="description" type="text" class="form-control" placeholder="Biografia" aria-label="Company" aria-describedby="basic-addon1" required></textarea>
       		    </div>
       		    
       		    

@@ -63,7 +63,9 @@
         <h6 class="display-6 d-inline carta-testo" >Sito Compagnia:</h6>
         <a href="#" class=" display-6 d-inline carta-testo  " th:href="${user.site_url}" target="_blank"><h5 class="d-inline">Visita il nostro sito</h5></a>
         <h6 class="display-6 carta-testo" th:text="'Compagnia: ' + ${user.company}"></h6>
-
+ 		<div class="d-flex justify-content-end p-2" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+ 			<a class="btn btn-outline-light my-2 " style="width: 20%;" th:href="@{/edit/{id}(id=${user.id})}">Modifica il profilo!</a>
+		 </div>
       
       </div>
     </section>

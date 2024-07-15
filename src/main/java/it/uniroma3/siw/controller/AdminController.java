@@ -1,5 +1,6 @@
 package it.uniroma3.siw.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -62,54 +63,22 @@ public class AdminController {
 	
 	
 	@PostMapping("/editDeveloper/{id}")
-	public String editDeveloper( @ModelAttribute("user") Developer dev, @PathVariable("id") Long id ) {
-		developerService.updateDeveloper(id, dev);
+	public String editDeveloper( @ModelAttribute("user") Developer dev, @PathVariable("id") Long id , @RequestParam MultipartFile file) {
+		developerService.updateDeveloper(id, dev,file);
 		return "redirect:/myPage";
 	}
 	
 	@PostMapping("/editCustomer/{id}")
-	public String editCustomer( @ModelAttribute("user") Customer c, @PathVariable("id") Long id ) {
-		customerService.updateCustomer(id, c);
+	public String editCustomer( @ModelAttribute("user") Customer c, @PathVariable("id") Long id , @RequestParam MultipartFile file) {
+		customerService.updateCustomer(id, c,file);
 		return "redirect:/myPage";
 	}
 	
 	@PostMapping("/editGame/{id}")
 	public String editGame(Model m,@Valid @ModelAttribute("game") Game g,  @PathVariable("id") Long id,
 			@RequestParam("file") MultipartFile file,@RequestParam("additionalFiles") List<MultipartFile> additionalFiles) {
-		
-		if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-                Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
-                Files.write(path, bytes);
-                g.setCopertina("/images/newGame/" + file.getOriginalFilename() );
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "newGame";
-            }
-		}
-		
-
-		if (!additionalFiles.isEmpty()) {
-            for (MultipartFile additionalFile : additionalFiles) {
-                if (!additionalFile.isEmpty()) {
-                    try {
-                        byte[] bytes = additionalFile.getBytes();
-                        Path path = Paths.get(UPLOADED_FOLDER + additionalFile.getOriginalFilename());
-                        Files.copy(additionalFile.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-                        // Add the path to the game object's list of additional images
-                        g.addImages("/images/newGame/" + additionalFile.getOriginalFilename());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        m.addAttribute("message", "Failed to upload additional image");
-                        return "newGame";
-                    }
-                }
-            }
-        }
-
-            
-		gameService.updateGame(id,g);
+		 
+		gameService.updateGame(id,g,file,additionalFiles);
 		return "redirect:/myPage";
 	}
 	

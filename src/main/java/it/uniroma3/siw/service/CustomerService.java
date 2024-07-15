@@ -1,14 +1,18 @@
 package it.uniroma3.siw.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Customer;
-import it.uniroma3.siw.model.Developer;
 import it.uniroma3.siw.model.Game;
 import it.uniroma3.siw.repository.CredentialsRepository;
 import it.uniroma3.siw.repository.GameRepository;
@@ -21,6 +25,9 @@ public class CustomerService {
 
     @Autowired
     private GameRepository gameRepository;
+    
+    private static String UPLOADED_FOLDER_C = "src/main/resources/static/images/profili/";
+
 
     
     @Transactional
@@ -67,7 +74,7 @@ public class CustomerService {
     }
 
     @Transactional
-	public void updateCustomer(Long id, Customer newC) {
+	public void updateCustomer(Long id, Customer newC,MultipartFile file) {
     	
     	Customer oldC = (Customer)credentialsRepository.findById(id).get().getUser();
     	
@@ -84,22 +91,25 @@ public class CustomerService {
         if (newC.getSurname() != null && !newC.getSurname().equals(oldC.getSurname())) {
             oldC.setSurname(newC.getSurname());
         }
+        
+        if (newC.getDate() != null && !newC.getDate().equals(oldC.getDate())) {
+  		  oldC.setDate(newC.getDate()); }
+  		
 
-		/*
-		 * if (newC.getSite_url() != null &&
-		 * !newC.getSite_url().equals(oldC.getSite_url())) {
-		 * oldC.setSite_url(newC.getSite_url()); }
-		 * 
-		 * if (newC.getDescription() != null &&
-		 * !newC.getDescription().equals(oldC.getDescription())) {
-		 * oldC.setDescription(newC.getDescription()); }
-		 * 
-		 * if (newC.getLogo() != null && !newC.getLogo().equals(oldC.getLogo())) {
-		 * oldC.setLogo(newC.getLogo()); }
-		 */
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get(UPLOADED_FOLDER_C + file.getOriginalFilename());
+                Files.write(path, bytes);
+                oldC.setProfilePic("/images/profili/" + file.getOriginalFilename() );
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
         
         Credentials c = credentialsRepository.findByUser(oldC);
-        c.setUser(newC);
+        c.setUser(oldC);
         credentialsRepository.save(c);
     	
     	

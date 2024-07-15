@@ -10,6 +10,7 @@
 		import jakarta.validation.constraints.NotBlank;
 		
 		@Entity
+		@Inheritance(strategy = InheritanceType.JOINED)
 		@Table(name = "utente")
 		public class User {
 			
@@ -26,7 +27,6 @@
 			
 			private String date;
 			
-			private String description;
 			
 			
 			public Long getId() {
@@ -67,13 +67,7 @@
 				this.date = date;
 			}
 	
-			public String getDescription() {
-				return description;
-			}
-	
-			public void setDescription(String description) {
-				this.description = description;
-			}
+			
 		
 			
 		}

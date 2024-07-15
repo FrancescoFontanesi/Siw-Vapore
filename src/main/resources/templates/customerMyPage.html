@@ -70,7 +70,7 @@
 			<h6 class="display-6 carta-testo" th:text="'Fondi disponibili: ' + ${user.walletFunds}">Data di nascita:</h6>
 
 			<a type="button" class="btn btn-outline-light my-3 bi bi-cart2" href="/cart">Carrello</a>
-	
+			
 	
 	
 	
@@ -107,7 +107,9 @@
 			    </div>
 			  </div>
 			</div>
-	
+			
+			<a type="button" class="btn btn-outline-light  " th:href="@{/edit/{id}(id=${user.id})}">Modifica il profilo!</a>
+
 	
 	
 	
@@ -115,9 +117,9 @@
 		<div class="container coluno my-5" style="border-radius: 20px; border-color: white; border-style: double;background-color:  rgb(37, 150, 190,0.6);">
 			</ul>
 				<div class="tab-pane fade show active  " id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+										<h6 class="display-4 carta-testo"> La Mia Libreria</h6>
 					<div th:if="${user.boughtGames==null || user.boughtGames.isEmpty()}" class="carta-testo">Non ci sono
 						giochi nella tua libreria</div>
-					<h6 class="display-4 carta-testo"> La Mia Libreria</h6>
 			        <div class="row justify-content-center">
 			             <div  class="col-lg-2 p-4 col-md-3 " th:each="game, iterStat : ${user.boughtGames}">
 		                

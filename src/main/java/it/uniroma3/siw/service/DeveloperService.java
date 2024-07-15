@@ -1,8 +1,14 @@
 package it.uniroma3.siw.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Developer;
@@ -17,6 +23,10 @@ public class DeveloperService {
 	private GameRepository gameRepository;
 	@Autowired
 	private CredentialsRepository credentialsRepository;
+	
+
+    // Directory where profile images will be saved
+    private static String UPLOADED_FOLDER_D = "src/main/resources/static/images/sviluppatori/";
 	
     @Transactional
 	public void newGame(Game g,String email) {
@@ -36,14 +46,16 @@ public class DeveloperService {
 	     }
 	}
     
-
-    public void updateDeveloper(Long id, Developer newDev) {
+ 
+    public void updateDeveloper(Long id, Developer newDev,MultipartFile file) { 
     	
     	Developer oldDev = (Developer)credentialsRepository.findById(id).get().getUser();
     	
     	newDev.setId(oldDev.getId());
     	newDev.setDevelopedGames(oldDev.getDevelopedGames());
     	
+    	
+    	System.out.println(file.isEmpty());
     	
     	if (newDev.getName() != null && !newDev.getName().equals(oldDev.getName())) {
             oldDev.setName(newDev.getName());
@@ -61,13 +73,22 @@ public class DeveloperService {
 		 if (newDev.getDescription() != null &&
 		 !newDev.getDescription().equals(oldDev.getDescription())) {
 		 oldDev.setDescription(newDev.getDescription()); }
-		 /*
-		 * if (newDev.getLogo() != null && !newDev.getLogo().equals(oldDev.getLogo())) {
-		 * oldDev.setLogo(newDev.getLogo()); }
-		 */
+		 
+		 if (!file.isEmpty()) {
+             try {
+                 byte[] bytes = file.getBytes();
+                 Path path = Paths.get(UPLOADED_FOLDER_D + file.getOriginalFilename());
+                 Files.write(path, bytes);
+                 oldDev.setLogo("/images/sviluppatori/" + file.getOriginalFilename() );
+             } catch (IOException e) {
+                 e.printStackTrace();
+
+             }
+         }
+		 
         
         Credentials c = credentialsRepository.findByUser(oldDev);
-        c.setUser(newDev);
+        c.setUser(oldDev);
         credentialsRepository.save(c);
     	
     	

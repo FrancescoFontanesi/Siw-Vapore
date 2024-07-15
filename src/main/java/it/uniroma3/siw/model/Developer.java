@@ -72,13 +72,7 @@ public class Developer extends User {
 		this.site_url = site_url;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
+	
 
 	public List<Game> getDevelopedGames() {
 		return developedGames;
@@ -92,6 +86,14 @@ public class Developer extends User {
 	public String toString() {
 		return "Developer [name ="+ super.getName()+", surname =" + super.getSurname() + ",  id=" + id + ", company=" + company + ", logo=" + logo + ", site_url=" + site_url
 				+ ", developedGames=" + developedGames + "]";
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	

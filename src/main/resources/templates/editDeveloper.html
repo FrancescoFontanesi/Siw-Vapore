@@ -47,7 +47,7 @@
   
     <div class="container d-flex justify-content-center align-items-center">
 		
-      <form th:action="@{/editDeveloper/{id}(id=${id})}" th:object="${user}" method="post" style="width: 95%;">
+      <form th:action="@{/editDeveloper/{id}(id=${id})}" th:object="${user}" method="post" style="width: 95%;" enctype="multipart/form-data">
         
         
         <!--Name-->	
@@ -82,6 +82,12 @@
 		<div class="input-group mb-3">
           	  <input th:value="*{company}" id="company" name="company" type="text" class="form-control"   aria-describedby="basic-addon3 basic-addon4">
          </div>
+         
+          <!--Foto-->
+		<div class="input-group my-3">
+			  <input type="file" class="form-control" id="file" name="file">
+			  <label class="input-group-text" for="inputGroupFile02" >Logo</label>
+		 </div>
 		
 		<div class="d-flex justify-content-end align-items-center my-2">
 			<button type="submit" class="btn btn-outline-primary">Save</button>	
