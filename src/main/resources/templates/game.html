@@ -178,8 +178,8 @@
         <div th:if="${game.reviews==null || game.reviews.isEmpty()}" class="carta-testo">Non ci sono Recensioni nel gioco</div>
 
 
-        <ul class="list-group">
-		    <li th:each="review : ${game.reviews}" class="list-group-item" style="background-color: rgb(34, 34, 51,0.5);">
+        <ul class="list-group mb-3">
+		    <li th:each="review : ${game.reviews}" class="list-group-item my-1" style="background-color: rgb(34, 34, 51,0.5);">
 				<div style="display: flex; justify-content: space-between; align-items: center;">
 
 		        <h5 class="carta-testo" th:text="${review.text} ">Review Title</h5>
@@ -195,9 +195,10 @@
 		</ul>
 
         <!-- Button trigger modal -->
-			<button type="button" class="btn btn-outline-light my-2  " data-bs-toggle="modal" data-bs-target="#exampleModal">
-			  Aggiungi una recensione ! 
-			</button>
+			
+			<div sec:authorize="isAuthenticated()">
+				<button type="button" class="btn btn-outline-light my-2  " data-bs-toggle="modal" data-bs-target="#exampleModal">Aggiungi una recensione ! </button>
+			</div>
 			
 			<!-- Modal -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.CredentialsRepository;
+import it.uniroma3.siw.repository.UserRepository;
 import jakarta.validation.Valid;
 
 @Service
@@ -23,6 +24,8 @@ public class CredentialsService  {
     @Autowired
     protected CredentialsRepository credentialsRepository;
     
+    @Autowired
+    protected UserRepository userRepository;
    
     @Transactional
     public Credentials getCredentials(Long id) {
@@ -52,7 +55,7 @@ public class CredentialsService  {
     public void deleteCredentials(Long credentialsId) {
         Credentials credentials = credentialsRepository.findById(credentialsId).orElse(null);
         if(credentials!=null) 
-        	
+        	userRepository.delete(credentials.getUser());
         	credentialsRepository.delete(credentials);
         
     }
